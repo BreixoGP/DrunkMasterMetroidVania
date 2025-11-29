@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://xniugj67t2f"]
+
+[ext_resource type="Texture2D" uid="uid://omnspnav3yhq" path="res://assets/castle/secretblock.png" id="1_5flst"]
+[ext_resource type="Script" uid="uid://dyxrht3q037j5" path="res://scripts/trap.gd" id="2_tk2q1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7s8xa"]
+size = Vector2(47, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btw44"]
+size = Vector2(50, 22.5)
+
+[node name="Trap" type="Sprite2D"]
+texture = ExtResource("1_5flst")
+script = ExtResource("2_tk2q1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_7s8xa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.25)
+shape = SubResource("RectangleShape2D_btw44")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 19.184
+max_polyphony = 4
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
