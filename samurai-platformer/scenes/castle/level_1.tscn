@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dejw52703ep8x"]
+[gd_scene load_steps=18 format=4 uid="uid://dejw52703ep8x"]
 
 [ext_resource type="Texture2D" uid="uid://dp3uj811uwiid" path="res://assets/castle/Medieval_tiles_free2.png" id="1_44th0"]
 [ext_resource type="PackedScene" uid="uid://mxsmjwdj3tvw" path="res://scenes/characters/jahmurai.tscn" id="2_f3glw"]
+[ext_resource type="PackedScene" uid="uid://xniugj67t2f" path="res://scenes/castle/trap.tscn" id="3_hoh65"]
+[ext_resource type="PackedScene" uid="uid://bv67modj4h7vp" path="res://scenes/castle/platform.tscn" id="4_d24es"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3glw"]
 texture = ExtResource("1_44th0")
@@ -3071,6 +3073,119 @@ texture = ExtResource("1_44th0")
 [sub_resource type="TileSet" id="TileSet_f3glw"]
 sources/0 = SubResource("TileSetAtlasSource_44th0")
 
+[sub_resource type="Animation" id="Animation_2v6xj"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1716, -104), Vector2(2020, -108)]
+}
+
+[sub_resource type="Animation" id="Animation_mdyhd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1716, -104)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3pde"]
+_data = {
+&"RESET": SubResource("Animation_mdyhd"),
+&"move": SubResource("Animation_2v6xj")
+}
+
+[sub_resource type="Animation" id="Animation_hoh65"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3257, -329), Vector2(3595, -329)]
+}
+
+[sub_resource type="Animation" id="Animation_d24es"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3257, -329)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2v6xj"]
+_data = {
+&"RESET": SubResource("Animation_d24es"),
+&"move": SubResource("Animation_hoh65")
+}
+
+[sub_resource type="Animation" id="Animation_b3pde"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3860, -159), Vector2(3862, -310)]
+}
+
+[sub_resource type="Animation" id="Animation_xpv2l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3860, -159)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lj644"]
+_data = {
+&"RESET": SubResource("Animation_xpv2l"),
+&"move": SubResource("Animation_b3pde")
+}
+
 [node name="level1" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -3093,4 +3208,34 @@ limit_right = 4941
 limit_bottom = -2
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_f3glw")]
-position = Vector2(215, -42)
+position = Vector2(214, -71)
+
+[node name="Trap" parent="." instance=ExtResource("3_hoh65")]
+position = Vector2(896, -98)
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="platform" parent="platforms" instance=ExtResource("4_d24es")]
+position = Vector2(1716, -104)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platforms/platform"]
+libraries = {
+&"": SubResource("AnimationLibrary_b3pde")
+}
+autoplay = "move"
+
+[node name="platform2" parent="platforms" instance=ExtResource("4_d24es")]
+position = Vector2(3257, -329)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platforms/platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_2v6xj")
+}
+
+[node name="platform3" parent="platforms" instance=ExtResource("4_d24es")]
+position = Vector2(3860, -159)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platforms/platform3"]
+libraries = {
+&"": SubResource("AnimationLibrary_lj644")
+}

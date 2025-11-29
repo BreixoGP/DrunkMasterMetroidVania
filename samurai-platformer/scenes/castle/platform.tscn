@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv67modj4h7vp"]
+
+[ext_resource type="Texture2D" uid="uid://omnspnav3yhq" path="res://assets/castle/secretblock.png" id="1_ae78c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x76ix"]
+size = Vector2(94, 20)
+
+[node name="platform" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 0)
+scale = Vector2(1.9583334, 1)
+texture = ExtResource("1_ae78c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23, 0)
+shape = SubResource("RectangleShape2D_x76ix")
+one_way_collision = true
