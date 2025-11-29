@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://brtyiwdi261p7"]
+
+[ext_resource type="Texture2D" uid="uid://dhn3p5uwhpwka" path="res://assets/dungeon/Details/torch3_1.png" id="1_nmndw"]
+[ext_resource type="Texture2D" uid="uid://8br838x0e130" path="res://assets/dungeon/Details/torch3_2.png" id="2_n6dd3"]
+[ext_resource type="Texture2D" uid="uid://c8vfivqo8spg4" path="res://assets/dungeon/Details/torch3_3.png" id="3_r84s3"]
+[ext_resource type="Texture2D" uid="uid://br5oqw8h4lkqs" path="res://assets/dungeon/Details/torch3_4.png" id="4_63pcn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67kk0"]
+atlas = ExtResource("1_nmndw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0n2e"]
+atlas = ExtResource("2_n6dd3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xgev"]
+atlas = ExtResource("3_r84s3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2quo"]
+atlas = ExtResource("4_63pcn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kc5mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67kk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0n2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xgev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2quo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="torch" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kc5mv")
+autoplay = "default"
+frame_progress = 0.50328505
