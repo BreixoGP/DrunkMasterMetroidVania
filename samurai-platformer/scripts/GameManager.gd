@@ -29,18 +29,16 @@ func load_level(path : String):
 		current_level.queue_free()
 		
 	var scene = load (path)
-	
 	current_level = scene.instantiate()
-	
 	levelcontainer.add_child(current_level)
 	
 	var spawn=current_level.get_node("Spawn")
 	player.global_position = spawn.global_position
 	
-	#a partir de aqui programar camra y seguimieto, falta script de camara ?
-	var cam = current_level.get_node("Camera2D")
-	cam.enabled = true 
-	cam.make_current()
+		# APLICAR LÍMITES A LA CÁMARA
+	var camera = get_tree().current_scene.get_node("Camera2D")
+	if current_level.has_method("apply_camera_limits"):
+		current_level.apply_camera_limits(camera)
 	
 	
 func add_point(value:int):
