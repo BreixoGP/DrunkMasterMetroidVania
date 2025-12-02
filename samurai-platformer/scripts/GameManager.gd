@@ -1,12 +1,18 @@
 extends Node
 
-#var player: Kitsune = null
+var levels = ["res://scenes/castle/level_1.tscn"]
+
+var level_index= 0
+var player: Node=null
+var levelcontainer : Node = null
+var current_level : Node = null 
 var score: int = 0
 var saved_score: int = 0
 var is_loading_game : bool = false
-var level: int = 1
+#var level: int = 1
 var how_to_play_instance: Node = null
 var options_menu_instance:Node = null
+
 #const player_scene = preload("res://scenes/kitsune.tscn")
 #const HUD_SCENE = preload("res://scenes/lifeandpoints.tscn")
 
@@ -15,6 +21,22 @@ func _ready() -> void:
 	pass
 
 
+func load_current_level():
+		load_level(levels[level_index])
+		
+func load_level(path : String):
+	if current_level:
+		current_level.queue_free()
+		
+	var scene = load (path)
+	
+	current_level = scene.instantiate()
+	
+	levelcontainer.add_child(current_level)
+	
+	var spawn=current_level.get_node("Spawn")
+	player.global_position = spawn.global_position
+	
 func add_point(value:int):
 	score+=1*value
 	print("you won "+str(value) +" points")

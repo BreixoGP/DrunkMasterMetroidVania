@@ -1,5 +1,5 @@
 extends Button
-@export var first_scene:PackedScene=preload("res://scenes/main.tscn")
+@export var main_scene:PackedScene=preload("res://scenes/main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 func play():
 	GameManager.saved_score = 0
 	GameManager.score = 0
-	GameManager.level = 1
+	GameManager.level_index = 0
 	GameManager.is_loading_game = false
-	get_tree().change_scene_to_packed(first_scene)
+	get_tree().change_scene_to_packed(main_scene)
 	pressed.disconnect(play)
