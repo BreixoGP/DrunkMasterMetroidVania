@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://byilwbxgnhvmj"]
+[gd_scene load_steps=4 format=3 uid="uid://byilwbxgnhvmj"]
 
 [ext_resource type="FontFile" uid="uid://chh1ubq87bkcp" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_natt5"]
-[ext_resource type="Script" uid="uid://bl700ous2k75u" path="res://scripts/play.gd" id="2_r3g3c"]
+[ext_resource type="Script" uid="uid://bl700ous2k75u" path="res://scripts/menuprincipal/play.gd" id="2_r3g3c"]
+[ext_resource type="Script" uid="uid://rnxqqmutjjhk" path="res://scripts/menuprincipal/exit.gd" id="3_r3g3c"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -55,3 +56,4 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
 theme_override_font_sizes/font_size = 60
 text = "Exit"
+script = ExtResource("3_r3g3c")
