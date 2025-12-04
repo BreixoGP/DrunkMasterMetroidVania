@@ -1,6 +1,8 @@
 extends Node
 
 var levels = ["res://scenes/castle/level_1.tscn"]
+@onready var fade: ColorRect
+
 
 var level_index= 0
 var player: Node=null #instanciamos player nulo, en main en ready se asigna
@@ -26,20 +28,22 @@ func load_current_level():
 		
 func respawn():
 		#aqui controlar el score tambien
+		fade.fade_to_black()
 		await get_tree().create_timer(1.5).timeout
 		player.set_physics_process(false)
+		player.collision.disabled = true
+		player.velocity = Vector2.ZERO
+		
 		load_level(levels[level_index])
 		
 		player.life = 10
 		
-		player.is_taking_damage = false
-		player.velocity = Vector2.ZERO
-		#player.anim.play("idle")
 		await get_tree().process_frame
 		player.set_physics_process(true)
 		player.collision.disabled = false
 		
 func load_level(path : String):
+	fade.fade_to_black()
 	if current_level:
 		current_level.queue_free()
 		
@@ -54,7 +58,7 @@ func load_level(path : String):
 	var camera = get_tree().current_scene.get_node("Camera2D")
 	if current_level.has_method("apply_camera_limits"):
 		current_level.apply_camera_limits(camera)
-	
+	fade.fade_from_black()
 	
 func add_point(value:int):
 	score+=1*value

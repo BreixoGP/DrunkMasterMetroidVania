@@ -131,6 +131,5 @@ func check_life():
 	if life <= 0:
 		anim.play("die")
 		await get_tree().create_timer(0.5).timeout
-		collision.disabled = true
 		GameManager.respawn()
 		
