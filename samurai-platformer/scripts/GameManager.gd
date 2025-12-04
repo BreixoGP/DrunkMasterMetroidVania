@@ -1,6 +1,7 @@
 extends Node
 
-var levels = ["res://scenes/castle/level_1.tscn"]
+var levels = ["res://scenes/castle/level_1.tscn",
+"res://scenes/castle/level_2.tscn","res://scenes/castle/level_3.tscn"]
 @onready var fade: ColorRect
 
 

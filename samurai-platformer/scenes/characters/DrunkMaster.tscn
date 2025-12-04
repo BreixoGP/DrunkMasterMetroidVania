@@ -502,8 +502,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cu8xv"]
-radius = 7.0
-height = 64.0
+radius = 5.0
+height = 50.0
 
 [node name="DrunkMaster" type="CharacterBody2D"]
 collision_layer = 3
@@ -513,10 +513,10 @@ script = ExtResource("1_ehg33")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 10
 texture_filter = 1
-position = Vector2(1, -23)
+position = Vector2(2.9999962, -27)
+scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
-animation = &"die"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 8)
 shape = SubResource("CapsuleShape2D_cu8xv")
