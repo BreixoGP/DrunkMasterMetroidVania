@@ -96,7 +96,7 @@ func get_state() -> String:
 	else:
 		return "jump"
 		
-func take_damage(damage: int):
+func take_damage(damage: int, from_position: Vector2):
 	if life <=0:
 		return
 	await get_tree().create_timer(0.1).timeout
@@ -105,18 +105,19 @@ func take_damage(damage: int):
 	#is_atacking = false
 	#GameManager.hud_instance.update_life()
 	#audiodamage.play()
-	apply_knockback()
+	apply_knockback(from_position)
 	check_life()
 
 
-func apply_knockback(knockback_strength: float = 1000.0, knockback_time: float = 0.1):
+func apply_knockback(from_position : Vector2, knockback_strength: float = 800.0, knockback_time: float = 0.1):
 	if is_taking_damage:
 		return
 
 	is_taking_damage = true
 	anim.modulate = Color(1.0, 0.494, 0.427, 0.635)
-	var dir = 1 if anim.flip_h else -1
-	velocity.x = dir * knockback_strength
+	
+	var dir = (global_position - from_position).normalized()
+	velocity = dir * knockback_strength
 
 	var t := get_tree().create_timer(knockback_time)
 	t.connect("timeout", Callable(self, "_end_knockback"))

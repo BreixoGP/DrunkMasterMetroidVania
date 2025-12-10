@@ -155,11 +155,12 @@ func set_direction(dir):
 	if dir == 0:
 		return
 	direction = dir 
-	flipper.scale.x = 1 if dir > 0 else -1
+	var base_scale_x = abs(flipper.scale.x)  
+	flipper.scale.x = base_scale_x if dir > 0 else -base_scale_x
 	
 
 
 func _on_attack_hitbox_body_entered(body: Node2D) -> void:
 	if body is DrunkMaster:
 		var drunkmaster:DrunkMaster = body as DrunkMaster
-		drunkmaster.take_damage(attack_power)
+		drunkmaster.take_damage(attack_power,global_position)
