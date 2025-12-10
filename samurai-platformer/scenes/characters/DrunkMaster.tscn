@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://mxsmjwdj3tvw"]
+[gd_scene load_steps=78 format=3 uid="uid://mxsmjwdj3tvw"]
 
 [ext_resource type="Script" uid="uid://li1ill2fffw1" path="res://scripts/drunkmaster.gd" id="1_ehg33"]
 [ext_resource type="Texture2D" uid="uid://blb8kmm3wp6vh" path="res://assets/charachters/DrunkMaster/Attack_1Drunk.png" id="2_x3l2y"]
@@ -111,18 +111,6 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("3_sns30")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_47m2j"]
-atlas = ExtResource("5_ehg33")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wo2oj"]
-atlas = ExtResource("5_ehg33")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2tv0"]
-atlas = ExtResource("5_ehg33")
-region = Rect2(256, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_i24ww"]
 atlas = ExtResource("6_rmwwx")
 region = Rect2(0, 0, 128, 128)
@@ -150,6 +138,38 @@ region = Rect2(0, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e12x2"]
 atlas = ExtResource("8_qcocl")
 region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3l2y"]
+atlas = ExtResource("9_1hk1y")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sns30"]
+atlas = ExtResource("9_1hk1y")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxh6c"]
+atlas = ExtResource("9_1hk1y")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehg33"]
+atlas = ExtResource("9_1hk1y")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmwwx"]
+atlas = ExtResource("9_1hk1y")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47m2j"]
+atlas = ExtResource("5_ehg33")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo2oj"]
+atlas = ExtResource("5_ehg33")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2tv0"]
+atlas = ExtResource("5_ehg33")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4h5q"]
 atlas = ExtResource("7_gp5ia")
@@ -297,7 +317,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_txk3w")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack3",
 "speed": 10.0
 }, {
@@ -350,20 +370,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_47m2j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wo2oj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2tv0")
-}],
-"loop": false,
-"name": &"damage",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_i24ww")
 }, {
 "duration": 1.0,
@@ -404,6 +410,40 @@ animations = [{
 "loop": false,
 "name": &"drink",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3l2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sns30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxh6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmwwx")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47m2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo2oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2tv0")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -488,7 +528,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vqefu")
 }],
-"loop": true,
+"loop": false,
 "name": &"run",
 "speed": 10.0
 }, {
@@ -517,7 +557,9 @@ texture_filter = 1
 position = Vector2(2.9999962, -27)
 scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
-animation = &"damage"
+animation = &"attack3"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cu8xv")

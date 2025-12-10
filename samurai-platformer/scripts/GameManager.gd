@@ -41,7 +41,7 @@ func respawn():
 		load_level(levels[level_index])
 		
 		player.life = 10
-		
+		player.update_state()
 		await get_tree().process_frame
 		player.set_physics_process(true)
 		player.collision.disabled = false
