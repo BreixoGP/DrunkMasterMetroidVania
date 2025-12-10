@@ -338,7 +338,7 @@ animations = [{
 radius = 55.999275
 height = 339.9344
 
-[node name="Oni" type="CharacterBody2D"]
+[node name="Oni" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 1.3089969
@@ -362,9 +362,7 @@ shape = SubResource("CapsuleShape2D_krfje")
 position = Vector2(6, -9)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"ready"
-frame = 7
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)
