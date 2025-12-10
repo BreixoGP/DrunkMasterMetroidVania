@@ -96,12 +96,12 @@ func get_state() -> String:
 	else:
 		return "jump"
 		
-func get_damage(damage: int):
+func take_damage(damage: int):
 	if life <=0:
 		return
 	await get_tree().create_timer(0.1).timeout
 	life -= damage
-	print("getting damage")
+	
 	#is_atacking = false
 	#GameManager.hud_instance.update_life()
 	#audiodamage.play()

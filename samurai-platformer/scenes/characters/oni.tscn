@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bov7om0em5xlt"]
+[gd_scene load_steps=52 format=3 uid="uid://bov7om0em5xlt"]
 
 [ext_resource type="Texture2D" uid="uid://xbvc35twjbra" path="res://assets/charachters/Gotoku/Attack_1.png" id="1_evch6"]
 [ext_resource type="Script" uid="uid://cq40rcbw7wwht" path="res://scripts/oni.gd" id="1_lh407"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4q5pia1wwq6o" path="res://assets/charachters/Gotoku/Dead.png" id="5_s6rll"]
 [ext_resource type="Texture2D" uid="uid://bwhummcphmxe4" path="res://assets/charachters/Gotoku/Idle.png" id="6_jw7en"]
 [ext_resource type="Texture2D" uid="uid://in0tf7ujpbrp" path="res://assets/charachters/Gotoku/Walk.png" id="7_l2i6h"]
+[ext_resource type="Texture2D" uid="uid://86o73ytkfdtm" path="res://assets/charachters/Gotoku/Scream.png" id="9_krfje"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8068"]
 height = 62.0
@@ -152,6 +153,22 @@ region = Rect2(512, 0, 128, 128)
 atlas = ExtResource("7_l2i6h")
 region = Rect2(640, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7lt"]
+atlas = ExtResource("9_krfje")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6rll"]
+atlas = ExtResource("9_krfje")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw7en"]
+atlas = ExtResource("9_krfje")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2i6h"]
+atlas = ExtResource("9_krfje")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0v6m6"]
 animations = [{
 "frames": [{
@@ -285,6 +302,35 @@ animations = [{
 "loop": true,
 "name": &"patrol",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6rll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw7en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2i6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6rll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw7en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2i6h")
+}],
+"loop": true,
+"name": &"ready",
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh407"]
@@ -297,23 +343,24 @@ collision_mask = 5
 floor_max_angle = 1.3089969
 script = ExtResource("1_lh407")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, 31)
 shape = SubResource("CapsuleShape2D_c8068")
 
 [node name="Flipper" type="Node2D" parent="."]
 
-[node name="attack_area" type="Area2D" parent="Flipper"]
+[node name="attack_hitbox" type="Area2D" parent="Flipper"]
 collision_mask = 4
+monitoring = false
 
-[node name="attack_collision" type="CollisionShape2D" parent="Flipper/attack_area"]
+[node name="attack_collision" type="CollisionShape2D" parent="Flipper/attack_hitbox"]
 position = Vector2(18, 23)
 shape = SubResource("CapsuleShape2D_krfje")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flipper"]
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"idle"
-frame = 4
+animation = &"ready"
+frame = 7
 frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
@@ -325,9 +372,14 @@ position = Vector2(17, 32)
 target_position = Vector2(1, 77)
 
 [node name="rayspikes" type="RayCast2D" parent="Flipper"]
-position = Vector2(37, 31)
+position = Vector2(17, 32)
 target_position = Vector2(1, 77)
 collision_mask = 8
+
+[node name="rayattack" type="RayCast2D" parent="Flipper"]
+position = Vector2(-1, 24)
+target_position = Vector2(35, 0)
+collision_mask = 4
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_mask = 4
@@ -337,5 +389,6 @@ position = Vector2(-1, 24)
 rotation = 1.5758936
 shape = SubResource("CapsuleShape2D_lh407")
 
+[connection signal="body_entered" from="Flipper/attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
