@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			kick_hitbox.monitoring = false
 
 
-func handle_input(delta):
+func handle_input(_delta):
 	if state in [State.HURT, State.DEAD]:
 		return
 
