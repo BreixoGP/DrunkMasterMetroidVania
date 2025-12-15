@@ -3502,6 +3502,9 @@ autoplay = "move"
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(202, -75)
 
+[node name="Spawn2" type="Marker2D" parent="."]
+position = Vector2(4761, -86)
+
 [node name="door" parent="." instance=ExtResource("9_xpv2l")]
 position = Vector2(4866.5, -99)
 scale = Vector2(1.2343674, 1.2812499)
