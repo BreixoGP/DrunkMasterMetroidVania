@@ -135,6 +135,9 @@ func take_damage(amount: int, from_position: Vector2,attack_type: int):
 		return  # ya muerto
 
 	life -= amount
+	if GameManager.hud:
+		GameManager.hud.update_health(life)
+	
 	
 	if life <= 0:
 		state = State.DEAD

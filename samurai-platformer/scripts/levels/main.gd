@@ -11,4 +11,5 @@ func _ready():
 	GameManager.levelcontainer=levelcontainer
 	GameManager.fade = fade
 	GameManager.load_current_level()
-	
+	GameManager.hud.set_max_health(GameManager.player.life)
+	GameManager.hud.update_health(GameManager.player.life)

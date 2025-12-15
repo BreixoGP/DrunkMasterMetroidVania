@@ -50,6 +50,8 @@ func respawn():
 		load_level(levels[level_index])
 		
 		player.life = 10
+		if hud:
+			hud.update_health(player.life)
 		player.update_state()
 		await get_tree().process_frame
 		player.set_physics_process(true)
@@ -73,23 +75,16 @@ func load_level(path : String):
 	fade.fade_from_black()
 	
 func add_point(value:int):
-	score+=1*value
+	score += 1*value
 	print("you won "+str(value) +" points")
 	print("Score: "+str(score))
-	#hud_instance.update_points()
+	hud.update_points()
 	#life_points.update_points()
 	#necesita codigo para mensaje en pantalla de jeugo
 	
+
 	
-#func show_hud(actual_scene:Node):
-	#if is_instance_valid(hud_instance):
-		#return
-	#hud_instance=HUD_SCENE.instantiate()
-	#actual_scene.add_child(hud_instance)
-	
-#func get_hud():
-	#return hud_instance
-	
+
 #func _process(_delta):
 	#if Input.is_action_just_pressed("quitgame"):
 			#get_tree().quit()
