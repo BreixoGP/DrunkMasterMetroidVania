@@ -3,7 +3,7 @@ extends Node
 var levels = ["res://scenes/castle/level_1.tscn",
 "res://scenes/castle/level_2.tscn","res://scenes/castle/level_3.tscn"]
 @onready var fade: ColorRect
-
+var hud: Node = null
 
 var level_index= 0
 var player: Node=null #instanciamos player nulo, en main en ready se asigna

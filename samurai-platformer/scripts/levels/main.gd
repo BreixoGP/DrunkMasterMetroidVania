@@ -2,9 +2,11 @@ extends Node2D
 @onready var drunkmaster: DrunkMaster = $DrunkMaster
 @onready var fade: ColorRect = $CanvasLayer/Fade
 @onready var levelcontainer: Node2D = $levelcontainer
+@onready var hud: CanvasLayer = $HUD
 
 
 func _ready():
+	GameManager.hud = hud
 	GameManager.player = drunkmaster
 	GameManager.levelcontainer=levelcontainer
 	GameManager.fade = fade
