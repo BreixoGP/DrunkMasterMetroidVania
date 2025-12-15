@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgo15mq3bee86"]
+
+[ext_resource type="Script" uid="uid://b4eec2qyjnri6" path="res://scripts/bottle_wallslide.gd" id="1_c817n"]
+[ext_resource type="Texture2D" uid="uid://cl7pswmsvq3rq" path="res://assets/castle/bottle.png" id="2_fl722"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx30f"]
+size = Vector2(9, 16)
+
+[node name="bottle_wallslide" type="Area2D"]
+script = ExtResource("1_c817n")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fl722")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_jx30f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

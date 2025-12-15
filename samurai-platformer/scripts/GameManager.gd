@@ -29,7 +29,11 @@ func _ready() -> void:
 func load_current_level():
 		load_level(levels[level_index])
 func load_next_level():
+	#control de wallslide
+	if level_index == 2 and wall_ability_active:
+		wall_ability_unlocked = true
 	level_index += 1
+	wall_ability_active = wall_ability_unlocked
 	load_level(levels[level_index])
 
 		
@@ -38,7 +42,7 @@ func respawn():
 		fade.fade_to_black()
 		await get_tree().create_timer(1.5).timeout
 		
-		wall_ability_active = false
+		wall_ability_active = wall_ability_unlocked
 		player.set_physics_process(false)
 		player.collision.disabled = true
 		player.velocity = Vector2.ZERO
