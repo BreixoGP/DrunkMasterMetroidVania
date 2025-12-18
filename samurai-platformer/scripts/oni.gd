@@ -170,7 +170,9 @@ func state_dead(_delta):
 		attack_hitbox.set_deferred("monitorable", false)
 		hurtbox.set_deferred("disabled", true)
 		play_anim("die")
-
+		
+		GameManager.add_point(50)
+		
 		var frames = anim.sprite_frames.get_frame_count("die")
 		var fps = anim.sprite_frames.get_animation_speed("die")
 		if fps > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bogit48m5itxx"]
+[gd_scene load_steps=22 format=4 uid="uid://bogit48m5itxx"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_lrcqy"]
 [ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="2_lrcqy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btoyw8tp2yb1t" path="res://scenes/door.tscn" id="8_anhi0"]
 [ext_resource type="PackedScene" uid="uid://bov7om0em5xlt" path="res://scenes/characters/oni.tscn" id="9_anhi0"]
 [ext_resource type="PackedScene" uid="uid://bjgeo60jocqc7" path="res://scenes/spikes.tscn" id="10_6w772"]
+[ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="11_ktfxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3glw"]
 texture = ExtResource("3_anhi0")
@@ -3386,3 +3387,29 @@ position = Vector2(3466, -195)
 
 [node name="Oni7" parent="enemies" instance=ExtResource("9_anhi0")]
 position = Vector2(3695, -196)
+
+[node name="coins" type="Node" parent="."]
+
+[node name="Coin" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(740, -185)
+
+[node name="Coin2" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(1086, -138)
+
+[node name="Coin3" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(2352, -145)
+
+[node name="Coin4" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(2828, -318)
+
+[node name="Coin5" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(3066, -370)
+
+[node name="Coin6" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(3300, -347)
+
+[node name="Coin7" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(4088, -328)
+
+[node name="Coin8" parent="coins" instance=ExtResource("11_ktfxb")]
+position = Vector2(4360, -145)
