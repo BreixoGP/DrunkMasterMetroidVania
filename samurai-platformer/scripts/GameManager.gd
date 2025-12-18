@@ -7,6 +7,7 @@ var hud: Node = null
 
 var level_index= 0
 var player: Node=null #instanciamos player nulo, en main en ready se asigna
+var has_crystal = false
 var levelcontainer : Node = null
 var current_level : Node = null 
 var score: int = 0

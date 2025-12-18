@@ -3469,6 +3469,7 @@ script = ExtResource("1_v3skg")
 cam_limit_left = -60
 cam_limit_top = -2800
 cam_limit_right = 4970
+uses_crystal = true
 
 [node name="torches" type="Node" parent="."]
 
