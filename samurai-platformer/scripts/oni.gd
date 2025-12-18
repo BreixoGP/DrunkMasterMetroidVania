@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var hurtbox: CollisionShape2D = $hurtbox
 @onready var head_hitbox: Area2D = $Flipper/head_hitbox
 
+var stuck_time := 0.0
+const STUCK_LIMIT := 0.4  # segundos
 
 enum State { IDLE, PATROL, CHASE, READY, ATTACK,HEAD, HURT, DEAD }
 var state: State = State.IDLE
@@ -18,7 +20,7 @@ var life = 5
 var attack_power = 1
 var patrol_time = 0.0
 const SPEED = 150.0
-
+const MAX_VERTICAL_DIFF := 40.0
 var attack_cooldown = 1.0 
 var attack_timer = 0.0
 var head_timer_started = false
@@ -64,7 +66,7 @@ func state_idle(_delta):
 
 func state_patrol(_delta):
 	if patrol_time <= 0.0:
-		patrol_time = randf_range(3.0, 10.0)
+		patrol_time = randf_range(5.0, 10.0)
 	play_anim("patrol")
 	velocity.x = direction * SPEED
 	if should_turn():
@@ -73,20 +75,48 @@ func state_patrol(_delta):
 	if patrol_time <= 0.0:
 		state = State.IDLE
 
-func state_chase(_delta):
-	if state != State.HURT:  # Bloquea chase si está recibiendo knockback
-		play_anim("chase")
-		if GameManager.player:
-			set_direction(sign(GameManager.player.global_position.x - global_position.x))
-			var can_move = rayfloor.is_colliding() and not raywall.is_colliding() and not rayspikes.is_colliding()
-			velocity.x = direction * SPEED * 1.3 if can_move else 0.0
-			if rayattack.is_colliding():
-				state = State.READY
-			if not can_move:
-				velocity.x = 0
-				state = State.IDLE
-			if velocity.x == 0:
-				state = State.IDLE
+func state_chase(delta):
+	if state == State.HURT:
+		return
+
+	play_anim("chase")
+
+	if not GameManager.player:
+		state = State.IDLE
+		return
+
+	var dx: float = GameManager.player.global_position.x - global_position.x
+
+	var can_move := rayfloor.is_colliding() \
+		and not raywall.is_colliding() \
+		and not rayspikes.is_colliding()
+
+	if not can_move:
+		velocity.x = 0
+		state = State.IDLE
+		stuck_time = 0
+		return
+
+	# ⚠️ SI YA ESTÁ ALINEADO EN X → NO GIRAR NI FORZAR
+	if abs(dx) < 6:
+		velocity.x = 0
+		stuck_time += delta
+
+		# ⛔ no progresa → abandona persecución
+		if stuck_time > STUCK_LIMIT:
+			state = State.PATROL
+			stuck_time = 0
+		return
+
+	# Puede moverse
+	stuck_time = 0
+
+	set_direction(sign(dx))
+	velocity.x = direction * SPEED * 1.3
+
+	if rayattack.is_colliding():
+		state = State.READY
+
 
 func state_ready(_delta):
 	if state != State.HURT:

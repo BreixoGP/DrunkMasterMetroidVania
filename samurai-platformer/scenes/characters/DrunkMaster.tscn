@@ -459,6 +459,7 @@ floor_max_angle = 1.3089969
 script = ExtResource("1_ehg33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_cu8xv")
 
 [node name="flipper" type="Node2D" parent="."]

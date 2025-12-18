@@ -13,7 +13,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8068"]
 radius = 12.99732
-height = 72.0
+height = 82.00499
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krfje"]
 radius = 17.0
@@ -377,7 +377,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xv7lt"]
 radius = 6.0
-height = 16.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh407"]
 radius = 79.00917
@@ -390,7 +390,7 @@ floor_max_angle = 1.3089969
 script = ExtResource("1_lh407")
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(-1, 27)
 rotation = -3.1442285
 shape = SubResource("CapsuleShape2D_c8068")
 
@@ -434,7 +434,7 @@ collision_mask = 4
 collision_mask = 4
 
 [node name="head_collision" type="CollisionShape2D" parent="Flipper/head_hitbox"]
-position = Vector2(-3, -14)
+position = Vector2(0, -12)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xv7lt")
 
