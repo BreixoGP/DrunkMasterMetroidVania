@@ -7,7 +7,7 @@ var hud: Node = null
 
 var level_index= 0
 var player: Node=null #instanciamos player nulo, en main en ready se asigna
-var has_crystal = false
+var has_crystal = false #crystal para activar plataformas con altar
 var levelcontainer : Node = null
 var current_level : Node = null 
 var score: int = 0
@@ -37,7 +37,7 @@ func load_next_level():
 	wall_ability_active = wall_ability_unlocked
 	load_level(levels[level_index])
 	saved_score = score
-		
+	has_crystal = false
 func respawn():
 		#aqui controlar el score tambien
 		fade.fade_to_black()
@@ -47,7 +47,7 @@ func respawn():
 		player.set_physics_process(false)
 		player.collision.disabled = true
 		player.velocity = Vector2.ZERO
-		
+		has_crystal = false
 		load_level(levels[level_index])
 		
 		player.life = 10

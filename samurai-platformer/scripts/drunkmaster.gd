@@ -12,8 +12,8 @@ enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
 var life = 10
-var punch_power = 1
-var kick_power = 2 
+var punch_power = 5 #1
+var kick_power = 5 #2
 const SPEED = 250.0
 const JUMP_VELOCITY = -330.0
 const WALL_JUMP_PUSHBACK = 100.0
