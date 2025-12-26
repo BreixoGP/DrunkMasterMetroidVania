@@ -8,9 +8,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func play():
-	GameManager.saved_score = 0
 	GameManager.score = 0
+	GameManager.saved_score = 0
 	GameManager.level_index = 0
-	GameManager.is_loading_game = false
+	GameManager.has_crystal = false
+	
+	# habilidades
+	GameManager.wall_ability_unlocked = false
+	GameManager.wall_ability_active = false
+	
+	# spawn inicial
+	GameManager.player_spawn_tag = "Spawn_start"
+	
+	# cambiar a la escena principal
 	get_tree().change_scene_to_packed(main_scene)
-	#pressed.disconnect(play)

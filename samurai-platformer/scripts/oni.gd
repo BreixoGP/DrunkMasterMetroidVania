@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var rayattack: RayCast2D = $Flipper/rayattack
 @onready var enemy_detection_area: Area2D = $enemy_detection_area
 @onready var enemy_avoid_area: Area2D = $Flipper/enemy_avoid_area
-
+@export var enemy_id: String
 
 @onready var attack_hitbox: Area2D = $Flipper/attack_hitbox
 @onready var hurtbox: CollisionShape2D = $hurtbox
@@ -32,6 +32,9 @@ var attack_timer = 0.0
 var head_timer_started = false
 
 func _ready():
+	var key = GameManager.current_level.name + ":" + enemy_id
+	if GameManager.defeated_enemies.has(key):
+		queue_free()
 	state = State.IDLE
 	play_anim("idle")
 
@@ -176,7 +179,8 @@ func state_dead(_delta):
 		play_anim("die")
 		
 		GameManager.add_point(50)
-		
+		var key = GameManager.current_level.name + ":" + enemy_id
+		GameManager.defeated_enemies[key] = true
 		var frames = anim.sprite_frames.get_frame_count("die")
 		var fps = anim.sprite_frames.get_animation_speed("die")
 		if fps > 0:

@@ -3573,15 +3573,20 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(202, -75)
+[node name="Spawn_start" type="Marker2D" parent="."]
+position = Vector2(198, -131)
+
+[node name="Spawn_right" type="Marker2D" parent="."]
+position = Vector2(4739, -87)
 
 [node name="door" parent="." instance=ExtResource("9_xpv2l")]
-position = Vector2(85.00049, -143)
+position = Vector2(4847.9995, -99.000015)
 scale = Vector2(1.2343674, 1.2812499)
+target_scene = "res://scenes/castle/level_2.tscn"
 
 [node name="Oni" parent="." instance=ExtResource("10_lj644")]
 position = Vector2(2345, -135)
+enemy_id = "oni_1"
 
 [node name="spikes" type="Node" parent="."]
 
@@ -3775,12 +3780,16 @@ position = Vector2(4588, -61)
 
 [node name="Coin" parent="coins" instance=ExtResource("11_wphk7")]
 position = Vector2(895, -134)
+pickup_id = "coin_1"
 
 [node name="Coin2" parent="coins" instance=ExtResource("11_wphk7")]
 position = Vector2(1498, -153)
+pickup_id = "coin_2"
 
 [node name="Coin3" parent="coins" instance=ExtResource("11_wphk7")]
 position = Vector2(2670, -237)
+pickup_id = "coin_3"
 
 [node name="Coin4" parent="coins" instance=ExtResource("11_wphk7")]
 position = Vector2(4558, -141)
+pickup_id = "coin_4"

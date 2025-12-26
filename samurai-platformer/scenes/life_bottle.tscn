@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://k1lfxg1rck6n"]
+
+[ext_resource type="Script" uid="uid://clfcspoouluys" path="res://scripts/life_bottle.gd" id="1_cnryo"]
+[ext_resource type="Texture2D" uid="uid://cl7pswmsvq3rq" path="res://assets/castle/bottle.png" id="2_qmlac"]
+[ext_resource type="Texture2D" uid="uid://n1wagipk6abx" path="res://assets/castle/bottle1.png" id="3_ciw26"]
+[ext_resource type="Texture2D" uid="uid://oo482ux8bhpn" path="res://assets/castle/bottle2.png" id="4_rxk8y"]
+[ext_resource type="Texture2D" uid="uid://bwc6mbdfqra1" path="res://assets/castle/bottle3.png" id="5_prpye"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tncl"]
+atlas = ExtResource("2_qmlac")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ewnm"]
+atlas = ExtResource("3_ciw26")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yhlp"]
+atlas = ExtResource("4_rxk8y")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryakm"]
+atlas = ExtResource("5_prpye")
+region = Rect2(0, 0, 32, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgtcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tncl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ewnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yhlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryakm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yhlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ewnm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfdb0"]
+radius = 6.0
+height = 26.0
+
+[node name="life_bottle" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_cnryo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_pgtcm")
+autoplay = "default"
+frame_progress = 0.3807248
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_vfdb0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

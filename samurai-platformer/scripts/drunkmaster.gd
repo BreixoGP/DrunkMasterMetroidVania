@@ -192,9 +192,12 @@ func punch():
 	attack_timer = frame_count / fps  # duración automática
 	
 func apply_punch_hit():
+	punch_hitbox.monitoring = true
 	var enemy = get_closest_enemy_in_area(punch_hitbox)
+	
 	if enemy:
 		enemy.take_damage(punch_power, global_position, 0)
+	#punch_hitbox.monitoring = false creo que esto aqui es innecesario y me bugea el punch 
 
 func kick():
 	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD]:
@@ -239,3 +242,10 @@ func get_closest_enemy_in_area(area: Area2D) -> Node2D:
 				closest = body
 
 	return closest
+
+func gain_life(amount: int):
+	if life >=10:
+		return
+	life += amount
+	if GameManager.hud:
+		GameManager.hud.update_health(life)

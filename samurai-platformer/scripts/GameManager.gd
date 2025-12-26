@@ -17,6 +17,13 @@ var is_loading_game : bool = false
 var how_to_play_instance: Node = null
 var options_menu_instance:Node = null
 
+# --- METROIDVANIA CORE ---
+var current_level_id := ""
+var player_spawn_tag := "Spawn"
+# Persistencia simple tipo metroidvania
+var defeated_enemies := {}
+var collected_pickups := {}
+
 #habilidades drukmaster
 var wall_ability_unlocked: bool = false   # permanente
 var wall_ability_active: bool = false     # intento actual
@@ -59,23 +66,33 @@ func respawn():
 		player.set_physics_process(true)
 		player.collision.disabled = false
 		
-func load_level(path : String):
+func load_level(path: String):
 	fade.fade_to_black()
+	await get_tree().process_frame
+
 	if current_level:
 		current_level.queue_free()
-		
-	var scene = load (path)
+
+	var scene = load(path)
 	current_level = scene.instantiate()
 	levelcontainer.add_child(current_level)
-	var spawn = current_level.get_node("Spawn")
-	player.global_position = spawn.global_position
 
-	# APLICAR LÍMITES A LA CÁMARA
+	current_level_id = current_level.name
+	await get_tree().process_frame
+	# Buscar spawn por tag
+	var spawn := current_level.get_node_or_null(player_spawn_tag)
+	if spawn:
+		player.global_position = spawn.global_position
+	else:
+		push_warning("No spawn encontrado: " + player_spawn_tag)
+
+	# Cámara
 	var camera = get_tree().current_scene.get_node("Camera2D")
 	if current_level.has_method("apply_camera_limits"):
 		current_level.apply_camera_limits(camera)
+
 	fade.fade_from_black()
-	
+
 func add_point(value:int):
 	score += 1*value
 	print("you won "+str(value) +" points")
