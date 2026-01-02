@@ -72,9 +72,10 @@ func load_next_level():
 	await load_level(levels[level_index])
 
 func load_level(path: String) -> void:
-	fade.fade_to_black()
-	await get_tree().process_frame
-
+	# Fade a negro instantáneo
+	fade.modulate.a = 1.0
+	await get_tree().process_frame  # renderiza un frame completamente negro
+	
 	if current_level:
 		current_level.queue_free()
 
@@ -90,13 +91,17 @@ func load_level(path: String) -> void:
 	var spawn := current_level.get_node_or_null(player_spawn_tag)
 	if spawn:
 		player.global_position = spawn.global_position
-
+	await get_tree().process_frame  
 	# Cámara
 	var camera := get_tree().current_scene.get_node_or_null("Camera2D")
 	if camera and current_level.has_method("apply_camera_limits"):
 		current_level.apply_camera_limits(camera)
 
-	await fade.fade_from_black()
+	await get_tree().process_frame
+
+	# Ahora sí hacemos fade desde negro hacia transparente
+	fade.fade_from_black()
+
 
 # ============================================================
 # PICKUPS (GLOBAL)
@@ -147,13 +152,11 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 # ============================================================
 
 func respawn(is_new_game := false) -> void:
-	fade.fade_to_black()
-	await get_tree().create_timer(1.2).timeout
-
-	# ❌ perder progreso temporal
+	
+	#  perder progreso temporal
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
-
+	
 	if not is_new_game:
 		score = saved_score
 
@@ -163,8 +166,10 @@ func respawn(is_new_game := false) -> void:
 	player.collision.disabled = true
 	player.velocity = Vector2.ZERO
 
+	# Cargar nivel: load_level ya hace el fade a negro
 	await load_level(current_checkpoint_level)
-
+	
+	# Spawn jugador
 	var spawn := current_level.get_node_or_null(current_checkpoint_tag)
 	if spawn:
 		player.global_position = spawn.global_position
@@ -175,12 +180,12 @@ func respawn(is_new_game := false) -> void:
 		hud.update_points()
 
 	player.update_state()
+	
 	await get_tree().process_frame
 
 	player.set_physics_process(true)
 	player.collision.disabled = false
-
-	await fade.fade_from_black()
+	
 
 # ============================================================
 # UTILIDADES

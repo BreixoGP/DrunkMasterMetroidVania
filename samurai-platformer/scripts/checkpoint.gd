@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 	# Guardar habilidades permanentes
 	GameManager.wall_ability_unlocked = GameManager.wall_ability_active
-
+	body.gain_life(10) #restauramos la vida del jugador
 	print("✅ Checkpoint activado")
 	print("Nivel:", level_path)
 	print("Spawn:", checkpoint_tag)

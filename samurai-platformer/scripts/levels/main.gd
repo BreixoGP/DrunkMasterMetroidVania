@@ -4,6 +4,7 @@ extends Node2D
 @onready var fade: ColorRect = $CanvasLayer/Fade
 @onready var levelcontainer: Node2D = $levelcontainer
 @onready var hud: CanvasLayer = $HUD
+@onready var camera: Camera2D = $Camera2D
 
 func _ready():
 	# 🔗 Inyectar referencias en GameManager
@@ -11,7 +12,7 @@ func _ready():
 	GameManager.player = drunkmaster
 	GameManager.levelcontainer = levelcontainer
 	GameManager.fade = fade
-
+	
 	# 🔒 Player desactivado mientras carga
 	drunkmaster.set_physics_process(false)
 

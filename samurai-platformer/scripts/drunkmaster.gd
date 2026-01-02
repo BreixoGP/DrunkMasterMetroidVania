@@ -246,6 +246,9 @@ func get_closest_enemy_in_area(area: Area2D) -> Node2D:
 func gain_life(amount: int):
 	if life >=10:
 		return
-	life += amount
+	if (life + amount) >10:
+		life = 10
+	else:
+		life += amount
 	if GameManager.hud:
 		GameManager.hud.update_health(life)
