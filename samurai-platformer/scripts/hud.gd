@@ -5,6 +5,7 @@ extends CanvasLayer
 
 @onready var points_label: Label = $HBoxContainer/points_label
 @onready var life_bottle: AnimatedSprite2D = $HBoxContainer/life_bottle
+@onready var crystal: AnimatedSprite2D = $HBoxContainer/crystal
 
 var max_health = 10
 var total_frames := 10 
@@ -55,5 +56,12 @@ func set_max_health(hp: int):
 
 func update_health(life):
 	life_bottle.play(str(life))
+	
 func shake():
 	shake_time = 0.25
+	
+func update_crystal():
+	if GameManager.has_crystal:
+		crystal.play("picked")
+	else:
+		crystal.play("empty")

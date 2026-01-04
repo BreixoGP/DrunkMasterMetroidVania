@@ -3,14 +3,14 @@ extends Node2D
 @export var cam_limit_top : int
 @export var cam_limit_right : int
 @export var cam_limit_bottom : int
-@export var uses_crystal := false
+#@export var uses_crystal := false
 @export var platform_to_activate: NodePath
 
-func _ready():
-	if uses_crystal:
-		var crystal := get_node_or_null("Crystal")
-		if crystal:
-			crystal.picked_up.connect(_on_crystal_picked)
+#func _ready():
+	#if uses_crystal:
+		#var crystal := get_node_or_null("Crystal")
+		#if crystal:
+			#crystal.picked_up.connect(_on_crystal_picked)
 
 
 func apply_camera_limits(camera: Camera2D):

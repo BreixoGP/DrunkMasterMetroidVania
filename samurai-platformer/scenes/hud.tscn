@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://receu2231nlk"]
+[gd_scene load_steps=30 format=3 uid="uid://receu2231nlk"]
 
 [ext_resource type="Script" uid="uid://dopphqk4605c8" path="res://scripts/hud.gd" id="1_6fi6k"]
 [ext_resource type="FontFile" uid="uid://bngdo3g3ydmuf" path="res://assets/fonts/PixelOperator8.ttf" id="2_6fi6k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ukifpxbnkyou" path="res://assets/helthbar/healthbottle4.png" id="12_3xg78"]
 [ext_resource type="Texture2D" uid="uid://cus1cwsyh1j3p" path="res://assets/helthbar/healthbottle3.png" id="13_48y67"]
 [ext_resource type="Texture2D" uid="uid://b1a85g50cxwq6" path="res://assets/helthbar/healthbottle2.png" id="14_084dp"]
+[ext_resource type="Texture2D" uid="uid://cpde3r7qd2ky3" path="res://assets/cave_objects/rune0.png" id="15_3swnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2nlu"]
 atlas = ExtResource("4_eld54")
@@ -150,6 +151,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkknv"]
+atlas = ExtResource("15_3swnk")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxdf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkknv")
+}],
+"loop": true,
+"name": &"picked",
+"speed": 5.0
+}]
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_6fi6k")
 
@@ -175,6 +199,11 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6fi6k")
 text = "0"
+
+[node name="crystal" type="AnimatedSprite2D" parent="HBoxContainer"]
+position = Vector2(302, 18)
+sprite_frames = SubResource("SpriteFrames_uxdf7")
+animation = &"empty"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 anchors_preset = 12

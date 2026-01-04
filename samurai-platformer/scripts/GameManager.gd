@@ -42,11 +42,12 @@ var current_checkpoint_tag := ""
 # TEMPORAL (se pierde al morir)
 var collected_pickups_temp: Array[String] = []
 var defeated_enemies_temp: Array[String] = []
+var activated_platforms_temp: Array[String] = []
 
 # PERMANENTE (checkpoint)
 var collected_pickups_perm: Array[String] = []
 var defeated_enemies_perm: Array[String] = []
-
+var activated_platforms_perm: Array[String] = []
 # ============================================================
 # HABILIDADES
 # ============================================================
@@ -124,7 +125,15 @@ func is_enemy_defeated(id: String) -> bool:
 func defeat_enemy(id: String) -> void:
 	if id not in defeated_enemies_temp:
 		defeated_enemies_temp.append(id)
+# ============================================================
+# PLATAFORMAS (GLOBAL)
+# ============================================================
+func is_platform_activated(id: String) -> bool:
+	return id in activated_platforms_temp or id in activated_platforms_perm
 
+func activate_platform(id: String) -> void:
+	if id not in activated_platforms_temp:
+		activated_platforms_temp.append(id)
 # ============================================================
 # CHECKPOINT
 # ============================================================
@@ -141,10 +150,14 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 	for id in defeated_enemies_temp:
 		if id not in defeated_enemies_perm:
 			defeated_enemies_perm.append(id)
-
+	for id in activated_platforms_temp:
+		if id not in activated_platforms_perm:
+			activated_platforms_perm.append(id)
+	
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
-
+	activated_platforms_temp.clear()
+	
 	saved_score = score
 
 # ============================================================
@@ -156,6 +169,7 @@ func respawn(is_new_game := false) -> void:
 	#  perder progreso temporal
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
+	activated_platforms_temp.clear()
 	
 	if not is_new_game:
 		score = saved_score
