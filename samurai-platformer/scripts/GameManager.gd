@@ -55,7 +55,7 @@ var activated_platforms_perm: Array[String] = []
 var wall_ability_unlocked := false
 var wall_ability_active := false
 var has_crystal := false
-
+var has_crystal_saved := false
 # ============================================================
 # NIVEL / SALAS
 # ============================================================
@@ -154,6 +154,7 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 		if id not in activated_platforms_perm:
 			activated_platforms_perm.append(id)
 	
+	has_crystal_saved = has_crystal
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
 	activated_platforms_temp.clear()
@@ -173,6 +174,7 @@ func respawn(is_new_game := false) -> void:
 	
 	if not is_new_game:
 		score = saved_score
+		has_crystal = has_crystal_saved
 
 	wall_ability_active = wall_ability_unlocked
 
@@ -192,6 +194,7 @@ func respawn(is_new_game := false) -> void:
 	if hud:
 		hud.update_health(player.life)
 		hud.update_points()
+		hud.update_crystal()
 
 	player.update_state()
 	
