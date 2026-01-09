@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c4p3vyijkw15t"]
+[gd_scene load_steps=29 format=4 uid="uid://c4p3vyijkw15t"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_hraag"]
 [ext_resource type="Texture2D" uid="uid://dp3uj811uwiid" path="res://assets/castle/Medieval_tiles_free2.png" id="2_mjedy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="8_brm6c"]
 [ext_resource type="PackedScene" uid="uid://bjgeo60jocqc7" path="res://scenes/spikes.tscn" id="9_0qphi"]
 [ext_resource type="PackedScene" uid="uid://bov7om0em5xlt" path="res://scenes/characters/oni.tscn" id="10_mj4yp"]
+[ext_resource type="PackedScene" uid="uid://pknrmbd7fe8b" path="res://scenes/characters/oni_purple.tscn" id="10_sty7u"]
 [ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="11_yki5j"]
 [ext_resource type="PackedScene" uid="uid://k1lfxg1rck6n" path="res://scenes/life_bottle.tscn" id="12_c1gkl"]
 [ext_resource type="PackedScene" uid="uid://cgo15mq3bee86" path="res://scenes/cursed_hand_wallslide.tscn" id="12_hraag"]
@@ -3369,14 +3370,6 @@ position = Vector2(1591, -361)
 position = Vector2(289, -89)
 enemy_id = "l7_oni_1"
 
-[node name="Oni6" parent="enemies" instance=ExtResource("10_mj4yp")]
-position = Vector2(1133, -409)
-enemy_id = "l7_oni_6"
-
-[node name="Oni7" parent="enemies" instance=ExtResource("10_mj4yp")]
-position = Vector2(1047, -92)
-enemy_id = "l7_oni_7"
-
 [node name="Oni4" parent="enemies" instance=ExtResource("10_mj4yp")]
 position = Vector2(370, -407)
 enemy_id = "l7_oni_4"
@@ -3392,6 +3385,18 @@ enemy_id = "l7_oni_2"
 [node name="Oni3" parent="enemies" instance=ExtResource("10_mj4yp")]
 position = Vector2(791, -412)
 enemy_id = "l7_oni_3"
+
+[node name="Oni_purple" parent="enemies" instance=ExtResource("10_sty7u")]
+position = Vector2(960, -94)
+enemy_id = "l7_onip_1"
+
+[node name="Oni_purple2" parent="enemies" instance=ExtResource("10_sty7u")]
+position = Vector2(1089, -422)
+enemy_id = "l7_onip_2"
+
+[node name="Oni_purple3" parent="enemies" instance=ExtResource("10_sty7u")]
+position = Vector2(1803, -497)
+enemy_id = "l7_onip_3"
 
 [node name="coins" type="Node" parent="."]
 

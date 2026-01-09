@@ -3236,6 +3236,21 @@ sources/0 = SubResource("TileSetAtlasSource_lj644")
 sources/1 = SubResource("TileSetAtlasSource_wphk7")
 sources/2 = SubResource("TileSetAtlasSource_0selc")
 
+[sub_resource type="Animation" id="Animation_njjlx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1296, -143)]
+}
+
 [sub_resource type="Animation" id="Animation_jumms"]
 resource_name = "move"
 length = 3.0
@@ -3251,21 +3266,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1296, -143), Vector2(1288, -408)]
-}
-
-[sub_resource type="Animation" id="Animation_njjlx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1296, -143)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfjln"]
@@ -3333,12 +3333,12 @@ position = Vector2(1604, -49)
 target_scene = "res://scenes/castle/level_4.tscn"
 
 [node name="door3" parent="." instance=ExtResource("9_js14o")]
-position = Vector2(1007, -302)
+position = Vector2(1005, -447.00003)
 target_scene = "res://scenes/castle/level_5.tscn"
 target_spawn = "Spawn_right"
 
 [node name="door4" parent="." instance=ExtResource("9_js14o")]
-position = Vector2(1007, -446.00003)
+position = Vector2(1005, -300)
 target_scene = "res://scenes/castle/level_6.tscn"
 target_spawn = "Spawn_right"
 

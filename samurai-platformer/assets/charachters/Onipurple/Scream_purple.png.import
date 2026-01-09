@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ukifpxbnkyou"
-path="res://.godot/imported/healthbottle4.png-c9ab4274a6203753b45fe8f1a7b2b125.ctex"
+uid="uid://cwp7cvykt7s1o"
+path="res://.godot/imported/Scream_purple.png-3b3eb65a9a4a9807a9d09049f2998940.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/healthbottle4.png"
-dest_files=["res://.godot/imported/healthbottle4.png-c9ab4274a6203753b45fe8f1a7b2b125.ctex"]
+source_file="res://assets/charachters/Onipurple/Scream_purple.png"
+dest_files=["res://.godot/imported/Scream_purple.png-3b3eb65a9a4a9807a9d09049f2998940.ctex"]
 
 [params]
 

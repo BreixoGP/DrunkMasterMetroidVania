@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c50vcfetyl322"]
+[gd_scene load_steps=20 format=4 uid="uid://c50vcfetyl322"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_uapsa"]
 [ext_resource type="Texture2D" uid="uid://dp3uj811uwiid" path="res://assets/castle/Medieval_tiles_free2.png" id="2_2v5lf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://btoyw8tp2yb1t" path="res://scenes/door.tscn" id="7_52yd4"]
 [ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="8_8q3uy"]
 [ext_resource type="PackedScene" uid="uid://bov7om0em5xlt" path="res://scenes/characters/oni.tscn" id="9_7a32m"]
+[ext_resource type="PackedScene" uid="uid://pknrmbd7fe8b" path="res://scenes/characters/oni_purple.tscn" id="9_itu5u"]
 [ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="10_o35qj"]
 [ext_resource type="PackedScene" uid="uid://bjgeo60jocqc7" path="res://scenes/spikes.tscn" id="12_kdk2e"]
 
@@ -3304,13 +3305,13 @@ enemy_id = "l8_oni_2"
 position = Vector2(748, -968)
 enemy_id = "l8_oni_3"
 
-[node name="Oni4" parent="enemies" instance=ExtResource("9_7a32m")]
-position = Vector2(467, -967)
-enemy_id = "l8_oni_4"
+[node name="Oni_purple" parent="enemies" instance=ExtResource("9_itu5u")]
+position = Vector2(485, -978)
+enemy_id = "l8_onip_1"
 
-[node name="Oni5" parent="enemies" instance=ExtResource("9_7a32m")]
-position = Vector2(115, -758)
-enemy_id = "l8_oni_5"
+[node name="Oni_purple2" parent="enemies" instance=ExtResource("9_itu5u")]
+position = Vector2(163, -762)
+enemy_id = "l8_onip_2"
 
 [node name="coins" type="Node" parent="."]
 

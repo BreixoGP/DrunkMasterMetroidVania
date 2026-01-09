@@ -190,7 +190,7 @@ func respawn(is_new_game := false) -> void:
 	if spawn:
 		player.global_position = spawn.global_position
 
-	player.life = 10
+	player.gain_life(player.max_life)
 	if hud:
 		hud.update_health(player.life)
 		hud.update_points()

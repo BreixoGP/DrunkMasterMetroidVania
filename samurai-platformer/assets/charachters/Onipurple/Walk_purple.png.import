@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1a85g50cxwq6"
-path="res://.godot/imported/healthbottle2.png-d23a2a2faf51ab6b02931e563652caf1.ctex"
+uid="uid://bfl6n6n1wthom"
+path="res://.godot/imported/Walk_purple.png-cb708c34373992028d6faef65d47b58a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/healthbottle2.png"
-dest_files=["res://.godot/imported/healthbottle2.png-d23a2a2faf51ab6b02931e563652caf1.ctex"]
+source_file="res://assets/charachters/Onipurple/Walk_purple.png"
+dest_files=["res://.godot/imported/Walk_purple.png-cb708c34373992028d6faef65d47b58a.ctex"]
 
 [params]
 

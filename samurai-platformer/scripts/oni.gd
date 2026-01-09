@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Oni
 
 @onready var flipper: Node2D = $Flipper
 @onready var anim: AnimatedSprite2D = $Flipper/AnimatedSprite2D
@@ -22,10 +23,11 @@ extends CharacterBody2D
 enum State { IDLE, PATROL, CHASE, READY, ATTACK,HEAD, HURT, DEAD }
 var state: State = State.IDLE
 var direction = -1
-var life = 5
+@export var life = 3
 var attack_power = 1
 var patrol_time = 0.0
-const SPEED = 150.0
+var idle_time = 0.0
+@export var speed = 130.0
 const MAX_VERTICAL_DIFF := 40.0
 var attack_cooldown = 1.0 
 var attack_timer = 0.0
@@ -75,18 +77,28 @@ func proccess_state(delta):
 		State.HURT: state_hurt(delta)
 		State.DEAD: state_dead(delta)
 
-func state_idle(_delta):
+func state_idle(delta):
 	play_anim("idle")
 	velocity.x = 0
+
+	if idle_time <= 0.0:
+		idle_time = randf_range(10.0, 25.0) # rango de espera en idle
+
+	idle_time -= delta
+
+	# Cuando se acaba el tiempo, pasa a patrullar
+	if idle_time <= 0.0:
+		state = State.PATROL
+
 
 func state_patrol(_delta):
 	if patrol_time <= 0.0:
 		patrol_time = randf_range(5.0, 10.0)
-
+	set_direction(direction)
 	play_anim("patrol")
 
 	var separation := apply_enemy_separation(_delta)
-	velocity.x = direction * SPEED + separation.x
+	velocity.x = direction * speed + separation.x
 
 	if should_turn():
 		turn()
@@ -94,6 +106,7 @@ func state_patrol(_delta):
 	patrol_time -= _delta
 	if patrol_time <= 0.0:
 		state = State.IDLE
+		idle_time = 0.0
 
 func state_chase(_delta):
 	if state == State.HURT:
@@ -109,7 +122,7 @@ func state_chase(_delta):
 	set_direction(sign(dx))
 
 	# Velocidad base hacia el jugador
-	velocity.x = direction * SPEED * 1.3
+	velocity.x = direction * speed * 1.3
 
 	#  Separación entre enemigos
 	var separation := apply_enemy_separation(_delta)

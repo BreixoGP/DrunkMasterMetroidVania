@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q6lqs3322pjs"
-path="res://.godot/imported/healthbottle10.png-b29e5dfec1f77be1401e9c5558ca31b7.ctex"
+uid="uid://bfep6oald8jmp"
+path="res://.godot/imported/Idle_purple.png-4c0fb04f8fec243a84a09dca9567072e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/healthbottle10.png"
-dest_files=["res://.godot/imported/healthbottle10.png-b29e5dfec1f77be1401e9c5558ca31b7.ctex"]
+source_file="res://assets/charachters/Onipurple/Idle_purple.png"
+dest_files=["res://.godot/imported/Idle_purple.png-4c0fb04f8fec243a84a09dca9567072e.ctex"]
 
 [params]
 

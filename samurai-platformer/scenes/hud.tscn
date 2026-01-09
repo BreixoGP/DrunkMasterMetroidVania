@@ -269,6 +269,7 @@ animations = [{
 script = ExtResource("1_6fi6k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color(1.4164544, 1.4164544, 1.4164544, 1)
 offset_left = 336.0
 offset_top = 17.0
 offset_right = 653.0
@@ -293,6 +294,7 @@ sprite_frames = SubResource("SpriteFrames_uxdf7")
 animation = &"empty"
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer"]
+self_modulate = Color(0.57996243, 0.57996243, 0.57996243, 1)
 position = Vector2(-27, 47)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_uo2fv")

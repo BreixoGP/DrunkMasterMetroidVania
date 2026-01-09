@@ -3466,7 +3466,7 @@ target_spawn = "Spawn_right"
 [node name="door2" parent="." instance=ExtResource("7_jprlg")]
 position = Vector2(2709, -48)
 target_scene = "res://scenes/castle/level_3.tscn"
-target_spawn = "Spawn_top"
+target_spawn = "Spawn_bottom"
 
 [node name="torches" type="Node" parent="."]
 
