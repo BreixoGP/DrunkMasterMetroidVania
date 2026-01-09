@@ -11,7 +11,7 @@ class_name DrunkMaster
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
-var life = 10
+var life = 17
 var punch_power = 5 #1
 var kick_power = 5 #2
 const MAX_KICK_TARGETS := 3
@@ -244,10 +244,10 @@ func get_closest_enemy_in_area(area: Area2D) -> Node2D:
 	return closest
 
 func gain_life(amount: int):
-	if life >=10:
+	if life >=17:
 		return
-	if (life + amount) >10:
-		life = 10
+	if (life + amount) >17:
+		life = 17
 	else:
 		life += amount
 	if GameManager.hud:

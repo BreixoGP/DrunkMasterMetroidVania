@@ -7,8 +7,8 @@ extends CanvasLayer
 @onready var life_bottle: AnimatedSprite2D = $HBoxContainer/life_bottle
 @onready var crystal: AnimatedSprite2D = $HBoxContainer/crystal
 
-var max_health = 10
-var total_frames := 10 
+var max_health = 17
+var total_frames := 17 
 
 var message_timer: Timer
 var shake_time := 0.0
@@ -27,6 +27,7 @@ func _ready():
 	message_timer.timeout.connect(_hide_message)
 	base_pos = life_bottle.position
 	base_rot = life_bottle.rotation
+	
 func _process(delta: float) -> void:
 	if shake_time > 0:
 		shake_time -= delta
