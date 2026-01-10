@@ -13,7 +13,7 @@ var state: State = State.IDLE
 var attack_timer := 0.0
 var max_life=17
 var life = 17
-var punch_power = 5 #1
+var punch_power = 1 #1
 var kick_power = 5 #2
 const MAX_KICK_TARGETS := 3
 const SPEED = 250.0
@@ -197,6 +197,7 @@ func apply_punch_hit():
 	var enemy = get_closest_enemy_in_area(punch_hitbox)
 	
 	if enemy:
+		print("Hit:", enemy.name)
 		enemy.take_damage(punch_power, global_position, 0)
 	#punch_hitbox.monitoring = false creo que esto aqui es innecesario y me bugea el punch 
 
@@ -212,20 +213,20 @@ func kick():
 
 
 func _on_kick_hitbox_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("Enemies"):
+	if not (body.is_in_group("Enemies") or body.is_in_group("Destructibles")):
 		return
 
-	var enemies := []
+	var targets := []
 	for e in kick_hitbox.get_overlapping_bodies():
-		if e.is_in_group("Enemies"):
-			enemies.append(e)
+		if e.is_in_group("Enemies") or e.is_in_group("Destructibles"):
+			targets.append(e)
 
-	enemies.sort_custom(func(a, b):
+	targets.sort_custom(func(a, b):
 		return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
 	)
 
-	for i in range(min(MAX_KICK_TARGETS, enemies.size())):
-		enemies[i].take_damage(kick_power, global_position, 1)
+	for i in range(min(MAX_KICK_TARGETS, targets.size())):
+		targets[i].take_damage(kick_power, global_position, 1)
 
 func disable_attack_hitboxes():
 	punch_hitbox.monitoring = false
@@ -236,7 +237,7 @@ func get_closest_enemy_in_area(area: Area2D) -> Node2D:
 	var closest_dist := INF
 
 	for body in area.get_overlapping_bodies():
-		if body.is_in_group("Enemies"):
+		if body.is_in_group("Enemies") or body.is_in_group("Destructibles"):
 			var dist = global_position.distance_to(body.global_position)
 			if dist < closest_dist:
 				closest_dist = dist

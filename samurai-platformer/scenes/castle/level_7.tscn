@@ -3443,6 +3443,7 @@ platform_path = NodePath("../switch_platform")
 position = Vector2(1777, -144)
 point_a = Vector2(1779, -144)
 point_b = Vector2(2030, -144)
+speed = 150.0
 
 [node name="platform" parent="." instance=ExtResource("6_sty7u")]
 position = Vector2(75, -27)
