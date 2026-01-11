@@ -1,5 +1,6 @@
-extends AnimatedSprite2D
-@onready var door: AnimatedSprite2D = $"."
+extends Area2D
+
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,12 +9,12 @@ extends AnimatedSprite2D
 
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "DrunkMaster":
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is DrunkMaster:
 		body.set_physics_process(false)  # Inactivo
 		#door.play("open")
 		#await door.animation_finished
 		GameManager.player_spawn_tag = target_spawn
 		body.set_physics_process(true)   # Reactivar
 		await GameManager.load_level(target_scene)
-		
