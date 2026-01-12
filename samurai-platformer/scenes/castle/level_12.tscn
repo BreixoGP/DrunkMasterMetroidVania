@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://rglfdgaqxu0j"]
+[gd_scene load_steps=22 format=4 uid="uid://rglfdgaqxu0j"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_31an8"]
 [ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="2_73vy2"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bg7ccn6q77lk2" path="res://assets/castle/Objects/window.png" id="5_rrhcc"]
 [ext_resource type="Texture2D" uid="uid://c7xr1pktne6j" path="res://assets/castle/eyedecoration.png" id="6_ap2gk"]
 [ext_resource type="Texture2D" uid="uid://bk7ie3huedc2l" path="res://assets/cave_objects/cocoon_web.png" id="7_fxu11"]
+[ext_resource type="PackedScene" uid="uid://wq4hxd3afdra" path="res://scenes/barrel.tscn" id="8_8x76x"]
 [ext_resource type="PackedScene" uid="uid://c7myrx3aogi6t" path="res://scenes/checkpoint.tscn" id="9_m5qrv"]
+[ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="9_sacwm"]
 [ext_resource type="PackedScene" uid="uid://4p50ue5qi0n4" path="res://scenes/secretdoor.tscn" id="10_ipbac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3glw"]
@@ -6643,3 +6645,13 @@ target_spawn = "Spawn_right2"
 [node name="checkpoint" parent="." instance=ExtResource("9_m5qrv")]
 position = Vector2(442, -189)
 checkpoint_tag = "Spawn_left"
+
+[node name="barrel" parent="." instance=ExtResource("8_8x76x")]
+position = Vector2(809, -276)
+pickup_scene = ExtResource("9_sacwm")
+barrel_id = "l12_barrel_1"
+
+[node name="barrel2" parent="." instance=ExtResource("8_8x76x")]
+position = Vector2(843, -277)
+pickup_scene = ExtResource("9_sacwm")
+barrel_id = "l12_barrel_2"
