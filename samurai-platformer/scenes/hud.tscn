@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://receu2231nlk"]
+[gd_scene load_steps=72 format=3 uid="uid://receu2231nlk"]
 
 [ext_resource type="Script" uid="uid://dopphqk4605c8" path="res://scripts/hud.gd" id="1_6fi6k"]
 [ext_resource type="FontFile" uid="uid://bngdo3g3ydmuf" path="res://assets/fonts/PixelOperator8.ttf" id="2_6fi6k"]
@@ -22,6 +22,19 @@
 [ext_resource type="Texture2D" uid="uid://cur4b0qkh7pbc" path="res://assets/helthbar/HUDBOTTLE10.png" id="17_8f8xv"]
 [ext_resource type="Texture2D" uid="uid://bm2b5rekyeklb" path="res://assets/helthbar/HUDBOTTLE9.png" id="18_v0qwq"]
 [ext_resource type="Texture2D" uid="uid://cryjlla6ihc01" path="res://assets/helthbar/HUDBOTTLE8.png" id="19_yawqa"]
+[ext_resource type="Texture2D" uid="uid://c45gpp3a3kraa" path="res://assets/cave_objects/rune1.png" id="21_03o4m"]
+[ext_resource type="Texture2D" uid="uid://bv3x3baovfudk" path="res://assets/helthbar/chinese_frame_items.png" id="22_084dp"]
+[ext_resource type="Texture2D" uid="uid://c6ocwjal34dt8" path="res://assets/cave_objects/rune2.png" id="22_dl6ww"]
+[ext_resource type="Texture2D" uid="uid://c47nhebroff5f" path="res://assets/cave_objects/rune3.png" id="23_8f8xv"]
+[ext_resource type="Texture2D" uid="uid://btghvo7b2b0g1" path="res://assets/dungeon/Items/000_0036_coin10.png" id="25_v0qwq"]
+[ext_resource type="Texture2D" uid="uid://v3y8rarv86vq" path="res://assets/dungeon/Items/000_0037_coin9.png" id="26_yawqa"]
+[ext_resource type="Texture2D" uid="uid://c0xgjfsah71yu" path="res://assets/dungeon/Items/000_0038_coin8.png" id="27_qccye"]
+[ext_resource type="Texture2D" uid="uid://r1pc7v81ak24" path="res://assets/dungeon/Items/000_0039_coin7.png" id="28_flipt"]
+[ext_resource type="Texture2D" uid="uid://bxb6lxpwdnv33" path="res://assets/dungeon/Items/000_0040_coin6.png" id="29_uorui"]
+[ext_resource type="Texture2D" uid="uid://278qeg155gm5" path="res://assets/dungeon/Items/000_0041_coin5.png" id="30_wi3kw"]
+[ext_resource type="Texture2D" uid="uid://1p4daccjobj2" path="res://assets/dungeon/Items/000_0042_coin4.png" id="31_ka0sb"]
+[ext_resource type="Texture2D" uid="uid://bbdku50o0rv2c" path="res://assets/dungeon/Items/000_0043_coin3.png" id="32_7r3ka"]
+[ext_resource type="Texture2D" uid="uid://b516wo6eeretn" path="res://assets/dungeon/Items/000_0045_coin.png" id="33_snea0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qccye"]
 atlas = ExtResource("2_48y67")
@@ -246,6 +259,18 @@ animations = [{
 atlas = ExtResource("15_3swnk")
 region = Rect2(0, 0, 32, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d1ax"]
+atlas = ExtResource("21_03o4m")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hv7p"]
+atlas = ExtResource("22_dl6ww")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1o2r"]
+atlas = ExtResource("23_8f8xv")
+region = Rect2(0, 0, 32, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxdf7"]
 animations = [{
 "frames": [{
@@ -259,9 +284,117 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qkknv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d1ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hv7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1o2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hv7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d1ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkknv")
 }],
 "loop": true,
 "name": &"picked",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn0nn"]
+atlas = ExtResource("3_uo2fv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tks7v"]
+atlas = ExtResource("25_v0qwq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjy3n"]
+atlas = ExtResource("26_yawqa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwa8h"]
+atlas = ExtResource("27_qccye")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxo4v"]
+atlas = ExtResource("28_flipt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l8v3"]
+atlas = ExtResource("29_uorui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66st5"]
+atlas = ExtResource("30_wi3kw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dsb4"]
+atlas = ExtResource("31_ka0sb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0uyn"]
+atlas = ExtResource("32_7r3ka")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep55p"]
+atlas = ExtResource("3_uo2fv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbhui"]
+atlas = ExtResource("33_snea0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hsw7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn0nn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tks7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjy3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwa8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxo4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l8v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66st5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dsb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0uyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep55p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbhui")
+}],
+"loop": false,
+"name": &"win",
 "speed": 5.0
 }]
 
@@ -270,34 +403,50 @@ script = ExtResource("1_6fi6k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 modulate = Color(1.4164544, 1.4164544, 1.4164544, 1)
-offset_left = 336.0
-offset_top = 17.0
-offset_right = 653.0
-offset_bottom = 112.0
+top_level = true
+offset_left = 78.0
+offset_top = -2.0
+offset_right = 395.0
+offset_bottom = 93.0
 mouse_filter = 2
 
 [node name="life_bottle" type="AnimatedSprite2D" parent="HBoxContainer"]
-position = Vector2(-185.00002, 45)
-scale = Vector2(2, 1.7)
+modulate = Color(0.7019608, 0.7019608, 0.7019608, 0.90588236)
+position = Vector2(171, 47)
+scale = Vector2(1.4, 1.3)
 sprite_frames = SubResource("SpriteFrames_03o4m")
 animation = &"17"
 
 [node name="points_label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.5411765, 0, 1)
 theme_override_fonts/font = ExtResource("2_6fi6k")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 18
 text = "0"
 
 [node name="crystal" type="AnimatedSprite2D" parent="HBoxContainer"]
-position = Vector2(-282, 97)
+position = Vector2(292.00003, 40)
+rotation = 1.5714172
+scale = Vector2(1.0309756, 0.9486122)
 sprite_frames = SubResource("SpriteFrames_uxdf7")
-animation = &"empty"
+animation = &"picked"
+frame_progress = 0.09036238
 
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer"]
+[node name="coin" type="AnimatedSprite2D" parent="HBoxContainer"]
 self_modulate = Color(0.57996243, 0.57996243, 0.57996243, 1)
-position = Vector2(-27, 47)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_uo2fv")
+position = Vector2(-16, 46.999996)
+scale = Vector2(1, 0.97)
+sprite_frames = SubResource("SpriteFrames_4hsw7")
+animation = &"win"
+frame = 9
+frame_progress = 1.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="HBoxContainer"]
+modulate = Color(0.5398724, 0.5398724, 0.5398724, 0.91764706)
+show_behind_parent = true
+position = Vector2(177, 48)
+scale = Vector2(0.4, 0.25)
+texture = ExtResource("22_084dp")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 anchors_preset = 12

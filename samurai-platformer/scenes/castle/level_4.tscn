@@ -3400,3 +3400,5 @@ barrel_id = "l4_barrel_4"
 [node name="Secretdoor" parent="." instance=ExtResource("15_0m04a")]
 position = Vector2(-32.000008, -82)
 scale = Vector2(2.5, 2.5)
+target_scene = "res://scenes/castle/level_3.tscn"
+target_spawn = "Spawn_right"

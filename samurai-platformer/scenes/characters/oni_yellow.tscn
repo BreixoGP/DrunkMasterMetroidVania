@@ -556,7 +556,8 @@ position = Vector2(3.9999995, -3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
 animation = &"attack"
-frame = 5
+frame = 8
+frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)

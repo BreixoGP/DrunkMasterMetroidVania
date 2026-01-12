@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var points_label: Label = $HBoxContainer/points_label
 @onready var life_bottle: AnimatedSprite2D = $HBoxContainer/life_bottle
 @onready var crystal: AnimatedSprite2D = $HBoxContainer/crystal
+@onready var coin: AnimatedSprite2D = $HBoxContainer/coin
 
 var max_health = 17
 var total_frames := 17 
@@ -27,6 +28,8 @@ func _ready():
 	message_timer.timeout.connect(_hide_message)
 	base_pos = life_bottle.position
 	base_rot = life_bottle.rotation
+	
+	coin.animation_finished.connect(_on_coin_animation_finished)
 	
 func _process(delta: float) -> void:
 	if shake_time > 0:
@@ -50,8 +53,8 @@ func _hide_message():
 	message_label.visible = false
 
 func update_points():
-	points_label.text = str(GameManager.score)
-	
+	points_label.text = str(GameManager.score).pad_zeros(5)
+	coin.play("win")
 func set_max_health(hp: int):
 	max_health = hp
 
@@ -66,3 +69,6 @@ func update_crystal():
 		crystal.play("picked")
 	else:
 		crystal.play("empty")
+func _on_coin_animation_finished():
+	if coin.animation == "win":
+		coin.play("default") 
