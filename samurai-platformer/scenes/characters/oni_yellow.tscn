@@ -607,6 +607,23 @@ position = Vector2(34, 25)
 rotation = 1.5662079
 shape = SubResource("CapsuleShape2D_agen5")
 
+[node name="Bloodparticles" type="CPUParticles2D" parent="Flipper"]
+position = Vector2(1, 17)
+emitting = false
+amount = 35
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angle_max = 357.5
+color = Color(1.5480369, 0.07154224, 0, 1)
+
 [node name="detection_area" type="Area2D" parent="."]
 collision_mask = 4
 

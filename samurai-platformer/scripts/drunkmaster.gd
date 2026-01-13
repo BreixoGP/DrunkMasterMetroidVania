@@ -6,7 +6,7 @@ class_name DrunkMaster
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var punch_hitbox: Area2D = $flipper/punch_hitbox
 @onready var kick_hitbox: Area2D = $flipper/kick_hitbox
-
+@onready var blood_particles: CPUParticles2D = $flipper/Bloodparticle
 
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
 var state: State = State.IDLE
@@ -94,7 +94,7 @@ func update_state():
 	if life <= 0:
 		state = State.DEAD
 		return
-	if state in [State.PUNCH, State.KICK]:
+	if state in [State.PUNCH, State.KICK, State.HURT]:
 		return
 	if is_on_wall() and not is_on_floor() and (Input.is_action_pressed("move_left")
 	 or Input.is_action_pressed("move_right")) and GameManager.wall_ability_active:
@@ -139,6 +139,8 @@ func take_damage(amount: int, from_position: Vector2,attack_type: int):
 		return  # ya muerto
 
 	life -= amount
+	
+	spawn_blood()
 	if GameManager.hud:
 		GameManager.hud.update_health(life)
 		GameManager.hud.shake()
@@ -155,20 +157,27 @@ func take_damage(amount: int, from_position: Vector2,attack_type: int):
 		if state != State.HURT:
 			state = State.HURT
 			anim.modulate = Color(0.878, 0.0, 0.0, 0.682)
+			anim.play("hurt")
 			apply_knockback(amount,from_position,attack_type)
+			
 
-
-func apply_knockback(amount: int,from_position: Vector2,attack_type:int, knockback_strength: float = 400.0, knockback_time: float = 0.2):
+func apply_knockback(amount: int,from_position: Vector2,attack_type:int, knockback_strength: float = 75.0, knockback_time: float = 0.1):
 	var dir = global_position - from_position
 	dir.x = sign(dir.x)  
 
-	if attack_type == 1:  
-		dir.y = -0.5       
-	elif attack_type == 0:
+	 
+	if attack_type == 0:
 		dir.y = 0        
+		knockback_strength=50
+	elif attack_type == 1:  
+		dir.y = -0.5
+		knockback_strength=75      	
+	#falta attack ype 2 tal vez un golppe mas fuerte
 	elif attack_type == 3:
 		dir.y = -1
 		dir.x *= 3
+		knockback_strength = 200
+		
 	dir = dir.normalized()
 	velocity = dir * (knockback_strength * amount) 
 	
@@ -177,9 +186,13 @@ func apply_knockback(amount: int,from_position: Vector2,attack_type:int, knockba
 	t.connect("timeout", Callable(self, "_end_knockback"))
 
 func _end_knockback():
-	anim.modulate = Color(1,1,1,1)
 	velocity.x = 0
-	update_state()
+	anim.modulate = Color(1,1,1,1)
+
+	# Solo salir de HURT si no estamos muertos
+	if state == State.HURT:
+		state = State.IDLE  # luego update_state() puede ajustarlo a RUN, JUMP, etc.
+		update_state()
 	
 #ATAQUES
 func punch():
@@ -254,3 +267,9 @@ func gain_life(amount: int):
 		life += amount
 	if GameManager.hud:
 		GameManager.hud.update_health(life)
+func spawn_blood():
+	if blood_particles:
+				# Reiniciamos partículas
+		blood_particles.emitting = false
+		blood_particles.restart()
+		blood_particles.emitting = true

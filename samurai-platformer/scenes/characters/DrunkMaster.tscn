@@ -1,11 +1,11 @@
-[gd_scene load_steps=67 format=3 uid="uid://mxsmjwdj3tvw"]
+[gd_scene load_steps=68 format=3 uid="uid://mxsmjwdj3tvw"]
 
 [ext_resource type="Script" uid="uid://li1ill2fffw1" path="res://scripts/drunkmaster.gd" id="1_ehg33"]
 [ext_resource type="Texture2D" uid="uid://blb8kmm3wp6vh" path="res://assets/charachters/DrunkMaster/Attack_1Drunk.png" id="2_x3l2y"]
 [ext_resource type="Texture2D" uid="uid://dpjq64w3m51mp" path="res://assets/charachters/DrunkMaster/Attack_2Drunk.png" id="3_sns30"]
 [ext_resource type="Texture2D" uid="uid://c18yxswjc657b" path="res://assets/charachters/DrunkMaster/Attack_3Drunk.png" id="4_qxh6c"]
-[ext_resource type="Texture2D" uid="uid://8kr2tyr32gq5" path="res://assets/charachters/DrunkMaster/HurtDrunk.png" id="5_ehg33"]
 [ext_resource type="Texture2D" uid="uid://d4jb4b4j4bt7k" path="res://assets/charachters/DrunkMaster/DeadDrunk.png" id="6_rmwwx"]
+[ext_resource type="Texture2D" uid="uid://bsv7uir45hrax" path="res://assets/charachters/DrunkMaster/blood.png" id="6_x3l2y"]
 [ext_resource type="Texture2D" uid="uid://b7fb8qunmuoc2" path="res://assets/charachters/DrunkMaster/IdleDrunk.png" id="7_gp5ia"]
 [ext_resource type="Texture2D" uid="uid://c1ljxniywvavo" path="res://assets/charachters/DrunkMaster/drinkDrunk.png" id="8_qcocl"]
 [ext_resource type="Texture2D" uid="uid://dwemsqkv18pxd" path="res://assets/charachters/DrunkMaster/JumpDrunk.png" id="9_1hk1y"]
@@ -67,17 +67,17 @@ region = Rect2(1024, 0, 128, 128)
 atlas = ExtResource("9_1hk1y")
 region = Rect2(1152, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_47m2j"]
-atlas = ExtResource("5_ehg33")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0om53"]
+atlas = ExtResource("6_x3l2y")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wo2oj"]
-atlas = ExtResource("5_ehg33")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex1la"]
+atlas = ExtResource("6_x3l2y")
+region = Rect2(137, 0, 123, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2tv0"]
-atlas = ExtResource("5_ehg33")
-region = Rect2(256, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefp7"]
+atlas = ExtResource("6_x3l2y")
+region = Rect2(283, 0, 101, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p4h5q"]
 atlas = ExtResource("7_gp5ia")
@@ -294,13 +294,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_47m2j")
+"texture": SubResource("AtlasTexture_0om53")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wo2oj")
+"texture": SubResource("AtlasTexture_ex1la")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l2tv0")
+"texture": SubResource("AtlasTexture_fefp7")
 }],
 "loop": false,
 "name": &"hurt",
@@ -452,6 +452,20 @@ animations = [{
 radius = 12.0
 height = 46.0
 
+[sub_resource type="GDScript" id="GDScript_x3l2y"]
+script/source = "extends CPUParticles2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="DrunkMaster" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -480,7 +494,9 @@ texture_filter = 1
 position = Vector2(2.9999962, -27)
 scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
-animation = &"idle"
+animation = &"hurt"
+frame = 2
+frame_progress = 1.0
 
 [node name="kick_hitbox" type="Area2D" parent="flipper"]
 collision_layer = 3
@@ -490,6 +506,27 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flipper/kick_hitbox"]
 position = Vector2(15, 2)
 shape = SubResource("CapsuleShape2D_p65w1")
+
+[node name="Bloodparticles" type="CPUParticles2D" parent="flipper"]
+top_level = true
+clip_children = 2
+z_index = 200
+position = Vector2(0, -21)
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angle_max = 357.5
+color = Color(1.5480369, 0.07154224, 0, 1)
+script = SubResource("GDScript_x3l2y")
 
 [connection signal="ready" from="." to="." method="_ready"]
 [connection signal="body_entered" from="flipper/punch_hitbox" to="." method="_on_punch_hitbox_body_entered"]

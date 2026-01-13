@@ -3321,7 +3321,7 @@ target_scene = "res://scenes/castle/level_10.tscn"
 
 [node name="door2" parent="." instance=ExtResource("6_17uk1")]
 position = Vector2(27, -58)
-target_scene = "res://scenes/castle/level_9.tscn"
+target_scene = "res://scenes/castle/level_13.tscn"
 
 [node name="torches" type="Node" parent="."]
 
@@ -3401,6 +3401,7 @@ position = Vector2(296, -24)
 [node name="Secretdoor" parent="." instance=ExtResource("15_uawhh")]
 position = Vector2(1675, -242)
 scale = Vector2(2.5, 2.5)
+target_scene = "res://scenes/castle/level_12.tscn"
 
 [node name="Secretdoor2" parent="." instance=ExtResource("15_uawhh")]
 position = Vector2(-26.000002, -244)

@@ -10,6 +10,7 @@ class_name Oni
 @onready var enemy_detection_area: Area2D = $enemy_detection_area
 @onready var enemy_avoid_area: Area2D = $Flipper/enemy_avoid_area
 @export var enemy_id: String
+@onready var blood_particles: CPUParticles2D = $Flipper/Bloodparticles
 
 @onready var attack_hitbox: Area2D = $Flipper/attack_hitbox
 @onready var hurtbox: CollisionShape2D = $hurtbox
@@ -200,7 +201,7 @@ func state_dead(_delta):
 		hurtbox.set_deferred("disabled", true)
 		play_anim("die")
 
-		GameManager.add_point(point_value)
+		#GameManager.add_point(point_value)
 		GameManager.defeat_enemy(enemy_id)
 
 		# Timer para desaparecer
@@ -225,6 +226,7 @@ func take_damage(amount, enemyposition: Vector2, attacktype: int):
 	if state == State.DEAD:
 		return
 	life -= amount
+	spawn_blood()
 	if life <= 0:
 		state = State.DEAD
 	else:
@@ -310,3 +312,9 @@ func _on_anim_finished():
 	if anim.animation == "ready" and state == State.READY:
 		state = State.ATTACK
 	
+func spawn_blood():
+	if blood_particles:
+				# Reiniciamos partículas
+		blood_particles.emitting = false
+		blood_particles.restart()
+		blood_particles.emitting = true

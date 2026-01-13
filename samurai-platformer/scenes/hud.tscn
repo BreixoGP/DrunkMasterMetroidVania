@@ -497,7 +497,7 @@ position = Vector2(292.00003, 40)
 rotation = 1.5714172
 scale = Vector2(1.0309756, 0.9486122)
 sprite_frames = SubResource("SpriteFrames_uxdf7")
-animation = &"picked"
+animation = &"empty"
 
 [node name="coin" type="AnimatedSprite2D" parent="HBoxContainer"]
 self_modulate = Color(0.57996243, 0.57996243, 0.57996243, 1)
