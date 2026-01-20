@@ -13,7 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 	GameManager.activate_checkpoint(level_path, checkpoint_tag)
 
-	body.gain_life(17)  # restauramos la vida del jugador
+	body.gain_life(body.max_life)  # restauramos la vida del jugador
 	print("✅ Checkpoint activado")
 	print("Nivel:", level_path)
 	print("Spawn:", checkpoint_tag)

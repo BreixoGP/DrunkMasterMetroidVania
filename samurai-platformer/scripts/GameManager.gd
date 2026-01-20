@@ -183,9 +183,8 @@ func respawn():
 		player.velocity = Vector2.ZERO
 
 	await load_level(current_checkpoint_level)
-
-	var spawn := current_level.get_node_or_null(current_checkpoint_tag)
-	if spawn and player:
+	var spawn := current_level.get_node_or_null(current_checkpoint_tag) 
+	if spawn and player: 
 		player.global_position = spawn.global_position
 
 	if player:

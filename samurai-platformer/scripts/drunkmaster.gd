@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		attack_timer -= delta
 		if attack_timer <= 0:
 			state = State.IDLE
-			punch_hitbox.monitoring = false
+			#punch_hitbox.monitoring = false
 			kick_hitbox.monitoring = false
 
 
@@ -208,10 +208,11 @@ func punch():
 func apply_punch_hit():
 	punch_hitbox.monitoring = true
 	var enemy = get_closest_enemy_in_area(punch_hitbox)
-	
 	if enemy:
 		enemy.take_damage(punch_power, global_position, 0)
-	#punch_hitbox.monitoring = false creo que esto aqui es innecesario y me bugea el punch 
+	
+	
+	
 
 func kick():
 	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD]:

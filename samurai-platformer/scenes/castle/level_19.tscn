@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://vv5acks3xarm"]
+[gd_scene load_steps=19 format=4 uid="uid://vv5acks3xarm"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_lu4p0"]
 [ext_resource type="Texture2D" uid="uid://dp3uj811uwiid" path="res://assets/castle/Medieval_tiles_free2.png" id="2_1g0c3"]
 [ext_resource type="Texture2D" uid="uid://bg7ccn6q77lk2" path="res://assets/castle/Objects/window.png" id="3_gjpjo"]
 [ext_resource type="Texture2D" uid="uid://c7xr1pktne6j" path="res://assets/castle/eyedecoration.png" id="4_iw414"]
 [ext_resource type="Texture2D" uid="uid://bk7ie3huedc2l" path="res://assets/cave_objects/cocoon_web.png" id="5_xddst"]
+[ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="6_pgo1p"]
 [ext_resource type="PackedScene" uid="uid://c7myrx3aogi6t" path="res://scenes/checkpoint.tscn" id="7_q4oot"]
 [ext_resource type="PackedScene" uid="uid://wq4hxd3afdra" path="res://scenes/barrel.tscn" id="9_ubpn4"]
 [ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="11_uovb0"]
@@ -3257,6 +3258,7 @@ tile_map_data = PackedByteArray("AAAcAOT/AAAFAAQAAAAcAOX/AAAFAAQAAAAcAOb/AAAFAAQ
 tile_set = SubResource("TileSet_f3glw")
 
 [node name="decoration" type="TileMapLayer" parent="TileMapLayer"]
+tile_map_data = PackedByteArray("AAABAP7/AgABAAEAABAAAP7/AgACAAEAABD///7/AgADAAEAABACAP//AgAAAAIAABABAP//AgABAAIAABAAAP//AgACAAIAABD/////AgADAAIAABD+//j/AgADAAEAADD///j/AgACAAEAADAAAPj/AgABAAEAADD+//f/AgADAAIAADD///f/AgACAAIAADAAAPf/AgABAAIAADABAPf/AgAAAAIAADAmAP7/AgABAAEAAAAnAP7/AgACAAEAAAAoAP7/AgADAAEAAAArAP7/AgABAAEAABAqAP7/AgACAAEAABApAP7/AgADAAEAABA1AP7/AgADAAEAAAA0AP7/AgACAAEAAAAzAP7/AgABAAEAAAA=")
 tile_set = SubResource("TileSet_jcfoy")
 
 [node name="Spawn_right" type="Marker2D" parent="."]
@@ -3290,3 +3292,9 @@ barrel_id = "l19_barrel_3"
 position = Vector2(527, -34)
 pickup_scene = ExtResource("11_uovb0")
 barrel_id = "l19_barrel_4"
+
+[node name="torch" parent="." instance=ExtResource("6_pgo1p")]
+position = Vector2(873, -47)
+
+[node name="torch2" parent="." instance=ExtResource("6_pgo1p")]
+position = Vector2(657, -47)
