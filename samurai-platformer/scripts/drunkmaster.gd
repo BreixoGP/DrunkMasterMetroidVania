@@ -13,8 +13,10 @@ var state: State = State.IDLE
 var attack_timer := 0.0
 var max_life=17
 var life = 17
-var punch_power = 1 #1
-var kick_power = 5 #2
+const BASE_PUNCH_POWER := 1
+const BASE_KICK_POWER := 5
+var punch_power = BASE_PUNCH_POWER
+var kick_power = BASE_KICK_POWER
 const MAX_KICK_TARGETS := 3
 const SPEED = 250.0
 const JUMP_VELOCITY = -330.0
@@ -24,7 +26,7 @@ const WALL_SLIDE_GRAVITY = 100.0
 func _ready():
 	if not anim.is_connected("frame_changed", Callable(self, "_on_frame_changed")):
 		anim.connect("frame_changed", Callable(self, "_on_frame_changed"))
-	
+	apply_permanent_upgrades()
 func _physics_process(delta: float) -> void:
 	if state == State.DEAD:
 		return
@@ -273,3 +275,9 @@ func spawn_blood():
 		blood_particles.emitting = false
 		blood_particles.restart()
 		blood_particles.emitting = true
+		
+func apply_permanent_upgrades():
+	var total_attack = GameManager.upgrade_attack_perm + GameManager.upgrade_attack_temp
+	punch_power = BASE_PUNCH_POWER + total_attack
+	kick_power = BASE_KICK_POWER + total_attack
+	print(punch_power, kick_power)

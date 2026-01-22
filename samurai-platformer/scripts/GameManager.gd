@@ -54,7 +54,8 @@ var has_crystal := false
 var has_crystal_saved := false
 var has_key := false
 var has_key_saved := false
-
+var upgrade_attack_temp := 0
+var upgrade_attack_perm := 0
 # ============================================================
 # NIVEL / SALAS
 # ============================================================
@@ -154,7 +155,8 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 	has_crystal_saved = has_crystal
 	has_key_saved = has_key
 	wall_ability_unlocked = wall_ability_active 
-
+	upgrade_attack_perm = upgrade_attack_temp
+	upgrade_attack_temp = 0
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
 	activated_platforms_temp.clear()
@@ -176,7 +178,7 @@ func respawn():
 	has_crystal = has_crystal_saved
 	has_key = has_key_saved
 	wall_ability_active = wall_ability_unlocked
-
+	upgrade_attack_temp = 0
 	if player:
 		player.set_physics_process(false)
 		player.collision.disabled = true
@@ -192,7 +194,7 @@ func respawn():
 		player.update_state()
 		player.set_physics_process(true)
 		player.collision.disabled = false
-
+		player.apply_permanent_upgrades()
 	if hud:
 		hud.update_health(player.life)
 		hud.update_points()
@@ -247,7 +249,10 @@ func save_game():
 		"defeated_enemies_perm": defeated_enemies_perm,
 		"activated_platforms_perm": activated_platforms_perm,
 		"current_checkpoint_level": current_checkpoint_level,
-		"current_checkpoint_tag": current_checkpoint_tag
+		"current_checkpoint_tag": current_checkpoint_tag,
+		"upgrade_attack_perm": upgrade_attack_perm,
+		
+
 	}
 
 	var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
@@ -273,6 +278,10 @@ func load_game():
 	activated_platforms_perm = save_data["activated_platforms_perm"]
 	current_checkpoint_level = save_data["current_checkpoint_level"]
 	current_checkpoint_tag = save_data["current_checkpoint_tag"]
+	upgrade_attack_perm = save_data.get("upgrade_attack_perm", 0)
+	upgrade_attack_temp = 0
+	
+	
 
 	# Sincronizar player_spawn_tag con checkpoint
 	player_spawn_tag = current_checkpoint_tag
@@ -283,6 +292,7 @@ func load_game():
 		hud.update_points()
 		hud.update_items()
 		hud.update_health(player.life)
+		player.apply_permanent_upgrades()
 # ============================================================
 # UTILIDADES
 # ============================================================

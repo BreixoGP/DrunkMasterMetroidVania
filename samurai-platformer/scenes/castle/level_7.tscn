@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://pknrmbd7fe8b" path="res://scenes/characters/oni_purple.tscn" id="10_sty7u"]
 [ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="11_yki5j"]
 [ext_resource type="PackedScene" uid="uid://k1lfxg1rck6n" path="res://scenes/life_bottle.tscn" id="12_c1gkl"]
-[ext_resource type="PackedScene" uid="uid://cgo15mq3bee86" path="res://scenes/cursed_hand_wallslide.tscn" id="12_hraag"]
+[ext_resource type="PackedScene" uid="uid://cgo15mq3bee86" path="res://scenes/bottle_wallside.tscn" id="12_hraag"]
 [ext_resource type="PackedScene" uid="uid://dh1f7xajberp8" path="res://scenes/altar.tscn" id="13_paii3"]
 [ext_resource type="PackedScene" uid="uid://bwtwdn8mhk3s7" path="res://scenes/castle/switch_platform.tscn" id="14_o6j1w"]
 [ext_resource type="PackedScene" uid="uid://xniugj67t2f" path="res://scenes/castle/trap.tscn" id="16_38kut"]

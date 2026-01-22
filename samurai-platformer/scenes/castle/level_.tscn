@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cms37xt3taisc" path="res://scenes/coin.tscn" id="12_i7e12"]
 [ext_resource type="PackedScene" uid="uid://dh1f7xajberp8" path="res://scenes/altar.tscn" id="13_vovcb"]
 [ext_resource type="PackedScene" uid="uid://djaubrlvn4t3a" path="res://scenes/crystal.tscn" id="14_0ocy8"]
-[ext_resource type="PackedScene" uid="uid://cgo15mq3bee86" path="res://scenes/cursed_hand_wallslide.tscn" id="15_doh6o"]
+[ext_resource type="PackedScene" uid="uid://cgo15mq3bee86" path="res://scenes/bottle_wallside.tscn" id="15_doh6o"]
 [ext_resource type="PackedScene" uid="uid://k1lfxg1rck6n" path="res://scenes/life_bottle.tscn" id="16_04u3y"]
 [ext_resource type="PackedScene" uid="uid://c7myrx3aogi6t" path="res://scenes/checkpoint.tscn" id="17_bhhij"]
 
