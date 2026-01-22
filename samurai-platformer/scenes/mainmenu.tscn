@@ -30,34 +30,39 @@ grow_vertical = 2
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Play"
 script = ExtResource("2_r3g3c")
 
 [node name="Load" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Load"
 script = ExtResource("3_3vvtq")
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Options"
 
 [node name="HowTo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Howto"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_natt5")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Exit"
 script = ExtResource("3_r3g3c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/Load" to="VBoxContainer/Load" method="_on_pressed"]
