@@ -3267,6 +3267,9 @@ tile_set = SubResource("TileSet_jcfoy")
 [node name="Spawn_right" type="Marker2D" parent="."]
 position = Vector2(1591, -30)
 
+[node name="Spawn_mid" type="Marker2D" parent="."]
+position = Vector2(767, -178)
+
 [node name="Spawn_left" type="Marker2D" parent="."]
 position = Vector2(-189, -23)
 

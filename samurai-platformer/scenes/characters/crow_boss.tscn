@@ -1,19 +1,28 @@
-[gd_scene load_steps=56 format=3 uid="uid://streydfmk15f"]
+[gd_scene load_steps=71 format=3 uid="uid://streydfmk15f"]
 
+[ext_resource type="Script" uid="uid://cqoy317gsrc4b" path="res://scripts/crow_boss.gd" id="1_quhp5"]
 [ext_resource type="Texture2D" uid="uid://cw5w6nqivlauj" path="res://assets/charachters/Karasu_tengu/Attack_1.png" id="2_e42k6"]
 [ext_resource type="Texture2D" uid="uid://cie84hbkuntlm" path="res://assets/charachters/Karasu_tengu/Walk.png" id="3_jyf6x"]
 [ext_resource type="Texture2D" uid="uid://bpixn7c082kd5" path="res://assets/charachters/Karasu_tengu/Dead.png" id="4_hmoie"]
+[ext_resource type="Texture2D" uid="uid://bjx4vw73g3c2" path="res://assets/Circle_explosion/Circle_explosion1.png" id="4_vq3l8"]
 [ext_resource type="Texture2D" uid="uid://do81ltuvejahh" path="res://assets/charachters/Karasu_tengu/Hurt.png" id="5_0kf1u"]
+[ext_resource type="Texture2D" uid="uid://ggx40uiwmkwr" path="res://assets/Circle_explosion/Circle_explosion2.png" id="5_quhp5"]
+[ext_resource type="Texture2D" uid="uid://cynmehynij680" path="res://assets/Circle_explosion/Circle_explosion3.png" id="6_1qycf"]
 [ext_resource type="Texture2D" uid="uid://bh6pe3pkumkxg" path="res://assets/charachters/Karasu_tengu/Jump.png" id="6_k73mv"]
 [ext_resource type="Texture2D" uid="uid://jx167uebgwtw" path="res://assets/charachters/Karasu_tengu/Idle.png" id="6_vo0hp"]
+[ext_resource type="Texture2D" uid="uid://0wp7ntvaybwi" path="res://assets/Circle_explosion/Circle_explosion4.png" id="7_7wjmp"]
+[ext_resource type="Texture2D" uid="uid://bjw7xl2ken4jr" path="res://assets/Circle_explosion/Circle_explosion5.png" id="8_r7nkj"]
+[ext_resource type="Texture2D" uid="uid://dalw7lpgdwgn2" path="res://assets/Circle_explosion/Circle_explosion6.png" id="9_xwqbk"]
+[ext_resource type="Texture2D" uid="uid://dqmea7b1bjvnn" path="res://assets/Circle_explosion/Circle_explosion7.png" id="10_sx63i"]
+[ext_resource type="Texture2D" uid="uid://bmyuqargg0t38" path="res://assets/Circle_explosion/Circle_explosion8.png" id="11_m8s6u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c8068"]
 radius = 14.9999485
 height = 94.004944
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krfje"]
-radius = 17.0
-height = 34.0
+radius = 23.0
+height = 46.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7am8t"]
 atlas = ExtResource("2_e42k6")
@@ -82,6 +91,38 @@ region = Rect2(512, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_spphm"]
 atlas = ExtResource("4_hmoie")
 region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvxji"]
+atlas = ExtResource("4_vq3l8")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3robq"]
+atlas = ExtResource("5_quhp5")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwn80"]
+atlas = ExtResource("6_1qycf")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwbeq"]
+atlas = ExtResource("7_7wjmp")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ru7"]
+atlas = ExtResource("8_r7nkj")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb7k1"]
+atlas = ExtResource("9_xwqbk")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7fuv"]
+atlas = ExtResource("10_sx63i")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs7oh"]
+atlas = ExtResource("11_m8s6u")
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e42k6"]
 atlas = ExtResource("5_0kf1u")
@@ -183,14 +224,6 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("2_e42k6")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_np0nr"]
-atlas = ExtResource("2_e42k6")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_81u4g"]
-atlas = ExtResource("2_e42k6")
-region = Rect2(384, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_0v6m6"]
 animations = [{
 "frames": [{
@@ -205,7 +238,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -258,6 +291,35 @@ animations = [{
 "loop": false,
 "name": &"die",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3robq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwn80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwbeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24ru7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb7k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7fuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs7oh")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -349,16 +411,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uj7hu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_np0nr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_81u4g")
 }],
 "loop": false,
 "name": &"ready",
-"speed": 6.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6rll"]
@@ -373,6 +429,9 @@ height = 339.9344
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 1.3089969
+script = ExtResource("1_quhp5")
+jump_force = -300.0
+jump_horizontal_speed = 300.0
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 22.000002)
@@ -393,7 +452,9 @@ shape = SubResource("CapsuleShape2D_krfje")
 position = Vector2(3.9999995, -3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"idle"
+animation = &"ready"
+frame = 1
+frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)
@@ -410,7 +471,7 @@ collision_mask = 8
 
 [node name="rayattack" type="RayCast2D" parent="Flipper"]
 position = Vector2(-1, 31)
-target_position = Vector2(35, 0)
+target_position = Vector2(44, 0)
 collision_mask = 4
 
 [node name="enemy_avoid_area" type="Area2D" parent="Flipper"]

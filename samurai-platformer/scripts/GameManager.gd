@@ -56,6 +56,8 @@ var has_key := false
 var has_key_saved := false
 var upgrade_attack_temp := 0
 var upgrade_attack_perm := 0
+var crow_defeated_temp := false
+var crow_defeated_perm := false
 # ============================================================
 # NIVEL / SALAS
 # ============================================================
@@ -65,6 +67,7 @@ func load_level(path: String, spawn_tag: String = "") -> void:
 	if spawn_tag != "":
 		player_spawn_tag = spawn_tag
 	if player:
+		
 		player.set_physics_process(false)
 		player.collision.disabled = true
 		player.velocity = Vector2.ZERO
@@ -156,6 +159,7 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 	has_key_saved = has_key
 	wall_ability_unlocked = wall_ability_active 
 	upgrade_attack_perm = upgrade_attack_temp
+	crow_defeated_perm = crow_defeated_temp
 	upgrade_attack_temp = 0
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
@@ -179,6 +183,7 @@ func respawn():
 	has_key = has_key_saved
 	wall_ability_active = wall_ability_unlocked
 	upgrade_attack_temp = 0
+	crow_defeated_temp = crow_defeated_perm
 	if player:
 		player.set_physics_process(false)
 		player.collision.disabled = true
@@ -251,6 +256,7 @@ func save_game():
 		"current_checkpoint_level": current_checkpoint_level,
 		"current_checkpoint_tag": current_checkpoint_tag,
 		"upgrade_attack_perm": upgrade_attack_perm,
+		"crow_defeated_perm": crow_defeated_perm
 		
 
 	}
@@ -280,7 +286,7 @@ func load_game():
 	current_checkpoint_tag = save_data["current_checkpoint_tag"]
 	upgrade_attack_perm = save_data.get("upgrade_attack_perm", 0)
 	upgrade_attack_temp = 0
-	
+	crow_defeated_perm = save_data["crow_defeated_perm"]
 	
 
 	# Sincronizar player_spawn_tag con checkpoint
