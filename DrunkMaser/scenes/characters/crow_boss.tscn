@@ -1,7 +1,8 @@
-[gd_scene load_steps=71 format=3 uid="uid://streydfmk15f"]
+[gd_scene load_steps=80 format=3 uid="uid://streydfmk15f"]
 
 [ext_resource type="Script" uid="uid://cqoy317gsrc4b" path="res://scripts/crow_boss.gd" id="1_quhp5"]
 [ext_resource type="Texture2D" uid="uid://cw5w6nqivlauj" path="res://assets/charachters/Karasu_tengu/Attack_1.png" id="2_e42k6"]
+[ext_resource type="Texture2D" uid="uid://cijjnic08vjpj" path="res://assets/charachters/Karasu_tengu/Attack_2.png" id="3_1qycf"]
 [ext_resource type="Texture2D" uid="uid://cie84hbkuntlm" path="res://assets/charachters/Karasu_tengu/Walk.png" id="3_jyf6x"]
 [ext_resource type="Texture2D" uid="uid://bpixn7c082kd5" path="res://assets/charachters/Karasu_tengu/Dead.png" id="4_hmoie"]
 [ext_resource type="Texture2D" uid="uid://bjx4vw73g3c2" path="res://assets/Circle_explosion/Circle_explosion1.png" id="4_vq3l8"]
@@ -35,6 +36,22 @@ region = Rect2(512, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vq3l8"]
 atlas = ExtResource("2_e42k6")
 region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np0nr"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81u4g"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfnuu"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l14t3"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quhp5"]
 atlas = ExtResource("3_jyf6x")
@@ -224,6 +241,18 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("2_e42k6")
 region = Rect2(128, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_va15m"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfmor"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x2ke"]
+atlas = ExtResource("3_1qycf")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0v6m6"]
 animations = [{
 "frames": [{
@@ -239,6 +268,23 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np0nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81u4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfnuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l14t3")
+}],
+"loop": true,
+"name": &"attack_air",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -411,10 +457,27 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uj7hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj7hu")
 }],
 "loop": false,
 "name": &"ready",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va15m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfmor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x2ke")
+}],
+"loop": false,
+"name": &"ready_air",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6rll"]
@@ -425,13 +488,16 @@ height = 82.0
 radius = 59.00433
 height = 339.9344
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1qycf"]
+radius = 15.0
+height = 88.0
+
 [node name="crow_boss" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 1.3089969
 script = ExtResource("1_quhp5")
-jump_force = -300.0
-jump_horizontal_speed = 300.0
+vertical_attack_delay = 0.8
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 22.000002)
@@ -451,9 +517,7 @@ shape = SubResource("CapsuleShape2D_krfje")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flipper"]
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"ready"
-frame = 1
-frame_progress = 1.0
+animation = &"chase"
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)
@@ -469,7 +533,7 @@ target_position = Vector2(1, 77)
 collision_mask = 8
 
 [node name="rayattack" type="RayCast2D" parent="Flipper"]
-position = Vector2(-1, 31)
+position = Vector2(0, 22)
 target_position = Vector2(44, 0)
 collision_mask = 4
 
@@ -523,6 +587,16 @@ position = Vector2(1, 15)
 rotation = 1.5758936
 shape = SubResource("CapsuleShape2D_lh407")
 
+[node name="area_air_attack" type="Area2D" parent="."]
+collision_mask = 5
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_air_attack"]
+position = Vector2(-4, 24)
+shape = SubResource("CapsuleShape2D_1qycf")
+debug_color = Color(0.8172605, 0.32318026, 0.6334168, 0.41960785)
+
 [connection signal="body_entered" from="Flipper/attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="area_air_attack" to="." method="_on_area_air_attack_body_entered"]

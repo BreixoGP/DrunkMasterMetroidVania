@@ -24,8 +24,8 @@ func shake():
 func _on_body_entered(body: Node2D) -> void:
 	if body is DrunkMaster:
 		body.take_damage(1, global_position, 0)
-		shake()   # 👈 agitar al tocar al player
+		shake()   
 
 	if body.is_in_group("Enemies"):
 		body.take_damage(1, global_position, 0)
-		shake()   # 👈 también con enemigos
+		shake()   
