@@ -3242,7 +3242,7 @@ sources/2 = SubResource("TileSetAtlasSource_0selc")
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_lrcqy")
-cam_limit_left = -32
+cam_limit_left = 475
 cam_limit_top = -450
 cam_limit_right = 3370
 

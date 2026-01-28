@@ -34,6 +34,10 @@ const MAX_VERTICAL_DIFF := 40.0
 var attack_cooldown = 0.75 
 var attack_timer = 0.0
 var head_timer_started = false
+@export var chase_offset_range := 24.0
+var chase_offset_x := 0.0
+var chase_offset_timer := 0.0
+const OFFSET_REFRESH_TIME := 1.2
 
 func _ready():
 	anim.animation_finished.connect(_on_anim_finished)
@@ -44,7 +48,7 @@ func _ready():
 	if GameManager.is_enemy_defeated(enemy_id):
 		queue_free()
 		return
-
+	chase_offset_x = randf_range(-chase_offset_range, chase_offset_range)
 	state = State.IDLE
 	play_anim("idle")
 
@@ -123,13 +127,16 @@ func state_chase(_delta):
 		state = State.IDLE
 		return
 
-	var dx: float = GameManager.player.global_position.x - global_position.x
-	set_direction(sign(dx))
+	update_chase_offset(_delta)
 
-	# Velocidad base hacia el jugador
+	var player_pos = GameManager.player.global_position
+	var target_x = player_pos.x + chase_offset_x
+	var dx = target_x - global_position.x
+
+	set_direction(sign(dx))
 	velocity.x = direction * speed * 1.3
 
-	#  Separación entre enemigos
+	# Separación entre enemigos (sigue siendo necesaria)
 	var separation := apply_enemy_separation(_delta)
 	velocity += separation
 
@@ -146,6 +153,7 @@ func state_chase(_delta):
 	# Ataque
 	if rayattack.is_colliding():
 		state = State.READY
+
 
 
 
@@ -306,12 +314,15 @@ func _on_head_timer_timeout():
 func apply_enemy_separation(delta: float) -> Vector2:
 	var separation := Vector2.ZERO
 	for body in enemy_avoid_area.get_overlapping_bodies():
-		if body != self and body.is_in_group("Enemies"):
-			var diff = global_position - body.global_position
-			var dist = diff.length()
-			if dist > 0:
-				separation += diff.normalized() * (80.0 / dist) #cambiar el valor numerico mas bajo si se empujan mucho
-	return separation * delta
+		if body == self or not body.is_in_group("Enemies"):
+			continue
+		var diff = global_position - body.global_position
+		var dist = diff.length()
+		if dist > 0:
+			# Solo eje X
+			var push_x = sign(diff.x) * max(0, 50 - abs(diff.x)) # fuerza proporcional
+			separation.x += push_x
+	return separation
 
 func _on_anim_finished():
 	if anim.animation == "ready" and state == State.READY:
@@ -323,3 +334,9 @@ func spawn_blood():
 		blood_particles.emitting = false
 		blood_particles.restart()
 		blood_particles.emitting = true
+		
+func update_chase_offset(delta):
+	chase_offset_timer += delta
+	if chase_offset_timer >= OFFSET_REFRESH_TIME:
+		chase_offset_timer = 0.0
+		chase_offset_x = randf_range(-chase_offset_range, chase_offset_range)
