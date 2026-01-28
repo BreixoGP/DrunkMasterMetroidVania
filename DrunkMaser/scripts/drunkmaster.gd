@@ -7,6 +7,10 @@ class_name DrunkMaster
 @onready var punch_hitbox: Area2D = $flipper/punch_hitbox
 @onready var kick_hitbox: Area2D = $flipper/kick_hitbox
 @onready var blood_particles: CPUParticles2D = $flipper/Bloodparticles
+@onready var overlap_area: Area2D = $flipper/overlap_area
+var inside_enemy_time := 0.0
+const ENEMY_FRICTION := 0.4
+const CHIP_DAMAGE_TIME := 0.6
 
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
 var state: State = State.IDLE
@@ -18,7 +22,7 @@ const BASE_KICK_POWER := 2
 var punch_power = BASE_PUNCH_POWER
 var kick_power = BASE_KICK_POWER
 const MAX_KICK_TARGETS := 3
-const SPEED = 200.0
+const SPEED = 220.0
 const JUMP_VELOCITY = -330.0
 const WALL_JUMP_PUSHBACK = 100.0
 const WALL_SLIDE_GRAVITY = 100.0
@@ -39,8 +43,21 @@ func _physics_process(delta: float) -> void:
 		velocity.y = min(velocity.y, WALL_SLIDE_GRAVITY)
 	# Llamamos a handle_input que decide todo lo relacionado con inputs
 	handle_input(delta)
+	# --- Penalización por atravesar enemigos ---
+	if is_inside_enemy():
+		inside_enemy_time += delta
 
-	# Mover el personaje
+		# Fricción horizontal
+		if state not in [State.PUNCH, State.KICK, State.JUMP]:
+			velocity.x *= ENEMY_FRICTION
+
+		# Daño suave si se queda demasiado
+		if inside_enemy_time >= CHIP_DAMAGE_TIME:
+			take_damage(1, global_position, 0)
+			inside_enemy_time = 0.0
+	else:
+		inside_enemy_time = 0.0
+		# Mover el personaje
 	move_and_slide()
 
 	# Actualizar estado y animaciones
@@ -89,6 +106,9 @@ func _jump():
 			velocity.x = -WALL_JUMP_PUSHBACK
 		elif Input.is_action_pressed("move_left"):
 			velocity.x = WALL_JUMP_PUSHBACK
+
+func is_inside_enemy() -> bool:
+	return overlap_area.get_overlapping_bodies().size() > 0
 
 
 # ESTADOS
