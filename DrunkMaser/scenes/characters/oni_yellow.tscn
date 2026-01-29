@@ -18,7 +18,7 @@ height = 77.999725
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krfje"]
 radius = 4.002289
-height = 101.97766
+height = 109.99849
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5bac"]
 atlas = ExtResource("2_q4651")
@@ -523,6 +523,7 @@ radius = 4.0
 height = 82.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agen5"]
+height = 33.99964
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh407"]
 radius = 53.009502
@@ -547,7 +548,7 @@ collision_mask = 5
 monitoring = false
 
 [node name="attack_collision" type="CollisionShape2D" parent="Flipper/attack_hitbox"]
-position = Vector2(95, 30.000004)
+position = Vector2(89, 30.000002)
 rotation = 1.5760267
 shape = SubResource("CapsuleShape2D_krfje")
 
@@ -555,8 +556,8 @@ shape = SubResource("CapsuleShape2D_krfje")
 position = Vector2(3.9999995, -3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"attack"
-frame = 8
+animation = &"attack_melee"
+frame = 4
 frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
@@ -578,8 +579,8 @@ target_position = Vector2(143, 0)
 collision_mask = 4
 
 [node name="rayattack_melee" type="RayCast2D" parent="Flipper"]
-position = Vector2(-1, 31)
-target_position = Vector2(43, 0)
+position = Vector2(-16, 31)
+target_position = Vector2(63, 0)
 collision_mask = 4
 
 [node name="head_hitbox" type="Area2D" parent="Flipper"]
@@ -603,7 +604,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="attack_collision_melee" type="CollisionShape2D" parent="Flipper/attack_hitbox_melee"]
-position = Vector2(34, 25)
+position = Vector2(27.999996, 24.999996)
 rotation = 1.5662079
 shape = SubResource("CapsuleShape2D_agen5")
 

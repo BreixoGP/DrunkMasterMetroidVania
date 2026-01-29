@@ -9,7 +9,7 @@ class_name DrunkMaster
 @onready var blood_particles: CPUParticles2D = $flipper/Bloodparticles
 @onready var overlap_area: Area2D = $flipper/overlap_area
 var inside_enemy_time := 0.0
-const ENEMY_FRICTION := 0.4
+const ENEMY_FRICTION := 0.6
 const CHIP_DAMAGE_TIME := 0.6
 
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
@@ -109,7 +109,6 @@ func _jump():
 
 func is_inside_enemy() -> bool:
 	return overlap_area.get_overlapping_bodies().size() > 0
-
 
 # ESTADOS
 func update_state():

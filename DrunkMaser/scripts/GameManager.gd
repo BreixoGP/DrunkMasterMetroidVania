@@ -13,9 +13,11 @@ var levels = [
 @onready var fade: ColorRect
 var hud: Node = null
 var levelcontainer: Node2D = null
+var pause_menu : Node = null
 var player: Node = null
 var start_new_game_flag := false
 var load_game_flag := false
+var pause_enabled := true
 # ============================================================
 # ESTADO GENERAL
 # ============================================================
@@ -61,7 +63,9 @@ var crow_defeated_perm := false
 # ============================================================
 # NIVEL / SALAS
 # ============================================================
-
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 func load_level(path: String, spawn_tag: String = "") -> void:
 	# Si se pasa un spawn_tag, lo usamos
 	if spawn_tag != "":
@@ -306,35 +310,22 @@ func add_point(value: int) -> void:
 	score += value
 	if hud:
 		hud.update_points()
-
-
 	#necesita codigo para mensaje en pantalla de jeugo
 	
+func _input(event):
+	if not pause_enabled:
+		return
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			resume_game()
+		else:
+			pause_game()
 
-	
-
-#func _process(_delta):
-	#if Input.is_action_just_pressed("quitgame"):
-			#get_tree().quit()
-	#cambiar aqui si el nivel de submit score es otro distinto a 4
-	#if level <4:
-		#if Input.is_action_just_pressed("pause"):
-			#go_how_to_menu()
-	
-
-#func go_how_to_menu():
-	#if not get_tree().paused:
-		#if how_to_play_instance==null:
-			#var how_to_scene = preload("res://scenes/how_to_play.tscn")
-			#how_to_play_instance = how_to_scene.instantiate()
-			#var layer = CanvasLayer.new()
-			#get_tree().current_scene.add_child(layer)
-			#layer.add_child(how_to_play_instance)
-		#get_tree().paused= true
-		#print("Paused game and HowTo opened")
-	#else:
-		#if is_instance_valid(how_to_play_instance):
-			#how_to_play_instance.queue_free()
-			#how_to_play_instance = null
-		#get_tree().paused = false
-		#print("Resumed game")
+func pause_game():
+	get_tree().paused = true
+	hud.visible = false 
+	pause_menu.visible = true
+func resume_game():
+	get_tree().paused = false
+	hud.visible = true
+	pause_menu.visible = false

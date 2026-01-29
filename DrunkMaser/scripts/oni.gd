@@ -7,19 +7,13 @@ class_name Oni
 @onready var rayfloor: RayCast2D = $Flipper/rayfloor
 @onready var rayspikes: RayCast2D = $Flipper/rayspikes
 @onready var rayattack: RayCast2D = $Flipper/rayattack
-
 @onready var enemy_avoid_area: Area2D = $Flipper/enemy_avoid_area
 @export var enemy_id: String
 @onready var blood_particles: CPUParticles2D = $Flipper/Bloodparticles
-
 @onready var attack_hitbox: Area2D = $Flipper/attack_hitbox
 @onready var hurtbox: CollisionShape2D = $hurtbox
 @onready var head_hitbox: Area2D = $Flipper/head_hitbox
 
-
-#ESTO PERTENECE AL SISTEA DE STATE CHASE PARA EVITAR UQE SE QUEDE CONGELADO SOBRE EL PLAYER CON IMAGEN DOBLE
-#var stuck_time := 0.0
-#const STUCK_LIMIT := 0.4  # segundos BORRAR SI NO LO USO
 
 enum State { IDLE, PATROL, CHASE, READY, READY_MELEE, ATTACK, ATTACK_MELEE, HEAD, HURT, DEAD }
 var state: State = State.IDLE
@@ -34,7 +28,7 @@ const MAX_VERTICAL_DIFF := 40.0
 var attack_cooldown = 0.75 
 var attack_timer = 0.0
 var head_timer_started = false
-@export var chase_offset_range := 24.0
+@export var chase_offset_range := 35.0
 var chase_offset_x := 0.0
 var chase_offset_timer := 0.0
 const OFFSET_REFRESH_TIME := 1.2
