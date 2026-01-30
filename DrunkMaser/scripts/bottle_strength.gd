@@ -1,7 +1,8 @@
 extends Area2D
 
-@export var pickup_id := "upgrade_punch_1"
+@export var pickup_id := "upgrade_power_1"
 @export var attack_bonus := 1
+@export var life_bonus := 1
 
 var picked := false
 
@@ -14,11 +15,11 @@ func _on_body_entered(body):
 		return
 
 	picked = true
-
 	GameManager.collect_pickup(pickup_id)
 
-	# APLICAR EFECTO PERMANENTE
+	# Boost total
 	GameManager.upgrade_attack_temp += attack_bonus
+	GameManager.upgrade_life_temp += life_bonus
 
 	body.apply_permanent_upgrades()
 

@@ -58,6 +58,8 @@ var has_key := false
 var has_key_saved := false
 var upgrade_attack_temp := 0
 var upgrade_attack_perm := 0
+var upgrade_life_temp := 0
+var upgrade_life_perm := 0
 var crow_defeated_temp := false
 var crow_defeated_perm := false
 # ============================================================
@@ -165,6 +167,8 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 	upgrade_attack_perm = upgrade_attack_temp
 	crow_defeated_perm = crow_defeated_temp
 	upgrade_attack_temp = 0
+	upgrade_life_perm = upgrade_life_temp
+	upgrade_life_temp = 0
 	collected_pickups_temp.clear()
 	defeated_enemies_temp.clear()
 	activated_platforms_temp.clear()
@@ -187,6 +191,7 @@ func respawn():
 	has_key = has_key_saved
 	wall_ability_active = wall_ability_unlocked
 	upgrade_attack_temp = 0
+	upgrade_life_temp = 0
 	crow_defeated_temp = crow_defeated_perm
 	
 	if player:
@@ -200,11 +205,12 @@ func respawn():
 		#player.global_position = spawn.global_position
 
 	if player:
+		player.apply_permanent_upgrades()
 		player.gain_life(player.max_life)
 		player.update_state()
 		player.set_physics_process(true)
 		player.collision.disabled = false
-		player.apply_permanent_upgrades()
+		
 	if hud:
 		hud.update_health(player.life)
 		hud.update_points()
@@ -261,7 +267,8 @@ func save_game():
 		"current_checkpoint_level": current_checkpoint_level,
 		"current_checkpoint_tag": current_checkpoint_tag,
 		"upgrade_attack_perm": upgrade_attack_perm,
-		"crow_defeated_perm": crow_defeated_perm
+		"crow_defeated_perm": crow_defeated_perm,
+		"upgrade_life_perm": upgrade_life_perm,
 		
 
 	}
@@ -291,6 +298,8 @@ func load_game():
 	current_checkpoint_tag = save_data["current_checkpoint_tag"]
 	upgrade_attack_perm = save_data.get("upgrade_attack_perm", 0)
 	upgrade_attack_temp = 0
+	upgrade_life_perm = save_data.get("upgrade_life_perm", 0)
+	upgrade_life_temp = 0
 	crow_defeated_perm = save_data["crow_defeated_perm"]
 	
 

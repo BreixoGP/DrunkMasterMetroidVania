@@ -16,8 +16,9 @@ const CHIP_DAMAGE_TIME := 0.6
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
-var max_life=17
-var life = 17
+const BASE_MAX_LIFE := 30.0
+var max_life := BASE_MAX_LIFE
+var life := BASE_MAX_LIFE
 const BASE_PUNCH_POWER := 1
 const BASE_KICK_POWER := 2
 var punch_power = BASE_PUNCH_POWER
@@ -298,4 +299,11 @@ func apply_permanent_upgrades():
 	var total_attack = GameManager.upgrade_attack_perm + GameManager.upgrade_attack_temp
 	punch_power = BASE_PUNCH_POWER + total_attack
 	kick_power = BASE_KICK_POWER + total_attack
-	print(punch_power, kick_power)
+
+	var total_life_upgrades = GameManager.upgrade_life_perm + GameManager.upgrade_life_temp
+	max_life = BASE_MAX_LIFE + (total_life_upgrades * 10) # +10
+	life = round((life/ BASE_MAX_LIFE) * max_life)
+
+	if GameManager.hud:
+			GameManager.hud.set_max_health(max_life)
+			GameManager.hud.update_health(life)
