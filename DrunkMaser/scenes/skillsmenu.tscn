@@ -40,6 +40,7 @@ bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
 bg_color = Color(0.95686275, 0.7019608, 0, 0.7176471)
 
 [node name="Control" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,20 +132,49 @@ offset_right = 964.0
 offset_bottom = 66.0
 color = Color(0.25882354, 0.1254902, 0, 0.48235294)
 
-[node name="locked" type="Node2D" parent="skills_cont"]
+[node name="wallslide_locked" type="Node2D" parent="skills_cont"]
 position = Vector2(120, 184)
 
-[node name="ColorRect" type="ColorRect" parent="skills_cont/locked"]
+[node name="ColorRect" type="ColorRect" parent="skills_cont/wallslide_locked"]
 offset_left = -57.0
 offset_top = -18.0
 offset_right = 964.0
 offset_bottom = 66.0
 color = Color(0.25882354, 0.1254902, 0, 0.48235294)
 
-[node name="locked2" type="Node2D" parent="skills_cont"]
+[node name="boost" type="Node2D" parent="skills_cont"]
+visible = false
+position = Vector2(124, 265)
+
+[node name="Label" type="Label" parent="skills_cont/boost"]
+modulate = Color(0.13096565, 0.06981277, 0, 1)
+texture_filter = 1
+offset_left = 24.0
+offset_top = 10.0
+offset_right = 1052.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_cab2a")
+theme_override_font_sizes/font_size = 18
+text = "This mighty liquor boosts your punch and kicks"
+
+[node name="TextureRect" type="TextureRect" parent="skills_cont/boost"]
+offset_left = -61.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 73.0
+texture = ExtResource("4_sb217")
+
+[node name="ColorRect2" type="ColorRect" parent="skills_cont/boost"]
+offset_left = -60.0
+offset_top = -4.0
+offset_right = 961.0
+offset_bottom = 80.0
+color = Color(0.25882354, 0.1254902, 0, 0.44705883)
+
+[node name="boost_looked" type="Node2D" parent="skills_cont"]
 position = Vector2(120, 184)
 
-[node name="ColorRect" type="ColorRect" parent="skills_cont/locked2"]
+[node name="ColorRect" type="ColorRect" parent="skills_cont/boost_looked"]
 offset_left = -57.0
 offset_top = 76.0
 offset_right = 964.0
@@ -170,35 +200,6 @@ offset_top = 254.0
 offset_right = 964.0
 offset_bottom = 338.0
 color = Color(0.25882354, 0.1254902, 0, 0.48235294)
-
-[node name="strength" type="Node2D" parent="skills_cont"]
-visible = false
-position = Vector2(124, 265)
-
-[node name="Label" type="Label" parent="skills_cont/strength"]
-modulate = Color(0.13096565, 0.06981277, 0, 1)
-texture_filter = 1
-offset_left = 24.0
-offset_top = 10.0
-offset_right = 1052.0
-offset_bottom = 53.0
-theme_override_fonts/font = ExtResource("2_cab2a")
-theme_override_font_sizes/font_size = 18
-text = "This mighty liquor boosts your punch and kicks"
-
-[node name="TextureRect" type="TextureRect" parent="skills_cont/strength"]
-offset_left = -61.0
-offset_top = -22.0
-offset_right = 20.0
-offset_bottom = 73.0
-texture = ExtResource("4_sb217")
-
-[node name="ColorRect2" type="ColorRect" parent="skills_cont/strength"]
-offset_left = -60.0
-offset_top = -4.0
-offset_right = 961.0
-offset_bottom = 80.0
-color = Color(0.25882354, 0.1254902, 0, 0.44705883)
 
 [node name="misc" type="Node2D" parent="skills_cont"]
 visible = false

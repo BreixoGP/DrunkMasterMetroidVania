@@ -3513,7 +3513,7 @@ target_scene = "res://scenes/castle/level_2.tscn"
 [node name="Secretdoor2" parent="." instance=ExtResource("14_1euyu")]
 position = Vector2(-10.9999695, -351.00003)
 scale = Vector2(2.5, 2.5)
-target_scene = "C:/Users/Breixo/TFCBreixo/samurai-platformer/scenes/castle/level_1_secret.tscn"
+target_scene = "res://scenes/castle/level_1_secret.tscn"
 
 [node name="traps" type="Node" parent="."]
 
@@ -3556,7 +3556,7 @@ pickup_scene = ExtResource("11_wphk7")
 barrel_id = "l1_barrel_2"
 
 [node name="door" parent="." instance=ExtResource("15_rs5f1")]
-position = Vector2(80, -267)
+position = Vector2(178, -253)
 target_scene = "res://scenes/castle/level_20.tscn"
 
 [node name="bottle_wallslide" parent="." instance=ExtResource("16_hj34y")]
