@@ -128,7 +128,11 @@ func state_chase(_delta):
 	var dx = target_x - global_position.x
 
 	set_direction(sign(dx))
-	velocity.x = direction * speed * 1.3
+	if abs(dx) < 4.0:
+		velocity.x = 0
+	else:
+		velocity.x = direction * speed * 1.3
+	
 
 	# Separación entre enemigos (sigue siendo necesaria)
 	var separation := apply_enemy_separation(_delta)

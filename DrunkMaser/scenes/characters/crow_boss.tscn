@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://streydfmk15f"]
+[gd_scene load_steps=81 format=3 uid="uid://streydfmk15f"]
 
 [ext_resource type="Script" uid="uid://cqoy317gsrc4b" path="res://scripts/crow_boss.gd" id="1_quhp5"]
 [ext_resource type="Texture2D" uid="uid://cw5w6nqivlauj" path="res://assets/charachters/Karasu_tengu/Attack_1.png" id="2_e42k6"]
@@ -241,6 +241,10 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("2_e42k6")
 region = Rect2(128, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_buday"]
+atlas = ExtResource("2_e42k6")
+region = Rect2(256, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_va15m"]
 atlas = ExtResource("3_1qycf")
 region = Rect2(384, 0, 128, 128)
@@ -459,11 +463,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_uj7hu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uj7hu")
+"texture": SubResource("AtlasTexture_buday")
 }],
 "loop": false,
 "name": &"ready",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -494,7 +498,6 @@ height = 88.0
 
 [node name="crow_boss" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
-collision_mask = 5
 floor_max_angle = 1.3089969
 script = ExtResource("1_quhp5")
 vertical_attack_delay = 0.8
@@ -517,7 +520,9 @@ shape = SubResource("CapsuleShape2D_krfje")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flipper"]
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"chase"
+animation = &"ready"
+frame = 2
+frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)

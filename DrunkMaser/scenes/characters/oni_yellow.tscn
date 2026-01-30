@@ -531,7 +531,6 @@ height = 490.065
 
 [node name="Oniyellow" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
-collision_mask = 5
 floor_max_angle = 1.3089969
 script = ExtResource("1_hd1k2")
 attack_power = 2
@@ -556,8 +555,8 @@ shape = SubResource("CapsuleShape2D_krfje")
 position = Vector2(3.9999995, -3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"attack_melee"
-frame = 4
+animation = &"attack"
+frame = 8
 frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
@@ -575,7 +574,7 @@ collision_mask = 8
 
 [node name="rayattack" type="RayCast2D" parent="Flipper"]
 position = Vector2(-1, 31)
-target_position = Vector2(143, 0)
+target_position = Vector2(157, 0)
 collision_mask = 4
 
 [node name="rayattack_melee" type="RayCast2D" parent="Flipper"]

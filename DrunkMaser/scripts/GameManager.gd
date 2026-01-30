@@ -325,8 +325,9 @@ func _input(event):
 func pause_game():
 	get_tree().paused = true
 	hud.visible = false 
-	pause_menu.visible = true
 	pause_menu.update_skills_display()
+	pause_menu.visible = true
+	
 func resume_game():
 	get_tree().paused = false
 	hud.visible = true

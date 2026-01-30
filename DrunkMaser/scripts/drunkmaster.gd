@@ -8,6 +8,7 @@ class_name DrunkMaster
 @onready var kick_hitbox: Area2D = $flipper/kick_hitbox
 @onready var blood_particles: CPUParticles2D = $flipper/Bloodparticles
 @onready var overlap_area: Area2D = $flipper/overlap_area
+
 var inside_enemy_time := 0.0
 const ENEMY_FRICTION := 0.6
 const CHIP_DAMAGE_TIME := 0.6
@@ -21,6 +22,7 @@ const BASE_PUNCH_POWER := 1
 const BASE_KICK_POWER := 2
 var punch_power = BASE_PUNCH_POWER
 var kick_power = BASE_KICK_POWER
+var kick_targets_hit: Array = []
 const MAX_KICK_TARGETS := 3
 const SPEED = 220.0
 const JUMP_VELOCITY = -330.0
@@ -81,7 +83,8 @@ func handle_input(_delta):
 
 	# Movimiento lateral
 	if state in [State.PUNCH, State.KICK] and is_on_floor():
-		velocity.x = 0  # bloqueado en suelo durante ataque
+		velocity.x = dir * SPEED if dir != 0 else move_toward(velocity.x, 0, SPEED)
+		velocity.x *= 0.1
 	else:
 		velocity.x = dir * SPEED if dir != 0 else move_toward(velocity.x, 0, SPEED)
 		if dir != 0:
@@ -238,30 +241,26 @@ func apply_punch_hit():
 func kick():
 	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD]:
 		return
+		
 	state = State.KICK
 	anim.play("kick")
 	
-	var frame_count = anim.sprite_frames.get_frame_count("kick")
-	var fps = anim.sprite_frames.get_animation_speed("kick")
-	attack_timer = frame_count / fps
-
+	attack_timer = anim.sprite_frames.get_frame_count("kick") / anim.sprite_frames.get_animation_speed("kick")
+	kick_targets_hit.clear()
 
 func _on_kick_hitbox_body_entered(body: Node2D) -> void:
 	if not (body.is_in_group("Enemies") or body.is_in_group("Destructibles")):
 		return
-
-	var targets := []
-	for e in kick_hitbox.get_overlapping_bodies():
-		if e.is_in_group("Enemies") or e.is_in_group("Destructibles"):
-			targets.append(e)
-
-	targets.sort_custom(func(a, b):
-		return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
-	)
-
-	for i in range(min(MAX_KICK_TARGETS, targets.size())):
-		targets[i].take_damage(kick_power, global_position, 1)
-
+	
+	if body in kick_targets_hit:
+		return
+		
+	kick_targets_hit.append(body)	
+	
+	if kick_targets_hit.size() > MAX_KICK_TARGETS:
+		return
+	
+	body.take_damage(kick_power,global_position,1)
 func disable_attack_hitboxes():
 	punch_hitbox.monitoring = false
 	kick_hitbox.monitoring = false
