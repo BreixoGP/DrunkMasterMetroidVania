@@ -1,13 +1,17 @@
-[gd_scene load_steps=49 format=3 uid="uid://receu2231nlk"]
+[gd_scene load_steps=50 format=3 uid="uid://receu2231nlk"]
 
 [ext_resource type="Script" uid="uid://dopphqk4605c8" path="res://scripts/hud.gd" id="1_6fi6k"]
 [ext_resource type="FontFile" uid="uid://bngdo3g3ydmuf" path="res://assets/fonts/PixelOperator8.ttf" id="2_6fi6k"]
+[ext_resource type="FontFile" uid="uid://ba6dspjh4hfie" path="res://assets/fonts/Bitfantasy.ttf" id="2_gltyx"]
 [ext_resource type="Texture2D" uid="uid://cluihad0bx6mw" path="res://assets/dungeon/Items/000_0044_coin2.png" id="3_uo2fv"]
 [ext_resource type="Texture2D" uid="uid://cpde3r7qd2ky3" path="res://assets/cave_objects/rune0.png" id="15_3swnk"]
 [ext_resource type="Texture2D" uid="uid://c45gpp3a3kraa" path="res://assets/cave_objects/rune1.png" id="21_03o4m"]
 [ext_resource type="Texture2D" uid="uid://bv3x3baovfudk" path="res://assets/helthbar/chinese_frame_items.png" id="22_084dp"]
 [ext_resource type="Texture2D" uid="uid://c6ocwjal34dt8" path="res://assets/cave_objects/rune2.png" id="22_dl6ww"]
 [ext_resource type="Texture2D" uid="uid://c47nhebroff5f" path="res://assets/cave_objects/rune3.png" id="23_8f8xv"]
+[ext_resource type="Texture2D" uid="uid://d0oy7a5fgn77l" path="res://assets/helthbar/botella_v2.png" id="23_y2nlu"]
+[ext_resource type="Texture2D" uid="uid://cu0fsgfrdvjx4" path="res://assets/helthbar/botella_v2over.png" id="24_kp442"]
+[ext_resource type="Texture2D" uid="uid://djqaky5r4xyfv" path="res://assets/helthbar/botella_v2fill.png" id="25_gltyx"]
 [ext_resource type="Texture2D" uid="uid://btghvo7b2b0g1" path="res://assets/dungeon/Items/000_0036_coin10.png" id="25_v0qwq"]
 [ext_resource type="Texture2D" uid="uid://v3y8rarv86vq" path="res://assets/dungeon/Items/000_0037_coin9.png" id="26_yawqa"]
 [ext_resource type="Texture2D" uid="uid://c0xgjfsah71yu" path="res://assets/dungeon/Items/000_0038_coin8.png" id="27_qccye"]
@@ -22,9 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://dr6m48nnve5dt" path="res://assets/cave_objects/Key3.png" id="38_uorui"]
 [ext_resource type="Texture2D" uid="uid://cqdxaqk5a80gc" path="res://assets/cave_objects/Key4.png" id="39_wi3kw"]
 [ext_resource type="Texture2D" uid="uid://ce21rhmbur4ey" path="res://assets/cave_objects/Key5.png" id="40_ka0sb"]
-[ext_resource type="Texture2D" uid="uid://c2vnd200dmwu8" path="res://assets/helthbar/HUDBOTTLE_progress_under.png" id="41_wi3kw"]
-[ext_resource type="Texture2D" uid="uid://cbrg0lr6egerd" path="res://assets/helthbar/HUDBOTTLE_progress.png" id="42_ka0sb"]
-[ext_resource type="Texture2D" uid="uid://cox2jkvp2a0af" path="res://assets/helthbar/HUDBOTTLE_progress_fill.png" id="43_7r3ka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkknv"]
 atlas = ExtResource("15_3swnk")
@@ -238,17 +239,18 @@ script = ExtResource("1_6fi6k")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 modulate = Color(1.4164544, 1.4164544, 1.4164544, 1)
 top_level = true
-offset_left = 78.0
+offset_left = 76.0
 offset_top = -2.0
-offset_right = 395.0
+offset_right = 393.0
 offset_bottom = 93.0
 mouse_filter = 2
 
 [node name="points_label" type="Label" parent="HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.5411765, 0, 1)
-theme_override_fonts/font = ExtResource("2_6fi6k")
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.8352941, 0.69803923, 0.8235294)
+theme_override_fonts/font = ExtResource("2_gltyx")
+theme_override_font_sizes/font_size = 32
 text = "00000"
 
 [node name="crystal" type="AnimatedSprite2D" parent="HBoxContainer"]
@@ -260,7 +262,7 @@ animation = &"empty"
 
 [node name="coin" type="AnimatedSprite2D" parent="HBoxContainer"]
 self_modulate = Color(0.57996243, 0.57996243, 0.57996243, 1)
-position = Vector2(-16, 46.999996)
+position = Vector2(-18, 47)
 scale = Vector2(1, 0.97)
 sprite_frames = SubResource("SpriteFrames_4hsw7")
 animation = &"win"
@@ -279,31 +281,39 @@ position = Vector2(352, 41)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_pca12")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+top_level = true
+texture_filter = 1
+offset_left = 165.0
+offset_top = 24.0
+offset_right = 1151.0
+offset_bottom = 326.0
+scale = Vector2(0.17, 0.17)
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("23_y2nlu")
+texture_over = ExtResource("24_kp442")
+texture_progress = ExtResource("25_gltyx")
+texture_progress_offset = Vector2(40, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -153.0
+offset_right = -7.0
+offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="message_label" type="Label" parent="HBoxContainer2"]
-visible = false
+[node name="message_label" type="Label" parent="CanvasLayer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_6fi6k")
 text = "mensaje de prueba por defecto kodsv kv k kdfnbkndf lbkndfkl nbkdlfn bdfklnb kldf"
 horizontal_alignment = 1
-
-[node name="ProgressBar" type="TextureProgressBar" parent="."]
-top_level = true
-offset_left = 158.0
-offset_top = -2.9999998
-offset_right = 286.0
-offset_bottom = 61.0
-scale = Vector2(1.4, 1.4)
-max_value = 30.0
-value = 30.0
-texture_under = ExtResource("41_wi3kw")
-texture_over = ExtResource("42_ka0sb")
-texture_progress = ExtResource("43_7r3ka")

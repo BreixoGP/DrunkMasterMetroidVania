@@ -452,6 +452,10 @@ animations = [{
 radius = 12.0
 height = 46.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sns30"]
+radius = 8.0
+height = 60.0
+
 [sub_resource type="GDScript" id="GDScript_x3l2y"]
 script/source = "extends CPUParticles2D
 
@@ -465,10 +469,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sns30"]
-radius = 8.0
-height = 60.0
 
 [node name="DrunkMaster" type="CharacterBody2D"]
 collision_layer = 4
@@ -509,9 +509,19 @@ monitoring = false
 position = Vector2(15, 2)
 shape = SubResource("CapsuleShape2D_p65w1")
 
-[node name="Bloodparticles" type="CPUParticles2D" parent="flipper"]
+[node name="overlap_area" type="Area2D" parent="flipper"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flipper/overlap_area"]
+position = Vector2(1, -4)
+shape = SubResource("CapsuleShape2D_sns30")
+debug_color = Color(0.92472935, 0.09640942, 0.6315626, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="flipper"]
+
+[node name="Bloodparticles" type="CPUParticles2D" parent="flipper/CanvasLayer"]
 top_level = true
-clip_children = 2
 z_index = 200
 position = Vector2(0, -21)
 emitting = false
@@ -529,15 +539,6 @@ initial_velocity_max = 100.0
 angle_max = 357.5
 color = Color(1.5480369, 0.07154224, 0, 1)
 script = SubResource("GDScript_x3l2y")
-
-[node name="overlap_area" type="Area2D" parent="flipper"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flipper/overlap_area"]
-position = Vector2(1, -4)
-shape = SubResource("CapsuleShape2D_sns30")
-debug_color = Color(0.92472935, 0.09640942, 0.6315626, 0.41960785)
 
 [connection signal="ready" from="." to="." method="_ready"]
 [connection signal="body_entered" from="flipper/kick_hitbox" to="." method="_on_kick_hitbox_body_entered"]
