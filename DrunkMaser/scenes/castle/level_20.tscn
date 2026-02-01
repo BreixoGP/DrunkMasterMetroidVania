@@ -3238,7 +3238,7 @@ sources/1 = SubResource("TileSetAtlasSource_wphk7")
 sources/2 = SubResource("TileSetAtlasSource_0selc")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6smr"]
-size = Vector2(130, 118)
+size = Vector2(130, 34)
 
 [node name="level20" type="Node2D"]
 script = ExtResource("1_b2vpn")
@@ -3322,7 +3322,7 @@ position = Vector2(454, -207)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D"]
-position = Vector2(2, -49)
+position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_a6smr")
 
 [node name="Area2D2" type="Area2D" parent="areas"]
@@ -3330,7 +3330,7 @@ position = Vector2(677, -255)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D2"]
-position = Vector2(0, -56)
+position = Vector2(4, 5)
 shape = SubResource("RectangleShape2D_a6smr")
 
 [node name="Area2D3" type="Area2D" parent="areas"]
@@ -3338,7 +3338,7 @@ position = Vector2(950, -273)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D3"]
-position = Vector2(1, -55)
+position = Vector2(4, 3)
 shape = SubResource("RectangleShape2D_a6smr")
 
 [node name="Area2D4" type="Area2D" parent="areas"]
@@ -3346,7 +3346,7 @@ position = Vector2(1222, -255)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D4"]
-position = Vector2(2, -56)
+position = Vector2(3, 6)
 shape = SubResource("RectangleShape2D_a6smr")
 
 [node name="Area2D5" type="Area2D" parent="areas"]
@@ -3354,7 +3354,7 @@ position = Vector2(1429, -206)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D5"]
-position = Vector2(4, -56)
+position = Vector2(6, 2)
 shape = SubResource("RectangleShape2D_a6smr")
 
 [node name="markers" type="Node" parent="."]

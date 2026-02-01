@@ -8,12 +8,13 @@ class_name DrunkMaster
 @onready var kick_hitbox: Area2D = $flipper/kick_hitbox
 @onready var blood_particles: CPUParticles2D = $flipper/Bloodparticles
 @onready var overlap_area: Area2D = $flipper/overlap_area
+@onready var flip_hitbox: Area2D = $flipper/flip_hitbox
 
 var inside_enemy_time := 0.0
 const ENEMY_FRICTION := 0.4
 const CHIP_DAMAGE_TIME := 0.6
 
-enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, HURT, INTERACT, DEAD }
+enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, FLIP, HURT, INTERACT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
 const BASE_MAX_LIFE := 30.0
@@ -54,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		inside_enemy_time += delta
 
 		# Fricción horizontal si no estamos atacando ni saltando
-		if state not in [State.PUNCH, State.KICK, State.JUMP]:
+		if state not in [State.PUNCH, State.KICK, State.JUMP ,State.FLIP]:
 			velocity.x *= ENEMY_FRICTION
 
 		# Daño suave si se queda demasiado
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 	play_animation()
 
 	# Manejo de ataque por timer
-	if state in [State.PUNCH, State.KICK]:
+	if state in [State.PUNCH, State.KICK ,State.FLIP]:
 		attack_timer -= delta
 		if attack_timer <= 0:
 			state = State.IDLE
@@ -90,7 +91,7 @@ func handle_input(_delta):
 		speed_factor = 0.3
 		# 70% knockback + 30% input
 		velocity.x = velocity.x * 0.7 + dir * SPEED * speed_factor
-	elif state in [State.PUNCH, State.KICK]:
+	elif state in [State.PUNCH, State.KICK ,State.FLIP]:
 		# 10% velocidad mientras ataca
 		velocity.x = dir * SPEED * 0.1
 	else:
@@ -109,6 +110,8 @@ func handle_input(_delta):
 		punch()
 	if Input.is_action_just_pressed("kick"):
 		kick()
+	if Input.is_action_just_pressed("flip"):
+		flip()
 	if Input.is_action_just_pressed("interact"):
 		interact()
 
@@ -130,7 +133,7 @@ func update_state():
 	if life <= 0:
 		state = State.DEAD
 		return
-	if state in [State.PUNCH, State.KICK, State.HURT,State.INTERACT]:
+	if state in [State.PUNCH, State.KICK, State.HURT,State.INTERACT, State.FLIP]:
 		return
 	if is_on_wall() and not is_on_floor() and (Input.is_action_pressed("move_left")
 	 or Input.is_action_pressed("move_right")) and GameManager.wall_ability_active:
@@ -160,6 +163,9 @@ func play_animation():
 		State.HURT: anim.play("hurt")
 		State.INTERACT: anim.play("interact")
 		State.DEAD: anim.play("die")
+		State.FLIP: 
+			if anim.animation != "flip":
+				anim.play("flip")
 		
 func _on_frame_changed():
 	if state == State.PUNCH and (anim.frame == 2 or anim.frame == 5):
@@ -167,7 +173,8 @@ func _on_frame_changed():
 
 	if state == State.KICK:
 		kick_hitbox.monitoring = (anim.frame == 3)
-
+	if state == State.FLIP:
+		flip_hitbox.monitoring = (anim.frame == 3)
 		
 # DAÑO Y KNOCKBACK
 func take_damage(amount: int, from_position: Vector2,attack_type: int):
@@ -234,7 +241,7 @@ func _end_knockback():
 	
 #ATAQUES
 func punch():
-	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD]:
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
 		return
 	state = State.PUNCH
 	anim.play("punch")
@@ -251,7 +258,7 @@ func apply_punch_hit():
 	
 	
 func kick():
-	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD]:
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
 		return
 		
 	state = State.KICK
@@ -259,6 +266,15 @@ func kick():
 	
 	attack_timer = anim.sprite_frames.get_frame_count("kick") / anim.sprite_frames.get_animation_speed("kick")
 	kick_targets_hit.clear()
+
+func flip():
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
+		return
+		
+	state = State.FLIP
+	anim.play("flip")
+	
+	attack_timer = anim.sprite_frames.get_frame_count("flip") / anim.sprite_frames.get_animation_speed("flip")
 
 func _on_kick_hitbox_body_entered(body: Node2D) -> void:
 	if not (body.is_in_group("Enemies") or body.is_in_group("Destructibles")):
@@ -276,7 +292,7 @@ func _on_kick_hitbox_body_entered(body: Node2D) -> void:
 func disable_attack_hitboxes():
 	punch_hitbox.monitoring = false
 	kick_hitbox.monitoring = false
-	
+	flip_hitbox.monitoring = false
 func get_closest_enemy_in_area(area: Area2D) -> Node2D:
 	var closest = null
 	var closest_dist := INF
@@ -330,3 +346,9 @@ func apply_permanent_upgrades():
 	if GameManager.hud:
 			GameManager.hud.set_max_health(max_life)
 			GameManager.hud.update_health(life)
+
+
+func _on_flip_hitbox_body_entered(body: Node2D) -> void:
+	if not (body.is_in_group("Enemies") or body.is_in_group("Destructibles")):
+		return
+	body.take_damage(3,global_position,3)

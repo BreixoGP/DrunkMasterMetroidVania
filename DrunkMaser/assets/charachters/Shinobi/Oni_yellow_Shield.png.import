@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c52sgsjou4jrg"
-path="res://.godot/imported/Shield.png-8b65051237a573b4bd91777f58f1aa39.ctex"
+uid="uid://diqkdusxkcd61"
+path="res://.godot/imported/Oni_yellow_Shield.png-4e3f0071c6c89bbdcc04a9c0ee645719.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Shield.png"
-dest_files=["res://.godot/imported/Shield.png-8b65051237a573b4bd91777f58f1aa39.ctex"]
+source_file="res://assets/charachters/Shinobi/Oni_yellow_Shield.png"
+dest_files=["res://.godot/imported/Oni_yellow_Shield.png-4e3f0071c6c89bbdcc04a9c0ee645719.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n8bnbsuyhmf"
-path="res://.godot/imported/Walk.png-dc8264d3a81f41b6f33ec2c8bb0edb17.ctex"
+path="res://.godot/imported/Walk.png-41fe2af9f5b1e3cf9a5d3ee4741cbea7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Walk.png"
-dest_files=["res://.godot/imported/Walk.png-dc8264d3a81f41b6f33ec2c8bb0edb17.ctex"]
+source_file="res://assets/charachters/Shinobi/Walk.png"
+dest_files=["res://.godot/imported/Walk.png-41fe2af9f5b1e3cf9a5d3ee4741cbea7.ctex"]
 
 [params]
 

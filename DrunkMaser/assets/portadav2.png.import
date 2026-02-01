@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://37qprx88yj2k"
-path="res://.godot/imported/Jump.png-c0469b8035fdc49861f5d213368a6bf6.ctex"
+uid="uid://ctmowwjm0m4dk"
+path="res://.godot/imported/portadav2.png-d74ea9367fca626a1cf739d36bc1e0e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Jump.png"
-dest_files=["res://.godot/imported/Jump.png-c0469b8035fdc49861f5d213368a6bf6.ctex"]
+source_file="res://assets/portadav2.png"
+dest_files=["res://.godot/imported/portadav2.png-d74ea9367fca626a1cf739d36bc1e0e1.ctex"]
 
 [params]
 

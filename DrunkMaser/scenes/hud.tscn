@@ -318,6 +318,7 @@ scale = Vector2(1.1175889, 0.42634562)
 texture = ExtResource("26_gltyx")
 
 [node name="message_label" type="Label" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(2, 2)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.18189457, 0.1089006, 0.0046762396, 1)

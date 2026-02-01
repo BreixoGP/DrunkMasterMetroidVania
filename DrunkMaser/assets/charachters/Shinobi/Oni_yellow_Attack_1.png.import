@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyorlmockmxdh"
-path="res://.godot/imported/Oni_yellow_Idle.png-fede62283b8ff54ddf202d94e360b8cd.ctex"
+uid="uid://mrtv0pe2510b"
+path="res://.godot/imported/Oni_yellow_Attack_1.png-8a81abd72c4723524030b1d9acf8cb62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Oni_yellow_Idle.png"
-dest_files=["res://.godot/imported/Oni_yellow_Idle.png-fede62283b8ff54ddf202d94e360b8cd.ctex"]
+source_file="res://assets/charachters/Shinobi/Oni_yellow_Attack_1.png"
+dest_files=["res://.godot/imported/Oni_yellow_Attack_1.png-8a81abd72c4723524030b1d9acf8cb62.ctex"]
 
 [params]
 

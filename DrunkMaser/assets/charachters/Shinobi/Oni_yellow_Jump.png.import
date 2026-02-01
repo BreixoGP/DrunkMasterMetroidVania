@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmy5mf6ntuwy3"
-path="res://.godot/imported/Oni_yellow_Attackdistance.png-2f0e62bd0c269d654b60e783811f9318.ctex"
+uid="uid://il5uhxioq7dx"
+path="res://.godot/imported/Oni_yellow_Jump.png-c2f5090e2b760b7c4451eab1bc902f52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Oni_yellow_Attackdistance.png"
-dest_files=["res://.godot/imported/Oni_yellow_Attackdistance.png-2f0e62bd0c269d654b60e783811f9318.ctex"]
+source_file="res://assets/charachters/Shinobi/Oni_yellow_Jump.png"
+dest_files=["res://.godot/imported/Oni_yellow_Jump.png-c2f5090e2b760b7c4451eab1bc902f52.ctex"]
 
 [params]
 

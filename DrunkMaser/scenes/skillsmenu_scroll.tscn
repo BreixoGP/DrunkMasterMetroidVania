@@ -220,7 +220,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
 theme_override_fonts/font = ExtResource("3_ngi6a")
 theme_override_font_sizes/font_size = 32
-text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+text = "Drunken Crane’s Embrace— Lan Caihe
+Cling to the wall and the fall slows.
+Step toward it, then rise in a drunken leap."
 
 [node name="boost" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
 layout_mode = 2
@@ -234,7 +236,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
 theme_override_fonts/font = ExtResource("3_ngi6a")
 theme_override_font_sizes/font_size = 32
-text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+text = "Iron Gourd of the Sword Immortal— Lu Dongbin
+Pain fades with every drink.
+The body hardens, the blows grow heavier."
 
 [node name="misc" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
 visible = false
@@ -335,6 +339,7 @@ offset_bottom = 463.0
 color = Color(0.2509804, 0.105882354, 0, 0.5137255)
 
 [node name="controls_display" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

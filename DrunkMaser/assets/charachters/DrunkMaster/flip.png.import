@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c81hmx1vxp061"
-path="res://.godot/imported/Hurt.png-1b98c2a98c3c312386b799830f68c053.ctex"
+uid="uid://b5o61sfkjk8v6"
+path="res://.godot/imported/flip.png-1f231a4ffa5fca657b7ac1f63f319957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Hurt.png"
-dest_files=["res://.godot/imported/Hurt.png-1b98c2a98c3c312386b799830f68c053.ctex"]
+source_file="res://assets/charachters/DrunkMaster/flip.png"
+dest_files=["res://.godot/imported/flip.png-1f231a4ffa5fca657b7ac1f63f319957.ctex"]
 
 [params]
 

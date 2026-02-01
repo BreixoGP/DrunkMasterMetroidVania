@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w8uvj3b14e88"
-path="res://.godot/imported/Attack_1.png-515315ca9d1fb7ec6c99e1e20e6d38d9.ctex"
+uid="uid://wkk11np3tbtk"
+path="res://.godot/imported/Dead.png-963096db15e51231febdc9e98e25979d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/helthbar/Shinobi/Attack_1.png"
-dest_files=["res://.godot/imported/Attack_1.png-515315ca9d1fb7ec6c99e1e20e6d38d9.ctex"]
+source_file="res://assets/charachters/Shinobi/Dead.png"
+dest_files=["res://.godot/imported/Dead.png-963096db15e51231febdc9e98e25979d.ctex"]
 
 [params]
 

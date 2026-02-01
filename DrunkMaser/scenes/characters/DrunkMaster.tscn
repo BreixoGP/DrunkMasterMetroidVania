@@ -1,10 +1,11 @@
-[gd_scene load_steps=71 format=3 uid="uid://mxsmjwdj3tvw"]
+[gd_scene load_steps=78 format=3 uid="uid://mxsmjwdj3tvw"]
 
 [ext_resource type="Script" uid="uid://li1ill2fffw1" path="res://scripts/drunkmaster.gd" id="1_ehg33"]
 [ext_resource type="Texture2D" uid="uid://blb8kmm3wp6vh" path="res://assets/charachters/DrunkMaster/Attack_1Drunk.png" id="2_x3l2y"]
 [ext_resource type="Texture2D" uid="uid://dpjq64w3m51mp" path="res://assets/charachters/DrunkMaster/Attack_2Drunk.png" id="3_sns30"]
 [ext_resource type="Texture2D" uid="uid://c18yxswjc657b" path="res://assets/charachters/DrunkMaster/Attack_3Drunk.png" id="4_qxh6c"]
 [ext_resource type="Texture2D" uid="uid://d4jb4b4j4bt7k" path="res://assets/charachters/DrunkMaster/DeadDrunk.png" id="6_rmwwx"]
+[ext_resource type="Texture2D" uid="uid://b5o61sfkjk8v6" path="res://assets/charachters/DrunkMaster/flip.png" id="6_sns30"]
 [ext_resource type="Texture2D" uid="uid://8kr2tyr32gq5" path="res://assets/charachters/DrunkMaster/HurtDrunk.png" id="6_x3l2y"]
 [ext_resource type="Texture2D" uid="uid://b7fb8qunmuoc2" path="res://assets/charachters/DrunkMaster/IdleDrunk.png" id="7_gp5ia"]
 [ext_resource type="Texture2D" uid="uid://c1ljxniywvavo" path="res://assets/charachters/DrunkMaster/drinkDrunk.png" id="8_qcocl"]
@@ -66,6 +67,26 @@ region = Rect2(1024, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmwwx"]
 atlas = ExtResource("9_1hk1y")
 region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa0o5"]
+atlas = ExtResource("6_sns30")
+region = Rect2(0, 0, 134, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1vrx"]
+atlas = ExtResource("6_sns30")
+region = Rect2(134, 0, 134, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p2ct"]
+atlas = ExtResource("6_sns30")
+region = Rect2(268, 0, 134, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo6ft"]
+atlas = ExtResource("6_sns30")
+region = Rect2(402, 0, 134, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ustq8"]
+atlas = ExtResource("6_sns30")
+region = Rect2(536, 0, 134, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0om53"]
 atlas = ExtResource("6_x3l2y")
@@ -302,6 +323,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oa0o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1vrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p2ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo6ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ustq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa0o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1vrx")
+}],
+"loop": false,
+"name": &"flip",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0om53")
 }, {
 "duration": 1.0,
@@ -477,6 +524,9 @@ animations = [{
 radius = 12.0
 height = 46.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sns30"]
+radius = 37.215588
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sns30"]
 radius = 8.0
 height = 60.0
@@ -521,8 +571,8 @@ texture_filter = 1
 position = Vector2(2.9999962, -27)
 scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
-animation = &"interact"
-frame = 3
+animation = &"flip"
+frame = 6
 frame_progress = 1.0
 
 [node name="kick_hitbox" type="Area2D" parent="flipper"]
@@ -533,6 +583,16 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flipper/kick_hitbox"]
 position = Vector2(15, 2)
 shape = SubResource("CapsuleShape2D_p65w1")
+
+[node name="flip_hitbox" type="Area2D" parent="flipper"]
+collision_layer = 3
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flipper/flip_hitbox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_sns30")
+debug_color = Color(1.8289685e-06, 0.639897, 0.3625538, 0.41960785)
 
 [node name="overlap_area" type="Area2D" parent="flipper"]
 collision_layer = 0
@@ -567,3 +627,4 @@ script = SubResource("GDScript_x3l2y")
 
 [connection signal="ready" from="." to="." method="_ready"]
 [connection signal="body_entered" from="flipper/kick_hitbox" to="." method="_on_kick_hitbox_body_entered"]
+[connection signal="body_entered" from="flipper/flip_hitbox" to="." method="_on_flip_hitbox_body_entered"]
