@@ -1,0 +1,752 @@
+[gd_scene load_steps=45 format=3 uid="uid://cpkov5n40b35i"]
+
+[ext_resource type="Script" uid="uid://bh7uxb2j572fq" path="res://scripts/skillsmenu_scroll.gd" id="1_xuufn"]
+[ext_resource type="Texture2D" uid="uid://b6wc6q8c2rnnn" path="res://assets/helthbar/chinese_frame.png" id="2_myc5q"]
+[ext_resource type="FontFile" uid="uid://ba6dspjh4hfie" path="res://assets/fonts/Bitfantasy.ttf" id="3_ngi6a"]
+[ext_resource type="Texture2D" uid="uid://dphnpq2ydb2ue" path="res://assets/botella6.png" id="4_1kxw7"]
+[ext_resource type="Texture2D" uid="uid://dafus7yy5tcrk" path="res://assets/botella5.png" id="5_hl611"]
+[ext_resource type="Texture2D" uid="uid://1s0vr6xevvd4" path="res://assets/botella3.png" id="7_3vmnd"]
+[ext_resource type="Texture2D" uid="uid://dt6mvw7bqwcmb" path="res://assets/botella1.png" id="7_gng1a"]
+[ext_resource type="Texture2D" uid="uid://brta2ipyxvfg0" path="res://assets/botella2.png" id="8_im5wy"]
+[ext_resource type="Texture2D" uid="uid://b5hh6vnjlvp4o" path="res://assets/botella4.png" id="9_g3pw1"]
+[ext_resource type="Texture2D" uid="uid://7qvn53u46ccb" path="res://assets/KEYBOARD/KEYS/ARROWRIGHT.png" id="12_im5wy"]
+[ext_resource type="Texture2D" uid="uid://6dl2xpxk5xfu" path="res://assets/fonts/Icons/7Social-media-icons_40.png" id="12_ngi6a"]
+[ext_resource type="Texture2D" uid="uid://b1ixhf3w2ksga" path="res://assets/fonts/Icons/7Social-media-icons_38.png" id="13_1kxw7"]
+[ext_resource type="Texture2D" uid="uid://cc1wunfdwxx2j" path="res://assets/KEYBOARD/KEYS/ARROWUP.png" id="13_mi1ng"]
+[ext_resource type="Texture2D" uid="uid://c88dsoac88t41" path="res://assets/KEYBOARD/KEYS/J.png" id="14_ab2ls"]
+[ext_resource type="Texture2D" uid="uid://dfmvovjchmfnr" path="res://assets/KEYBOARD/KEYS/K.png" id="15_67vl3"]
+[ext_resource type="Texture2D" uid="uid://ry87y2xiyx6s" path="res://assets/KEYBOARD/KEYS/I.png" id="16_1osux"]
+[ext_resource type="Texture2D" uid="uid://bdjqmvciuvhfs" path="res://assets/KEYBOARD/KEYS/U.png" id="17_itvgb"]
+[ext_resource type="Texture2D" uid="uid://dwiyap53s0mpc" path="res://assets/KEYBOARD/KEYS/P.png" id="18_105hr"]
+[ext_resource type="Texture2D" uid="uid://dfid4jnabcp4b" path="res://assets/PS4/LEFTSTICK.png" id="19_xuufn"]
+[ext_resource type="Texture2D" uid="uid://celshbwrq8hon" path="res://assets/PS4/X.png" id="20_wrglp"]
+[ext_resource type="Texture2D" uid="uid://bk46qodom3ehs" path="res://assets/PS4/CIRCLE.png" id="21_l1n0n"]
+[ext_resource type="Texture2D" uid="uid://cf1yfadbnoa1" path="res://assets/PS4/SQUARE.png" id="22_ufequ"]
+[ext_resource type="Texture2D" uid="uid://c4tgpwiirmkio" path="res://assets/PS4/R1.png" id="23_syh76"]
+[ext_resource type="Texture2D" uid="uid://fdwg0cnq76ve" path="res://assets/PS4/TRIANGLE.png" id="24_s3i36"]
+[ext_resource type="Texture2D" uid="uid://bjvy71uth2e0o" path="res://assets/PS4/START.png" id="25_uovor"]
+[ext_resource type="Texture2D" uid="uid://7if6fdak8wlt" path="res://assets/XBOX/A.png" id="26_34ejy"]
+[ext_resource type="Texture2D" uid="uid://6m1t6iv6mwb4" path="res://assets/XBOX/B.png" id="27_4hmpy"]
+[ext_resource type="Texture2D" uid="uid://y3evrl7i7pxm" path="res://assets/XBOX/X.png" id="28_n6tqi"]
+[ext_resource type="Texture2D" uid="uid://dsdqn1agnsv8q" path="res://assets/XBOX/R.png" id="29_d08e8"]
+[ext_resource type="Texture2D" uid="uid://nr35ehsr5rqp" path="res://assets/XBOX/Y.png" id="30_agb0q"]
+[ext_resource type="Texture2D" uid="uid://chvt4avldw28t" path="res://assets/XBOX/START.png" id="31_bp55e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8t4"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd330"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qv3l"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84scb"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt2on"]
+bg_color = Color(0.957493, 0.70045406, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5nfe"]
+bg_color = Color(0.1907191, 0.12856773, 7.219613e-08, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd8cd"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alvbl"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnl2j"]
+bg_color = Color(0.95686275, 0.7019608, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngi6a"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kxw7"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl611"]
+bg_color = Color(0.19215687, 0.12941177, 0, 0.7176471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog36"]
+bg_color = Color(0.95686275, 0.7019608, 0, 0.7176471)
+
+[node name="skillsmenu_scroll" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xuufn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.6027341, 0.6027341, 0.6027341, 0.8156863)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_myc5q")
+expand_mode = 1
+
+[node name="controls" type="Button" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 691.0
+offset_top = 64.0
+offset_right = 969.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/font_focus_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_hover_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_wv8t4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wd330")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qv3l")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_84scb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lt2on")
+text = "Controls"
+
+[node name="skills" type="Button" parent="."]
+process_mode = 3
+top_level = true
+layout_mode = 0
+offset_left = 250.0
+offset_top = 64.0
+offset_right = 459.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/font_focus_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_hover_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_b5nfe")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vd8cd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_alvbl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rnl2j")
+text = "Skills"
+
+[node name="skills_scroll" type="ScrollContainer" parent="."]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 153.0
+offset_right = 1104.0
+offset_bottom = 462.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="skills_scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="wallslide" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+layout_mode = 2
+
+[node name="wallslide_icon" type="TextureRect" parent="skills_scroll/VBoxContainer/wallslide"]
+layout_mode = 2
+texture = ExtResource("4_1kxw7")
+
+[node name="wallslide_label" type="Label" parent="skills_scroll/VBoxContainer/wallslide"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="boost" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+layout_mode = 2
+
+[node name="boost_icon" type="TextureRect" parent="skills_scroll/VBoxContainer/boost"]
+layout_mode = 2
+texture = ExtResource("5_hl611")
+
+[node name="boost_label" type="Label" parent="skills_scroll/VBoxContainer/boost"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc"]
+layout_mode = 2
+texture = ExtResource("7_gng1a")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "  baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc2" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc2"]
+layout_mode = 2
+texture = ExtResource("7_3vmnd")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc3" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc3"]
+layout_mode = 2
+texture = ExtResource("8_im5wy")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc4" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc4"]
+layout_mode = 2
+texture = ExtResource("9_g3pw1")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc5" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc5"]
+layout_mode = 2
+texture = ExtResource("4_1kxw7")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="misc6" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="skills_scroll/VBoxContainer/misc6"]
+layout_mode = 2
+texture = ExtResource("4_1kxw7")
+
+[node name="Label" type="Label" parent="skills_scroll/VBoxContainer/misc6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "baihbejksbnesklfjbklefsjdbklfdjbkldfjbkldfjbkldfjkbljdfklxxb"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 151.0
+offset_right = 1106.0
+offset_bottom = 463.0
+color = Color(0.2509804, 0.105882354, 0, 0.5137255)
+
+[node name="controls_display" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pc" type="Button" parent="controls_display"]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 107.0
+offset_right = 807.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngi6a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1kxw7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hl611")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tog36")
+text = "PC"
+
+[node name="ps" type="Button" parent="controls_display"]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 107.0
+offset_right = 849.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngi6a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1kxw7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hl611")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tog36")
+icon = ExtResource("12_ngi6a")
+icon_alignment = 1
+expand_icon = true
+
+[node name="xbox" type="Button" parent="controls_display"]
+layout_mode = 0
+offset_left = 856.0
+offset_top = 107.0
+offset_right = 890.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.12941177, 0.07058824, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.3647059, 0.23137255, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngi6a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1kxw7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hl611")
+theme_override_styles/focus = SubResource("StyleBoxFlat_tog36")
+icon = ExtResource("13_1kxw7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="pc_controls_scroll" type="ScrollContainer" parent="controls_display"]
+top_level = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 166.0
+offset_right = 1104.0
+offset_bottom = 443.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="controls_display/pc_controls_scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="box" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "MOVE"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+texture = ExtResource("12_im5wy")
+expand_mode = 2
+
+[node name="box2" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "JUMP"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+texture = ExtResource("13_mi1ng")
+expand_mode = 2
+
+[node name="box3" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 315
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PUNCH"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+texture = ExtResource("14_ab2ls")
+expand_mode = 2
+
+[node name="box4" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 350
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "KICK"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+texture = ExtResource("15_67vl3")
+expand_mode = 2
+
+[node name="box5" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 249
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "INTERACT"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+texture = ExtResource("16_1osux")
+expand_mode = 2
+
+[node name="box6" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 284
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "SPECIAL"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+texture = ExtResource("17_itvgb")
+expand_mode = 2
+
+[node name="box7" type="HBoxContainer" parent="controls_display/pc_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 159
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/pc_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PAUSE/RESUME"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/pc_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+texture = ExtResource("18_105hr")
+expand_mode = 2
+
+[node name="ps_controls_scroll" type="ScrollContainer" parent="controls_display"]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 166.0
+offset_right = 1104.0
+offset_bottom = 443.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="controls_display/ps_controls_scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="box" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "MOVE"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+texture = ExtResource("19_xuufn")
+expand_mode = 2
+
+[node name="box2" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "JUMP"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+texture = ExtResource("20_wrglp")
+expand_mode = 2
+
+[node name="box3" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 315
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PUNCH"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+texture = ExtResource("21_l1n0n")
+expand_mode = 2
+
+[node name="box4" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 350
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "KICK"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+texture = ExtResource("22_ufequ")
+expand_mode = 2
+
+[node name="box5" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 249
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "INTERACT"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+texture = ExtResource("23_syh76")
+expand_mode = 2
+
+[node name="box6" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 284
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "SPECIAL"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+texture = ExtResource("24_s3i36")
+expand_mode = 2
+
+[node name="box7" type="HBoxContainer" parent="controls_display/ps_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 159
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/ps_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PAUSE/RESUME"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/ps_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+texture = ExtResource("25_uovor")
+expand_mode = 2
+
+[node name="xbox_controls_scroll" type="ScrollContainer" parent="controls_display"]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 166.0
+offset_right = 1104.0
+offset_bottom = 443.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="controls_display/xbox_controls_scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="box" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "MOVE"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box"]
+layout_mode = 2
+texture = ExtResource("19_xuufn")
+expand_mode = 2
+
+[node name="box2" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 336
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "JUMP"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box2"]
+layout_mode = 2
+texture = ExtResource("26_34ejy")
+expand_mode = 2
+
+[node name="box3" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 315
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PUNCH"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box3"]
+layout_mode = 2
+texture = ExtResource("27_4hmpy")
+expand_mode = 2
+
+[node name="box4" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 350
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "KICK"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box4"]
+layout_mode = 2
+texture = ExtResource("28_n6tqi")
+expand_mode = 2
+
+[node name="box5" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 249
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "INTERACT"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box5"]
+layout_mode = 2
+texture = ExtResource("29_d08e8")
+expand_mode = 2
+
+[node name="box6" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 284
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "SPECIAL"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box6"]
+layout_mode = 2
+texture = ExtResource("30_agb0q")
+expand_mode = 2
+
+[node name="box7" type="HBoxContainer" parent="controls_display/xbox_controls_scroll/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 159
+alignment = 1
+
+[node name="label" type="Label" parent="controls_display/xbox_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 48
+text = "PAUSE/RESUME"
+
+[node name="TextureRect2" type="TextureRect" parent="controls_display/xbox_controls_scroll/VBoxContainer/box7"]
+layout_mode = 2
+texture = ExtResource("31_bp55e")
+expand_mode = 2
+
+[connection signal="pressed" from="controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="skills" to="." method="_on_skills_pressed"]
+[connection signal="pressed" from="controls_display/pc" to="." method="_on_pc_pressed"]
+[connection signal="pressed" from="controls_display/ps" to="." method="_on_ps_pressed"]
+[connection signal="pressed" from="controls_display/xbox" to="." method="_on_xbox_pressed"]

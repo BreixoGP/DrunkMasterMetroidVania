@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://7kbs4bwb7dwf" path="res://scripts/camera.gd" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://g7d0huv0qvkl" path="res://scripts/fade.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://receu2231nlk" path="res://scenes/hud.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://bjvf11sssce64" path="res://scenes/skillsmenu.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cpkov5n40b35i" path="res://scenes/skillsmenu_scroll.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0wfyh")
@@ -38,5 +38,5 @@ script = ExtResource("4_jyhfs")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="pause_menu" parent="CanvasLayer2" instance=ExtResource("6_tefeu")]
+[node name="skillsmenu_scroll" parent="CanvasLayer2" instance=ExtResource("6_tefeu")]
 visible = false

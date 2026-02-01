@@ -51,6 +51,7 @@ script = ExtResource("1_b5nfe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.6027341, 0.6027341, 0.6027341, 0.8156863)
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +110,6 @@ offset_right = 1154.0
 offset_bottom = 656.0
 
 [node name="wallslide" type="Node2D" parent="skills_cont"]
-visible = false
 position = Vector2(116, 134)
 
 [node name="Label" type="Label" parent="skills_cont/wallslide"]
@@ -126,21 +126,22 @@ text = "Now you can climb,jump and slide walls just press left or right
 against a wall and press jump"
 
 [node name="TextureRect" type="TextureRect" parent="skills_cont/wallslide"]
-offset_left = -51.999996
-offset_top = 6.9999995
-offset_right = 27.000004
-offset_bottom = 102.0
+offset_left = -57.999996
+offset_top = 8.999999
+offset_right = 21.000004
+offset_bottom = 104.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_cab2a")
 
 [node name="ColorRect" type="ColorRect" parent="skills_cont/wallslide"]
-offset_left = -57.0
-offset_top = 11.0
+offset_left = -56.0
+offset_top = 9.0
 offset_right = 964.0
-offset_bottom = 66.0
+offset_bottom = 65.0
 color = Color(0.25882354, 0.1254902, 0, 0.48235294)
 
 [node name="wallslide_locked" type="Node2D" parent="skills_cont"]
+visible = false
 position = Vector2(116, 162)
 
 [node name="ColorRect" type="ColorRect" parent="skills_cont/wallslide_locked"]
