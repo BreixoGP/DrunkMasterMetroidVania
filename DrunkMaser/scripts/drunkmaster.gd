@@ -7,14 +7,16 @@ class_name DrunkMaster
 @onready var punch_hitbox: Area2D = $flipper/punch_hitbox
 @onready var kick_hitbox: Area2D = $flipper/kick_hitbox
 @onready var dash_hitbox: Area2D = $flipper/dash_hitbox
-
 @onready var blood_particles: CPUParticles2D = $flipper/CanvasLayer/Bloodparticles
 @onready var drunk_master: DrunkMaster = $"."
-
 @onready var overlap_area: Area2D = $flipper/overlap_area
 @onready var flip_hitbox: Area2D = $flipper/flip_hitbox
 
-
+# Variables para doble tap
+# Variables para doble tap teclado
+var last_input_dir := 0
+var last_input_time := 0.0
+var double_tap_max_time := 0.3  
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, FLIP, DASH, HURT, INTERACT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
@@ -32,7 +34,7 @@ var kick_power = BASE_KICK_POWER
 var dash_power = 0
 var kick_targets_hit: Array = []
 var dash_speed := 600.0 
-var dash_time := 0.2
+var dash_time := 0.3
 var dash_timer := 0.0
 var dash_cooldown := 0.5 
 var dash_cooldown_timer := 0.0
@@ -118,8 +120,14 @@ func handle_input(_delta):
 		punch()
 	if Input.is_action_just_pressed("kick") and attack_timer == 0 and attack_cooldown_timer == 0:
 		kick()
-	if Input.is_action_just_pressed("dash") and dash_cooldown_timer == 0 and state not in [State.DASH, State.HURT, State.DEAD]:
-		if GameManager.dash_upgrade_active or is_on_floor():
+	if Input.is_action_just_pressed("move_left"):
+		_check_double_tap(-1)
+	elif Input.is_action_just_pressed("move_right"):
+		_check_double_tap(1)
+
+	# Botón de dash en gamepad
+	if Input.is_action_just_pressed("dash_gamepad"):
+		if is_on_floor() and state not in [State.DASH, State.HURT, State.DEAD]:
 			start_dash()
 
 	if Input.is_action_just_pressed("interact"):
@@ -135,7 +143,16 @@ func _jump():
 			velocity.x = -WALL_JUMP_PUSHBACK
 		elif Input.is_action_pressed("move_left"):
 			velocity.x = WALL_JUMP_PUSHBACK
-
+			
+func _check_double_tap(dir_pressed: int):
+	var current_time = Time.get_ticks_msec() / 1000.0
+	if last_input_dir == dir_pressed and (current_time - last_input_time) <= double_tap_max_time:
+		if is_on_floor() and state not in [State.DASH, State.HURT, State.DEAD]:
+			start_dash()
+			last_input_time = 0.0  # reset
+	else:
+		last_input_time = current_time
+		last_input_dir = dir_pressed
 # ESTADOS
 func update_state():
 	if life <= 0:
