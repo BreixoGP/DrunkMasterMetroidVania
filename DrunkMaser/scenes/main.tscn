@@ -11,6 +11,7 @@
 script = ExtResource("1_0wfyh")
 
 [node name="DrunkMaster" parent="." instance=ExtResource("2_sugp2")]
+z_as_relative = false
 
 [node name="levelcontainer" type="Node2D" parent="."]
 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8gkk6xox8jkt"]
+
+[ext_resource type="Texture2D" uid="uid://d4jb4b4j4bt7k" path="res://assets/charachters/DrunkMaster/DeadDrunk.png" id="1_bn5ft"]
+[ext_resource type="Texture2D" uid="uid://dwemsqkv18pxd" path="res://assets/charachters/DrunkMaster/JumpDrunk.png" id="2_ytjcw"]
+[ext_resource type="Script" uid="uid://c1e0ewqeavqjg" path="res://scripts/shadow_explosion.gd" id="11_p7adv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gqxm"]
+atlas = ExtResource("2_ytjcw")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx4oi"]
+atlas = ExtResource("2_ytjcw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jiqt"]
+atlas = ExtResource("1_bn5ft")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kmbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx4oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jiqt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="shadow_explosion" type="AnimatedSprite2D"]
+modulate = Color(0.3764706, 0, 0.3764706, 0.5254902)
+top_level = true
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_6kmbt")
+frame_progress = 1.0
+script = ExtResource("11_p7adv")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -17,6 +17,8 @@ class_name DrunkMaster
 var last_input_dir := 0
 var last_input_time := 0.0
 var double_tap_max_time := 0.3  
+var afterimage_timer := 0.0
+var afterimage_interval := 0.05
 enum State { IDLE, RUN, JUMP, FALL, WALLSLIDE, PUNCH, KICK, FLIP, DASH, HURT, INTERACT, DEAD }
 var state: State = State.IDLE
 var attack_timer := 0.0
@@ -56,6 +58,11 @@ func _physics_process(delta: float) -> void:
 	if state == State.DASH:
 		velocity = dash_direction * dash_speed
 		dash_timer -= delta
+		# Crear rastro
+		afterimage_timer -= delta
+		if afterimage_timer <= 0:
+			create_afterimage()
+			afterimage_timer = afterimage_interval
 		if dash_timer <= 0:
 			end_dash()
 
@@ -414,3 +421,10 @@ func _on_dash_hitbox_body_entered(body: Node2D) -> void:
 		return
 	
 	body.take_damage(dash_power, global_position, 1)
+func create_afterimage():
+	var img = preload("res://scenes/after_image.tscn").instantiate()
+	img.position = global_position
+	img.position.y -= 40
+	img.rotation = flipper.rotation
+	img.scale = flipper.scale
+	get_parent().add_child(img)

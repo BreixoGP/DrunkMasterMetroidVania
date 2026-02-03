@@ -20,10 +20,6 @@ height = 50.0
 radius = 7.0
 height = 23.999998
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcocl"]
-atlas = ExtResource("6_rmwwx")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yytgj"]
 atlas = ExtResource("9_1hk1y")
 region = Rect2(1152, 0, 128, 128)
@@ -31,6 +27,10 @@ region = Rect2(1152, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqmp6"]
 atlas = ExtResource("9_1hk1y")
 region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcocl"]
+atlas = ExtResource("6_rmwwx")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i24ww"]
 atlas = ExtResource("6_rmwwx")
@@ -280,13 +280,13 @@ region = Rect2(896, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qcocl")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yytgj")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cqmp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcocl")
 }],
 "loop": false,
 "name": &"dash",
