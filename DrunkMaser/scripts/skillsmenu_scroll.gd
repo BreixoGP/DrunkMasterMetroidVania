@@ -17,6 +17,10 @@ extends Control
 @onready var wallslide_play: HBoxContainer = $controls_display/ps_controls_scroll/VBoxContainer/box8
 @onready var flip_pc: HBoxContainer = $controls_display/pc_controls_scroll/VBoxContainer/box6
 @onready var wallslide_pc: HBoxContainer = $controls_display/pc_controls_scroll/VBoxContainer/box8
+@onready var dash_pc: HBoxContainer = $controls_display/pc_controls_scroll/VBoxContainer/box9
+@onready var dash_ps: HBoxContainer = $controls_display/ps_controls_scroll/VBoxContainer/box9
+@onready var dash_xbox: HBoxContainer = $controls_display/xbox_controls_scroll/VBoxContainer/box9
+
 @onready var skills_scroll: ScrollContainer = $skills_scroll
 @onready var controls_display: Control = $controls_display
 var wallslide_txt = "Drunken Crane’s Embrace— Lan Caihe
@@ -28,11 +32,13 @@ The body hardens, the blows grow heavier."
 var flip_txt = "Gourd of the Backward Immortal— Zhang Guolao
 A retreat twists into a drunken turn.
 Those before and behind share the same fate."
+var dash_basic= "Drunken Step
+A sudden slip of the feet.
+The body surges forward,
+escaping before the blow lands."
 var dash_txt = "Drunken Breeze— Han Xiangzi
-Feet lose their way,
-the body follows the wind.
-What looked like escape
-becomes the strike."
+Feet lose their way,the body follows the wind.
+What looked like escape becomes the strike."
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -105,12 +111,20 @@ func update_skills_display():
 		flip_pc.visible = false
 		flip_play.visible = false
 		flip_xbox.visible = false
-	if GameManager.dash_upgrade_active:
+	if GameManager.dash_ability_active:
 		dash_icon.modulate = Color(1,1,1,1)
-		dash_label.text = wallslide_txt
+		dash_label.text = dash_basic
+		dash_pc.visible = true
+		dash_ps.visible = true
+		dash_xbox.visible = true
+		if GameManager.dash_upgrade_active:
+			dash_label.text = dash_txt
 	else:
 		dash_icon.modulate = Color()
 		dash_label.text = "???????"
+		dash_pc.visible = false
+		dash_ps.visible = false
+		dash_xbox.visible = false
 
 func _on_resume_pressed() -> void:
 	GameManager.resume_game()

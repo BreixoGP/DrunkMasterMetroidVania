@@ -204,7 +204,7 @@ layout_mode = 0
 offset_left = 41.0
 offset_top = 153.0
 offset_right = 1104.0
-offset_bottom = 448.0
+offset_bottom = 443.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="skills_scroll"]
 layout_mode = 2
@@ -226,6 +226,21 @@ theme_override_font_sizes/font_size = 32
 text = "Drunken Crane’s Embrace— Lan Caihe
 Cling to the wall and the fall slows.
 Step toward it, then rise in a drunken leap."
+
+[node name="dash" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
+layout_mode = 2
+
+[node name="dash_icon" type="TextureRect" parent="skills_scroll/VBoxContainer/dash"]
+layout_mode = 2
+texture = ExtResource("7_3vmnd")
+stretch_mode = 2
+
+[node name="dash_label" type="Label" parent="skills_scroll/VBoxContainer/dash"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
+theme_override_fonts/font = ExtResource("3_ngi6a")
+theme_override_font_sizes/font_size = 32
+text = "???????????????"
 
 [node name="boost" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
 layout_mode = 2
@@ -259,19 +274,6 @@ theme_override_font_sizes/font_size = 32
 text = "Spinning Gourd of the Flute Immortal — Han Xiangzi
 One sip turns the world upside down.
 What seems like a fall becomes a sweeping kick."
-
-[node name="dash" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
-layout_mode = 2
-
-[node name="dash_icon" type="TextureRect" parent="skills_scroll/VBoxContainer/dash"]
-layout_mode = 2
-texture = ExtResource("7_3vmnd")
-
-[node name="dash_label" type="Label" parent="skills_scroll/VBoxContainer/dash"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.16743919, 0.026655294, 0, 1)
-theme_override_fonts/font = ExtResource("3_ngi6a")
-theme_override_font_sizes/font_size = 32
 
 [node name="misc3" type="HBoxContainer" parent="skills_scroll/VBoxContainer"]
 visible = false

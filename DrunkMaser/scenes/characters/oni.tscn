@@ -372,7 +372,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xv7lt"]
 radius = 2.0
-height = 20.0
+height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6rll"]
 radius = 11.0
@@ -406,9 +406,7 @@ shape = SubResource("CapsuleShape2D_krfje")
 position = Vector2(3.9999995, -3)
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_0v6m6")
-animation = &"ready"
-frame = 3
-frame_progress = 1.0
+animation = &"patrol"
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
 position = Vector2(0, 37)
@@ -433,7 +431,7 @@ position = Vector2(11, -3)
 collision_mask = 4
 
 [node name="head_collision" type="CollisionShape2D" parent="Flipper/head_hitbox"]
-position = Vector2(-5, -4)
+position = Vector2(-10, -4)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xv7lt")
 

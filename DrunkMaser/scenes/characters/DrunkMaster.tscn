@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://mxsmjwdj3tvw"]
+[gd_scene load_steps=86 format=3 uid="uid://mxsmjwdj3tvw"]
 
 [ext_resource type="Script" uid="uid://li1ill2fffw1" path="res://scripts/drunkmaster.gd" id="1_ehg33"]
 [ext_resource type="Texture2D" uid="uid://blb8kmm3wp6vh" path="res://assets/charachters/DrunkMaster/Attack_1Drunk.png" id="2_x3l2y"]
@@ -20,17 +20,25 @@ height = 50.0
 radius = 7.0
 height = 23.999998
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yytgj"]
-atlas = ExtResource("9_1hk1y")
-region = Rect2(1152, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqmp6"]
-atlas = ExtResource("9_1hk1y")
-region = Rect2(128, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcocl"]
 atlas = ExtResource("6_rmwwx")
 region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yytgj"]
+atlas = ExtResource("6_rmwwx")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqmp6"]
+atlas = ExtResource("6_x3l2y")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n4yi"]
+atlas = ExtResource("6_x3l2y")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47m2j"]
+atlas = ExtResource("6_x3l2y")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i24ww"]
 atlas = ExtResource("6_rmwwx")
@@ -280,13 +288,22 @@ region = Rect2(896, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qcocl")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yytgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcocl")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cqmp6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qcocl")
+"texture": SubResource("AtlasTexture_0n4yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47m2j")
 }],
 "loop": false,
 "name": &"dash",
@@ -620,7 +637,7 @@ position = Vector2(2.9999962, -27)
 scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
 animation = &"dash"
-frame = 2
+frame = 5
 frame_progress = 1.0
 
 [node name="kick_hitbox" type="Area2D" parent="flipper"]

@@ -35,8 +35,8 @@ var punch_power = BASE_PUNCH_POWER
 var kick_power = BASE_KICK_POWER
 var dash_power = 0
 var kick_targets_hit: Array = []
-var dash_speed := 600.0 
-var dash_time := 0.3
+var dash_speed := 1000.0 
+var dash_time := 0.35
 var dash_timer := 0.0
 var dash_cooldown := 0.5 
 var dash_cooldown_timer := 0.0
@@ -127,6 +127,8 @@ func handle_input(_delta):
 		punch()
 	if Input.is_action_just_pressed("kick") and attack_timer == 0 and attack_cooldown_timer == 0:
 		kick()
+	if Input.is_action_just_pressed("flip") and attack_timer == 0 and attack_cooldown_timer == 0:
+		flip()
 	if Input.is_action_just_pressed("move_left"):
 		_check_double_tap(-1)
 	elif Input.is_action_just_pressed("move_right"):
@@ -134,7 +136,7 @@ func handle_input(_delta):
 
 	# Botón de dash en gamepad
 	if Input.is_action_just_pressed("dash_gamepad"):
-		if is_on_floor()or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
+		if GameManager.dash_ability or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
 			start_dash()
 
 	if Input.is_action_just_pressed("interact"):
@@ -154,7 +156,7 @@ func _jump():
 func _check_double_tap(dir_pressed: int):
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if last_input_dir == dir_pressed and (current_time - last_input_time) <= double_tap_max_time:
-		if is_on_floor() or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
+		if GameManager.dash_ability_active or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
 			start_dash()
 			last_input_time = 0.0  # reset
 	else:
@@ -254,6 +256,7 @@ func apply_knockback(amount: int,from_position: Vector2,attack_type:int):
 		knockback_strength=500      	
 	#falta attack ype 2 tal vez un golppe mas fuerte
 	elif attack_type == 3:
+		dir.x *=2
 		dir.y = -1
 		knockback_strength = 300
 		
@@ -275,7 +278,7 @@ func _end_knockback():
 	
 #ATAQUES
 func punch():
-	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DASH, State.DEAD, State.FLIP]:
 		return
 	if attack_timer > 0:
 		return
@@ -294,7 +297,7 @@ func apply_punch_hit():
 	
 	
 func kick():
-	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DASH, State.DEAD, State.FLIP]:
 		return
 	if attack_timer > 0:
 		return
@@ -306,7 +309,7 @@ func kick():
 	attack_cooldown=kick_cooldown
 
 func flip():
-	if state in [State.PUNCH, State.KICK, State.HURT, State.DEAD, State.FLIP]:
+	if state in [State.PUNCH, State.KICK, State.HURT, State.DASH, State.DEAD, State.FLIP]:
 		return
 	if not GameManager.flip_ability_active:
 		return
@@ -320,9 +323,8 @@ func start_dash():
 	dash_timer = dash_time
 	dash_cooldown_timer = dash_cooldown
 
-	# Guardar mask original y desactivar colisión con enemigos (layer 2)
-	original_mask = collision_mask
-	collision_mask &= ~(1 << 1)
+	# desactivar colisión con enemigos (layer 2)
+	collision_mask &= ~(1 << 1)	
 	if GameManager.dash_upgrade_active:
 		dash_power=2
 	# Dirección del dash: horizontal
@@ -334,7 +336,7 @@ func start_dash():
 	anim.play("dash")
 	
 func end_dash():
-	collision_mask = original_mask  # restaurar máscara
+	collision_mask |= (1 << 1) # restaurar máscara
 	state = State.IDLE
 	velocity = Vector2.ZERO
 

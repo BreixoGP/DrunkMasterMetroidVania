@@ -54,6 +54,8 @@ var wall_ability_unlocked := false
 var wall_ability_active := false
 var flip_ability_active := false
 var flip_ability_unlocked := false
+var dash_ability_unlocked := false
+var dash_ability_active := false
 var dash_upgrade_active := false
 var dash_upgrade_unlocked := false
 var has_crystal := false
@@ -170,6 +172,7 @@ func activate_checkpoint(level_path: String, checkpoint_tag: String) -> void:
 	has_crystal_saved = has_crystal
 	has_key_saved = has_key
 	wall_ability_unlocked = wall_ability_active 
+	dash_ability_unlocked = dash_ability_active
 	dash_upgrade_unlocked = dash_upgrade_active
 	flip_ability_unlocked = flip_ability_active
 	upgrade_attack_perm = upgrade_attack_temp
@@ -198,6 +201,7 @@ func respawn():
 	has_crystal = has_crystal_saved
 	has_key = has_key_saved
 	wall_ability_active = wall_ability_unlocked
+	dash_ability_active = dash_ability_unlocked
 	dash_upgrade_active = dash_upgrade_unlocked
 	flip_ability_active = flip_ability_unlocked
 	upgrade_attack_temp = 0
@@ -243,6 +247,8 @@ func start_new_game() -> void:
 	has_key_saved = false
 	wall_ability_unlocked = false
 	wall_ability_active = false
+	dash_ability_unlocked = false
+	dash_ability_active = false
 	dash_upgrade_unlocked = false
 	dash_upgrade_active = false
 	flip_ability_unlocked = false
@@ -277,6 +283,8 @@ func save_game():
 		"has_key": has_key,
 		"wall_ability_unlocked": wall_ability_unlocked,
 		"wall_ability_active": wall_ability_active,
+		"dash_ability_unlocked": dash_ability_unlocked,
+		"dash_ability_active": dash_ability_active,
 		"dash_upgrade_active": dash_upgrade_active,
 		"dash_upgrade_unlocked": dash_upgrade_unlocked,
 		"flip_ability_unlocked": flip_ability_unlocked,
@@ -311,6 +319,8 @@ func load_game():
 	has_key = save_data["has_key"]
 	wall_ability_unlocked = save_data["wall_ability_unlocked"]
 	wall_ability_active = save_data["wall_ability_active"]
+	dash_ability_unlocked= save_data["dash_ability_unlocked"]
+	dash_ability_active= save_data["dash_ability_active"]
 	dash_upgrade_unlocked = save_data["dash_upgrade_unlocked"]
 	dash_upgrade_active = save_data["dash_upgrade_active"]
 	flip_ability_unlocked = save_data["flip_ability_unlocked"]
