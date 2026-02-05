@@ -24,11 +24,11 @@ class_name OniBlue
 enum State { IDLE, PATROL, CHASE, READY, ATTACK, HURT, DEAD, JUMP_BACK }
 var state: State = State.IDLE
 var direction = -1
-@export var life = 30
+@export var life = 35
 @export var attack_power = 1
 @export var attack2_power = 2
 var jump_started := false
-@export var speed = 180.0
+@export var speed = 190.0
 @export var point_value=50
 const MAX_VERTICAL_DIFF := 40.0
 var attack_chosen := false
@@ -187,20 +187,20 @@ func state_jump_back(_delta):
 			var target_x = player.global_position.x + (dir * distance)
 
 			# Limitamos X para que no salga del mapa
-			target_x = clamp(target_x, 0, 1760)
+			target_x = clamp(target_x, -10, 1660)
 
 			# Offset en Y para que no quede pegado al suelo
-			var target_y = player.global_position.y - 20  # siempre cae un poco arriba
+			var target_y = player.global_position.y - 40  # siempre cae un poco arriba
 
 			var start_pos = global_position
 			var end_pos = Vector2(target_x, target_y)
 
 			# Altura máxima de la parábola proporcional a la distancia horizontal
-			var apex_height = lerp(50, 150, clamp(abs(end_pos.x - start_pos.x) / 400.0, 0, 1))
+			var apex_height = lerp(50, 120, clamp(abs(end_pos.x - start_pos.x) / 400.0, 0, 1))
 			var apex = Vector2((start_pos.x + end_pos.x) / 2, min(start_pos.y, end_pos.y) - apex_height)
 
 			# Duración del salto proporcional a la distancia
-			var jump_time = clamp(abs(end_pos.x - start_pos.x) / 400.0, 0.3, 0.7)
+			var jump_time = clamp(abs(end_pos.x - start_pos.x) / 300.0, 0.3, 0.7)
 
 			# Tween de parábola: dos tramos, hasta apex y hasta target
 			var tween = create_tween()
@@ -274,7 +274,10 @@ func apply_knockback(amount:int, from_position: Vector2, attack_type:int, knockb
 func _end_knockback():
 	if state != State.DEAD:
 		attack_chosen = false
-		state = State.JUMP_BACK
+		if randf() <0.5:
+			state = State.JUMP_BACK
+		else:
+			state=State.CHASE
 		anim.modulate = Color(1,1,1,1)
 		 
 		
@@ -359,7 +362,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func spawn_pickup():
 	if pickup_scene:
 		var pickup = pickup_scene.instantiate()
-		pickup.global_position = pickup_position
+		pickup.global_position = pickup_position.global_position
 		pickup.pickup_id = enemy_id + "_pickup"
 
 		get_parent().call_deferred("add_child", pickup)

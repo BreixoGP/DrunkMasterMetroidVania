@@ -122,7 +122,7 @@ func state_chase(_delta):
 		state = State.IDLE
 		return
 
-	update_chase_offset(_delta)
+	#update_chase_offset(_delta)
 
 	var player_pos = GameManager.player.global_position
 	var target_x = player_pos.x + chase_offset_x

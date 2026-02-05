@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dijplqfmgis1f"]
+
+[ext_resource type="Texture2D" uid="uid://b511vmbktaxu2" path="res://assets/castle/Cold Corridors Files/Assets/Torch/torch-sheet.png" id="1_swgfh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kxux"]
+atlas = ExtResource("1_swgfh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q81h"]
+atlas = ExtResource("1_swgfh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgjfc"]
+atlas = ExtResource("1_swgfh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwjg2"]
+atlas = ExtResource("1_swgfh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kc5mv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kxux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q81h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgjfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwjg2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="torch_wall" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kc5mv")
+autoplay = "default"
+frame_progress = 0.7521404

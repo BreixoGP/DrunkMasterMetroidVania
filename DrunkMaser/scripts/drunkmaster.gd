@@ -35,7 +35,7 @@ var punch_power = BASE_PUNCH_POWER
 var kick_power = BASE_KICK_POWER
 var dash_power = 0
 var kick_targets_hit: Array = []
-var dash_speed := 1000.0 
+var dash_speed := 2000.0 
 var dash_time := 0.35
 var dash_timer := 0.0
 var dash_cooldown := 0.5 
@@ -252,7 +252,7 @@ func apply_knockback(amount: int,from_position: Vector2,attack_type:int):
 		dir.y = 0        
 		knockback_strength=250
 	elif attack_type == 1:  
-		dir.y = -1
+		dir.y = -0.5
 		knockback_strength=250      	
 	#falta attack ype 2 tal vez un golppe mas fuerte
 	elif attack_type == 3:

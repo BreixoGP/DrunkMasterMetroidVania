@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjjfhxyfb0efn"]
+
+[ext_resource type="Texture2D" uid="uid://d1bjtl8knq404" path="res://assets/castle/tile41.png" id="1_wb8jj"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_v51k5"]
+points = PackedVector2Array(35.471886, -36.643486, 9.772802, -28.363573, -36.39188, 33.788033, 15.567581, -7.116914)
+
+[node name="platform" type="AnimatableBody2D"]
+modulate = Color(0, 0.3764706, 0.972549, 1)
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(23, 0)
+scale = Vector2(1.9583334, 1)
+texture = ExtResource("1_wb8jj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23, 0)
+rotation = 0.31168556
+shape = SubResource("ConvexPolygonShape2D_v51k5")
+one_way_collision = true
