@@ -23,8 +23,9 @@ func shake():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is DrunkMaster:
-		body.take_damage(1, global_position, 0)
-		shake()   
+		if body.state != body.State.DASH:
+			body.take_damage(1, global_position, 0)
+			shake()   
 
 	if body.is_in_group("Enemies"):
 		body.take_damage(1, global_position, 0)

@@ -136,7 +136,7 @@ func handle_input(_delta):
 
 	# Botón de dash en gamepad
 	if Input.is_action_just_pressed("dash_gamepad"):
-		if GameManager.dash_ability or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
+		if (GameManager.dash_ability_active and is_on_floor()) or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
 			start_dash()
 
 	if Input.is_action_just_pressed("interact"):
@@ -156,7 +156,7 @@ func _jump():
 func _check_double_tap(dir_pressed: int):
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if last_input_dir == dir_pressed and (current_time - last_input_time) <= double_tap_max_time:
-		if GameManager.dash_ability_active or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
+		if (GameManager.dash_ability_active and is_on_floor()) or GameManager.dash_upgrade_active and state not in [State.DASH, State.DEAD]:
 			start_dash()
 			last_input_time = 0.0  # reset
 	else:
@@ -252,8 +252,8 @@ func apply_knockback(amount: int,from_position: Vector2,attack_type:int):
 		dir.y = 0        
 		knockback_strength=250
 	elif attack_type == 1:  
-		dir.y = -200
-		knockback_strength=500      	
+		dir.y = -1
+		knockback_strength=250      	
 	#falta attack ype 2 tal vez un golppe mas fuerte
 	elif attack_type == 3:
 		dir.x *=2

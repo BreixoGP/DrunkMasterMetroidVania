@@ -3567,10 +3567,10 @@ barrel_id = "l1_barrel_2"
 
 [node name="door" parent="." instance=ExtResource("15_rs5f1")]
 position = Vector2(178, -253)
-target_scene = "res://scenes/castle/level_20.tscn"
+target_scene = "res://scenes/castle/level_23.tscn"
 
 [node name="bottle_wallslide" parent="." instance=ExtResource("16_hj34y")]
-position = Vector2(321, -116)
+position = Vector2(80, -115)
 
 [node name="DungeonBrickWallPurple_png" type="Sprite2D" parent="."]
 modulate = Color(0.39256206, 0.39256206, 0.39256206, 1)
@@ -3591,4 +3591,4 @@ position = Vector2(346, -117)
 position = Vector2(290, -101)
 
 [node name="bottle_dash_basic" parent="." instance=ExtResource("19_byc85")]
-position = Vector2(64, -164)
+position = Vector2(309, -180)

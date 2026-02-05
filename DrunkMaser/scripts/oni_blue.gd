@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Crow
+class_name OniBlue
 
 @onready var flipper: Node2D = $Flipper
 @onready var anim: AnimatedSprite2D = $Flipper/AnimatedSprite2D
@@ -13,41 +13,35 @@ class_name Crow
 @export var enemy_id: String
 @onready var blood_particles: CPUParticles2D = $Flipper/Bloodparticles
 @onready var shadow_particles: CPUParticles2D = $Flipper/Shadowparticles
-@export var jump_areas: Array[Area2D] = []
-@export var crow_phase2_scene: PackedScene
-@export var clone_scene: PackedScene
-@export var explosion_scene: PackedScene
-@export var spawn_points: Array[Node2D] = [] # 5 puntos del mapa
-@export var summon_points: Array[Node2D] = []
-@export var hp_pickup_point: Node2D
-@export var fallback_marker: Node2D  # nodo al que ir si el player sale del área
+@export var pickup_position: Node2D
+@export var pickup_scene: PackedScene
 @onready var attack_hitbox: Area2D = $Flipper/attack_hitbox
+@onready var attack_2_hitbox: Area2D = $Flipper/attack2_hitbox
 @onready var hurtbox: CollisionShape2D = $hurtbox
-@onready var area_air_attack: Area2D = $area_air_attack
 
 
-enum State { IDLE, PATROL, CHASE, READY, READY_MELEE, ATTACK, ATTACK_MELEE, HURT, DEAD, JUMP_BACK }
+
+enum State { IDLE, PATROL, CHASE, READY, ATTACK, HURT, DEAD, JUMP_BACK }
 var state: State = State.IDLE
 var direction = -1
 @export var life = 30
-@export var attack_power = 2
+@export var attack_power = 1
+@export var attack2_power = 2
 var jump_started := false
-var patrol_time = 0.0
-var idle_time = 0.0
 @export var speed = 180.0
 @export var point_value=50
 const MAX_VERTICAL_DIFF := 40.0
+var attack_chosen := false
+var attack_type
 var attack_cooldown = 0.5 
 var attack_timer = 0.0
-@export var chase_offset_range := 50.0
+@export var chase_offset_range := 30.0
 var chase_offset_x := 0.0
 var chase_offset_timer := 0.0
 const OFFSET_REFRESH_TIME := 1.2
-var phase2_spawned := false
 @export var vertical_attack_x_range := 24.0
 @export var vertical_attack_y_diff := 40.0
 @export var vertical_attack_delay := 0.3
-
 var vertical_attack_timer := 0.0
 
 func _ready():
@@ -61,10 +55,7 @@ func _ready():
 	if GameManager.is_enemy_defeated(enemy_id):
 		queue_free()
 		return
-	for area in jump_areas:
-		if area:
-			area.connect("body_entered", Callable(self, "_on_area_body_entered"))
-			#area.connect("body_exited", Callable(self, "_on_area_body_exited"))
+
 	state = State.IDLE
 	play_anim("idle")
 
@@ -107,7 +98,7 @@ func state_idle(delta):
 func state_chase(_delta):
 	if state == State.HURT:
 		return
-
+	attack_chosen = false
 	play_anim("chase")
 
 	if not GameManager.player:
@@ -155,7 +146,6 @@ func state_chase(_delta):
 				return
 		else:
 			vertical_attack_timer = 0.0
-
 func state_ready(_delta):
 	if state != State.HURT:
 		velocity.x = 0
@@ -165,22 +155,25 @@ func state_ready(_delta):
 			state = State.CHASE
 			
 		
-
 func state_attack(_delta):
-	if state != State.HURT:
-		velocity.x = 0
+		if not attack_chosen:
+			attack_chosen = true
+
+			if randf() < 0.5:
+				attack_type = "attack"
+			else:
+				attack_type = "attack2"
+
+			play_anim(attack_type)
 		
-			
-		play_anim("attack")
-		update_attack_hitbox()
-		var frames = anim.sprite_frames.get_frame_count("attack")
+		
+		var frames = anim.sprite_frames.get_frame_count(attack_type)
 		if anim.frame == frames - 1:
 			state = State.CHASE
 			
 			
 func state_jump_back(_delta):
 	play_anim("jump")
-	area_air_attack.monitoring = true
 	if not jump_started:
 		jump_started = true
 
@@ -224,7 +217,6 @@ func state_jump_back(_delta):
 
 func _on_jump_finished():
 	jump_started = false
-	area_air_attack.monitoring = false
 	state = State.CHASE
 	
 func state_hurt(_delta):
@@ -235,37 +227,29 @@ func state_hurt(_delta):
 		velocity = Vector2.ZERO
 		anim.modulate = Color(1,1,1,1)
 	
-
 func state_dead(_delta):
 	velocity = Vector2.ZERO
-	anim.modulate = Color(0.3, 0.0, 0.257, 1.0)
 	if anim.animation != "die":
 		attack_hitbox.set_deferred("monitoring", false)
 		attack_hitbox.set_deferred("monitorable", false)
 		hurtbox.set_deferred("disabled", true)
-		play_anim("explosion")
+		play_anim("die")
 
 		#GameManager.add_point(point_value)
 		GameManager.defeat_enemy(enemy_id)
-		spawn_phase2_with_clones()
 		# Timer para desaparecer
-		var frames = anim.sprite_frames.get_frame_count("explosion")
-		var fps = anim.sprite_frames.get_animation_speed("explosion")
+		var frames = anim.sprite_frames.get_frame_count("die")
+		var fps = anim.sprite_frames.get_animation_speed("die")
 		if fps > 0:
 			var t = Timer.new()
 			t.wait_time = frames / fps
 			t.one_shot = true
 			t.connect("timeout", Callable(self, "queue_free"))
 			add_child(t)
+			spawn_pickup()
 			t.start()
 
 # ------------------- Lógica ------------------- #
-func update_attack_hitbox():
-	if anim.frame == 1:
-		attack_hitbox.monitoring = true
-	else:
-		attack_hitbox.monitoring = false
-
 func take_damage(amount, enemyposition: Vector2, attacktype: int):
 	if state == State.DEAD:
 		return
@@ -289,6 +273,7 @@ func apply_knockback(amount:int, from_position: Vector2, attack_type:int, knockb
 
 func _end_knockback():
 	if state != State.DEAD:
+		attack_chosen = false
 		state = State.JUMP_BACK
 		anim.modulate = Color(1,1,1,1)
 		 
@@ -355,55 +340,38 @@ func jump():
 	state = State.JUMP_BACK
 	jump_started = false
 
-func _on_area_body_exited(body: Node2D):
-	if body is DrunkMaster:
-		# Si tenemos marker definido, teletransportamos Crow allí
-		if fallback_marker:
-			global_position = fallback_marker.global_position
-			state = State.CHASE  # opcional, volvemos a chase
-			jump_started = false
-
-func _on_area_air_attack_body_entered(body: Node2D) -> void:
-	if body is DrunkMaster:
-		body.take_damage(1,global_position,0)
-		
 func update_chase_offset(delta):
 	chase_offset_timer += delta
 	if chase_offset_timer >= OFFSET_REFRESH_TIME:
 		chase_offset_timer = 0.0
 		chase_offset_x = randf_range(-chase_offset_range, chase_offset_range)
 
-func spawn_phase2_with_clones():
-	if phase2_spawned:
-		return
-	phase2_spawned = true
-	if spawn_points.size() < 5:
-		push_error("No spawns asignated to crow")
-		return
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if state == State.ATTACK and anim.frame == 2:
+		if attack_type == "attack":
+			attack_hitbox.monitoring = true
+		if attack_type == "attack2":
+			attack_2_hitbox.monitoring = true
+	else:
+		attack_hitbox.monitoring = false
+		attack_2_hitbox.monitoring = false
 
-	for pos_node in spawn_points:
-		var explosion = explosion_scene.instantiate()
-		explosion.global_position = pos_node.global_position
-		get_parent().add_child(explosion)
+func spawn_pickup():
+	if pickup_scene:
+		var pickup = pickup_scene.instantiate()
+		pickup.global_position = pickup_position
+		pickup.pickup_id = enemy_id + "_pickup"
 
-	# Elegimos aleatoriamente el índice del boss
-	var boss_index = randi() % spawn_points.size()
+		get_parent().call_deferred("add_child", pickup)
 
-	# Spawn del boss original
-	var original_pos = spawn_points[boss_index].global_position
-	var crow2_original = crow_phase2_scene.instantiate()
-	crow2_original.summon_points = summon_points
-	crow2_original.hp_pickup_point = hp_pickup_point
-	crow2_original.global_position = original_pos
-	get_parent().add_child(crow2_original)
 
-	# Spawn de clones en los demás puntos
-	for i in range(spawn_points.size()):
-		if i == boss_index:
-			continue # ya colocamos al boss
-		var pos = spawn_points[i].global_position
-		var crow2_clone = clone_scene.instantiate()
-		crow2_clone.global_position = pos
-		crow2_clone.boss_node = crow2_original
-		crow2_clone.connect("clone_hit", Callable(crow2_original, "_on_clone_hit"))
-		get_parent().add_child(crow2_clone)
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if state == State.ATTACK:
+		attack_chosen = false
+		state = State.CHASE
+
+
+func _on_attack_2_hitbox_body_entered(body: Node2D) -> void:
+	if body is DrunkMaster:
+		var drunkmaster: DrunkMaster = body as DrunkMaster
+		drunkmaster.take_damage(attack2_power, global_position, 1)
