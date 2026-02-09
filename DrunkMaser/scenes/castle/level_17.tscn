@@ -3799,3 +3799,4 @@ target_scene = "res://scenes/castle/level_16.tscn"
 
 [node name="door" parent="." instance=ExtResource("17_6q27a")]
 position = Vector2(892, -217)
+target_scene = "res://scenes/field/level_1_field.tscn"
