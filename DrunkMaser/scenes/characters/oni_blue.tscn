@@ -306,7 +306,7 @@ frame = 1
 frame_progress = 1.0
 
 [node name="raywall" type="RayCast2D" parent="Flipper"]
-position = Vector2(0, 37)
+position = Vector2(1, 48)
 target_position = Vector2(20, 0)
 
 [node name="rayfloor" type="RayCast2D" parent="Flipper"]

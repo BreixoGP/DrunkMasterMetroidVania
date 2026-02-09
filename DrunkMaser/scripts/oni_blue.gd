@@ -188,7 +188,7 @@ func state_jump_back(_delta):
 			var target_x = player.global_position.x + (dir * distance)
 
 			# Limitamos X para que no salga del mapa
-			target_x = clamp(target_x, -10, 1660)
+			target_x = clamp(target_x, -10, 1560)
 
 			# Offset en Y para que no quede pegado al suelo
 			var target_y = player.global_position.y - 40  # siempre cae un poco arriba
