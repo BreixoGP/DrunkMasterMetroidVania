@@ -406,6 +406,7 @@ radius = 59.00433
 height = 339.9344
 
 [node name="Oni_purple" type="CharacterBody2D" groups=["Enemies"]]
+z_index = 1
 collision_layer = 2
 floor_max_angle = 1.3089969
 script = ExtResource("1_4j8b0")
