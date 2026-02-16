@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://rii66suysn05"]
+[gd_scene load_steps=33 format=4 uid="uid://rii66suysn05"]
 
 [ext_resource type="Script" uid="uid://c7r4lk3jbcgfm" path="res://scripts/levels/level.gd" id="1_b2vpn"]
 [ext_resource type="Texture2D" uid="uid://dp3uj811uwiid" path="res://assets/castle/Medieval_tiles_free2.png" id="2_4eauk"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://streydfmk15f" path="res://scenes/characters/crow_boss.tscn" id="8_a6smr"]
 [ext_resource type="PackedScene" uid="uid://dijplqfmgis1f" path="res://scenes/castle/torch_wall.tscn" id="9_4eauk"]
 [ext_resource type="Texture2D" uid="uid://cl1ntuyrjp5kg" path="res://assets/cave_objects/Pixel Art Furnace and Sawmill.png" id="9_catfk"]
-[ext_resource type="PackedScene" uid="uid://wq4hxd3afdra" path="res://scenes/barrel.tscn" id="9_gb438"]
 [ext_resource type="PackedScene" uid="uid://c8co8xfd3bavi" path="res://scenes/characters/crow_boss_phase2.tscn" id="10_i5t6d"]
 [ext_resource type="Texture2D" uid="uid://cutqtir5d3mop" path="res://assets/cave_objects/pipes.png" id="10_jkqgs"]
 [ext_resource type="PackedScene" uid="uid://dfa6gvqbxhcqf" path="res://scenes/characters/crow_boss_clone.tscn" id="11_b2vpn"]
@@ -3824,13 +3823,13 @@ shape = SubResource("RectangleShape2D_a6smr")
 position = Vector2(479, -228)
 
 [node name="Spawn_2" type="Marker2D" parent="markers"]
-position = Vector2(677, -278)
+position = Vector2(643, -280)
 
 [node name="Spawn_3" type="Marker2D" parent="markers"]
 position = Vector2(955, -295)
 
 [node name="Spawn_4" type="Marker2D" parent="markers"]
-position = Vector2(1226, -277)
+position = Vector2(1259, -282)
 
 [node name="Spawn_5" type="Marker2D" parent="markers"]
 position = Vector2(1423, -230)
@@ -3843,12 +3842,3 @@ position = Vector2(626, -124)
 
 [node name="Spawn_8" type="Marker2D" parent="markers"]
 position = Vector2(947, -18)
-
-[node name="barrel" parent="." instance=ExtResource("9_gb438")]
-position = Vector2(342, -21)
-
-[node name="barrel4" parent="." instance=ExtResource("9_gb438")]
-position = Vector2(1564, -20)
-
-[node name="barrel5" parent="." instance=ExtResource("9_gb438")]
-position = Vector2(1564, -20)
