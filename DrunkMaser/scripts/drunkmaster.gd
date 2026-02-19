@@ -38,7 +38,7 @@ var kick_targets_hit: Array = []
 var dash_speed := 2000.0 
 var dash_time := 0.35
 var dash_timer := 0.0
-var dash_cooldown := 0.5 
+var dash_cooldown := 2.0 
 var dash_cooldown_timer := 0.0
 var dash_direction := Vector2.ZERO
 var original_mask := 0  
@@ -319,6 +319,8 @@ func flip():
 	attack_timer = anim.sprite_frames.get_frame_count("flip") / anim.sprite_frames.get_animation_speed("flip")
 
 func start_dash():
+	if dash_cooldown_timer>0:
+		return
 	state = State.DASH
 	dash_timer = dash_time
 	dash_cooldown_timer = dash_cooldown
