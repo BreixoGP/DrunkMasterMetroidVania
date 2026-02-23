@@ -5064,7 +5064,7 @@ tile_map_data = PackedByteArray("AAAAAO7/AAACABkAAAAAAO//AAACABoAAAAAAPD/AAACABs
 tile_set = SubResource("TileSet_q7due")
 
 [node name="Spawn_right" type="Marker2D" parent="."]
-position = Vector2(1579, -219)
+position = Vector2(1585, -388)
 
 [node name="Spawn_left" type="Marker2D" parent="."]
 position = Vector2(111, -28)
