@@ -419,7 +419,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -612,7 +612,7 @@ height = 42.0
 [node name="DrunkMaster" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
-floor_max_angle = 0.9599311
+floor_max_angle = 1.0227629
 script = ExtResource("1_ehg33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -636,7 +636,9 @@ texture_filter = 1
 position = Vector2(2.9999962, -27)
 scale = Vector2(0.79882807, 0.81640625)
 sprite_frames = SubResource("SpriteFrames_uni4o")
-animation = &"dash"
+animation = &"hurt"
+frame = 2
+frame_progress = 1.0
 
 [node name="kick_hitbox" type="Area2D" parent="flipper"]
 collision_layer = 3

@@ -3631,6 +3631,7 @@ position = Vector2(801, -259)
 texture = ExtResource("6_bdojh")
 
 [node name="Foreground" type="Sprite2D" parent="TileMapLayer"]
+visible = false
 top_level = true
 z_index = 100
 position = Vector2(805.00006, -95)
@@ -3638,6 +3639,7 @@ scale = Vector2(0.72991085, 0.7198661)
 texture = ExtResource("15_7m0a0")
 
 [node name="Foreground3" type="Sprite2D" parent="TileMapLayer"]
+visible = false
 top_level = true
 z_index = 100
 position = Vector2(364.0001, -97)
@@ -3645,6 +3647,7 @@ scale = Vector2(0.72991085, 0.7198661)
 texture = ExtResource("15_7m0a0")
 
 [node name="Foreground4" type="Sprite2D" parent="TileMapLayer"]
+visible = false
 top_level = true
 z_index = 100
 position = Vector2(1675, -96)
@@ -3652,6 +3655,7 @@ scale = Vector2(0.72991085, 0.7198661)
 texture = ExtResource("15_7m0a0")
 
 [node name="Foreground2" type="Sprite2D" parent="TileMapLayer"]
+visible = false
 top_level = true
 z_index = 100
 position = Vector2(1241, -95)

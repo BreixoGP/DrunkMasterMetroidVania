@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://brevtewbtyw78" path="res://assets/castle/Dungeon_brick_wall_purple.png.png" id="6_hvem4"]
 [ext_resource type="PackedScene" uid="uid://btoyw8tp2yb1t" path="res://scenes/door.tscn" id="7_i8otp"]
 [ext_resource type="Texture2D" uid="uid://c7tf6ebl7r1tx" path="res://assets/castle/Cold Corridors Files/Assets/Layers/near.png" id="7_lr1f5"]
-[ext_resource type="PackedScene" uid="uid://brtyiwdi261p7" path="res://scenes/castle/torch.tscn" id="8_7y2cn"]
 [ext_resource type="Texture2D" uid="uid://f11lam58fcyu" path="res://assets/castle/Cold Corridors Files/Assets/Layers/foreground.png" id="8_hvem4"]
 [ext_resource type="PackedScene" uid="uid://wq4hxd3afdra" path="res://scenes/barrel.tscn" id="9_6bnwj"]
 [ext_resource type="Texture2D" uid="uid://cutqtir5d3mop" path="res://assets/cave_objects/pipes.png" id="9_hvem4"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://pknrmbd7fe8b" path="res://scenes/characters/oni_purple.tscn" id="10_50ips"]
 [ext_resource type="PackedScene" uid="uid://4p50ue5qi0n4" path="res://scenes/secretdoor.tscn" id="11_5px67"]
 [ext_resource type="PackedScene" uid="uid://k1lfxg1rck6n" path="res://scenes/life_bottle.tscn" id="11_452tn"]
+[ext_resource type="PackedScene" uid="uid://dijplqfmgis1f" path="res://scenes/castle/torch_wall.tscn" id="11_hvem4"]
 [ext_resource type="PackedScene" uid="uid://bov7om0em5xlt" path="res://scenes/characters/oni.tscn" id="12_44qv7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3glw"]
@@ -3723,11 +3723,17 @@ target_scene = "res://scenes/castle/level_23.tscn"
 
 [node name="torches" type="Node" parent="."]
 
-[node name="torch" parent="torches" instance=ExtResource("8_7y2cn")]
-position = Vector2(1329, -48)
+[node name="torch_wall" parent="torches" instance=ExtResource("11_hvem4")]
+position = Vector2(35, -109)
 
-[node name="torch2" parent="torches" instance=ExtResource("8_7y2cn")]
-position = Vector2(896, -49)
+[node name="torch_wall2" parent="torches" instance=ExtResource("11_hvem4")]
+position = Vector2(458, -110)
+
+[node name="torch_wall3" parent="torches" instance=ExtResource("11_hvem4")]
+position = Vector2(897, -114)
+
+[node name="torch_wall4" parent="torches" instance=ExtResource("11_hvem4")]
+position = Vector2(1327, -110)
 
 [node name="barrel" parent="." instance=ExtResource("9_6bnwj")]
 position = Vector2(162, -36)

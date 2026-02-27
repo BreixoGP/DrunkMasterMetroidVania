@@ -1825,7 +1825,7 @@ sources/3 = SubResource("TileSetAtlasSource_q7due")
 [node name="level4_field" type="Node2D"]
 script = ExtResource("1_grsc4")
 cam_limit_top = -550
-cam_limit_right = 1679
+cam_limit_right = 2230
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -1913,7 +1913,8 @@ target_scene = "res://scenes/castle/level_12.tscn"
 [node name="Secretdoor3" parent="." instance=ExtResource("13_nvn25")]
 position = Vector2(1124.0001, -594.00006)
 scale = Vector2(2.5, 2.5)
-target_scene = "res://scenes/castle/level_12.tscn"
+target_scene = "res://scenes/field/level_5_field.tscn"
+target_spawn = "Spawn_right"
 
 [node name="deadzones" type="Node" parent="."]
 

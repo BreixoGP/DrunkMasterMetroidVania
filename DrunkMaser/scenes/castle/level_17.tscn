@@ -3717,6 +3717,9 @@ tile_set = SubResource("TileSet_ag7fl")
 [node name="Spawn_right" type="Marker2D" parent="."]
 position = Vector2(1591, -30)
 
+[node name="Spawn_right2" type="Marker2D" parent="."]
+position = Vector2(886, -200)
+
 [node name="Spawn_left" type="Marker2D" parent="."]
 position = Vector2(-130, -30)
 

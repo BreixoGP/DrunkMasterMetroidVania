@@ -23,13 +23,13 @@ var direction = -1
 var patrol_time = 0.0
 var idle_time = 0.0
 @export var speed = 130.0
-@export var point_value=50
+@export var point_value=50 
 const MAX_VERTICAL_DIFF := 40.0
 var attack_cooldown = 0.75 
 var attack_timer = 0.0
 var head_timer_started = false
 var _death_processed := false
-@export var chase_offset_range := 20.0
+@export var chase_offset_range := 60.0
 var chase_offset_x := 0.0
 var chase_offset_timer := 0.0
 const OFFSET_REFRESH_TIME := 1.2
@@ -122,7 +122,7 @@ func state_chase(_delta):
 		state = State.IDLE
 		return
 
-	#update_chase_offset(_delta)
+	update_chase_offset(_delta)
 
 	var player_pos = GameManager.player.global_position
 	var target_x = player_pos.x + chase_offset_x
@@ -316,7 +316,7 @@ func _on_head_timer_timeout():
 		head_timer_started = false
 		
 	
-func apply_enemy_separation(delta: float) -> Vector2:
+func apply_enemy_separation(_delta: float) -> Vector2:
 	var separation := Vector2.ZERO
 	for body in enemy_avoid_area.get_overlapping_bodies():
 		if body == self or not body.is_in_group("Enemies"):
